@@ -494,7 +494,7 @@ link.href = __webpack_require__.p + __webpack_require__.u(chunkId);
 };
 __webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
 // install a JSONP callback for chunk loading
-var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+var __rspack_jsonp = (parentChunkLoadingFunction, data) => {
 	var [chunkIds, moreModules, runtime] = data;
 	// add "moreModules" to the modules object,
 	// then flag all "chunkIds" as loaded and fire callback
@@ -524,8 +524,8 @@ var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 };
 
 var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
-chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+chunkLoadingGlobal.forEach(__rspack_jsonp.bind(null, 0));
+chunkLoadingGlobal.push = __rspack_jsonp.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 
 })();
 // webpack/runtime/chunk_prefetch_startup

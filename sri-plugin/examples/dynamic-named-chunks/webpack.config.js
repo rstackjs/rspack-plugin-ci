@@ -10,6 +10,7 @@ module.exports = {
   },
   optimization: {
     chunkIds: "named",
+    minimize: false
   },
   plugins: [
     createIntegrityPlugin({

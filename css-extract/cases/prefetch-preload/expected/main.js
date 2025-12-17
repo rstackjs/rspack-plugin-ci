@@ -371,7 +371,7 @@ __webpack_require__.f.miniCss = function (chunkId, promises) {
 
 // no hmr
 __webpack_require__.F.miniCss = (chunkId) => {
-  if ((!__webpack_require__.o(installedChunks, chunkId) || installedChunks[chunkId] === undefined) && !/^(b|b3|c|main)$/.test(chunkId)) {
+  if ((!__webpack_require__.o(installedCssChunks, chunkId) || installedCssChunks[chunkId] === undefined) && !/^(b|b3|c|main)$/.test(chunkId)) {
     installedCssChunks[chunkId] = null;
 
     var link = document.createElement('link');
@@ -386,7 +386,7 @@ link.href = __webpack_require__.p + __webpack_require__.miniCssF(chunkId);
   }
 };
 __webpack_require__.H.miniCss = (chunkId) => {
-  if ((!__webpack_require__.o(installedChunks, chunkId) || installedChunks[chunkId] === undefined) && !/^(b|b3|c|main)$/.test(chunkId)) {
+  if ((!__webpack_require__.o(installedCssChunks, chunkId) || installedCssChunks[chunkId] === undefined) && !/^(b|b3|c|main)$/.test(chunkId)) {
     installedCssChunks[chunkId] = null;
 
     var link = document.createElement('link');

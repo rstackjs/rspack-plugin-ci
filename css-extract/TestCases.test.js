@@ -2,10 +2,14 @@
  * @jest-environment node
  */
 
-const fs = require("fs");
-const path = require("path");
-const webpack = require("@rspack/core");
-const yn = require("./helpers/yn");
+import fs from "fs";
+import path from "path";
+import webpack from "@rspack/core";
+import yn from "./helpers/yn";
+import { jest, test, describe, afterEach } from "@jest/globals";
+import { stripVTControlCharacters as stripAnsi } from 'util';
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 
 const { CssExtractRspackPlugin } = webpack;
 const UPDATE_TEST = global.updateSnapshot;
@@ -160,19 +164,22 @@ function compareDirectory(actual, expected, webpackStats) {
 }
 
 describe("TestCases", () => {
-	const casesDirectory = path.resolve(__dirname, "cases");
-	const outputDirectory = path.resolve(__dirname, "js");
-	const tests = fs.readdirSync(casesDirectory).filter(test => {
+	const casesDirectory = path.resolve(import.meta.dirname, "cases");
+	const outputDirectory = path.resolve(import.meta.dirname, "js");
+	const tests = fs.readdirSync(casesDirectory).filter(test => test !== "package.json").filter(test => {
 		const testDirectory = path.join(casesDirectory, test);
 		const filterPath = path.join(testDirectory, "test.filter.js");
 
 		// eslint-disable-next-line global-require, import/no-dynamic-require
-		if (fs.existsSync(filterPath) && !require(filterPath)()) {
-			describe.skip(test, () => {
-				it("filtered", () => { });
-			});
+		if (fs.existsSync(filterPath)) {
+			const filterFn = require(filterPath);
+			if (!filterFn()) {
+				describe.skip(test, () => {
+					it("filtered", () => { });
+				});
 
-			return false;
+				return false;
+			}
 		}
 
 		return true;
@@ -183,18 +190,18 @@ describe("TestCases", () => {
 	for (const directory of tests) {
 		if (!/^(\.|_)/.test(directory)) {
 			// eslint-disable-next-line no-loop-func
-			it(`${directory} should compile to the expected result`, done => {
+			it(`${directory} should compile to the expected result`, async () => {
 				if (directory === "serializingBigStrings") {
-					clearDirectory(path.resolve(__dirname, "../node_modules/.cache"));
+					clearDirectory(path.resolve(import.meta.dirname, "../node_modules/.cache"));
 				}
 
 				const directoryForCase = path.resolve(casesDirectory, directory);
 				const outputDirectoryForCase = path.resolve(outputDirectory, directory);
 				// eslint-disable-next-line import/no-dynamic-require, global-require
-				const config = require(path.resolve(
+				const config = (await import(path.resolve(
 					directoryForCase,
-					"webpack.config.js"
-				));
+					"webpack.config.mjs"
+				))).default;
 				const webpackConfig = Array.isArray(config)
 					? config.map(config => {
 						return {
@@ -275,138 +282,141 @@ describe("TestCases", () => {
 					);
 				}
 
-				webpack(webpackConfig, (error, stats) => {
-					if (error) {
-						done(error);
-
-						return;
-					}
-
-					if (stats.hasErrors()) {
-						const errorsPath = path.join(directoryForCase, "./errors.test.js");
-
-						if (fs.existsSync(errorsPath)) {
-							const { errors } = stats.compilation;
-							// eslint-disable-next-line global-require, import/no-dynamic-require
-							const errorFilters = require(errorsPath);
-							const filteredErrors = errors.filter(
-								// eslint-disable-next-line no-shadow
-								error =>
-									!errorFilters.some(errorFilter => errorFilter.test(error))
-							);
-
-							if (filteredErrors.length > 0) {
-								done(new Error(`Errors:\n${filteredErrors.join(",\n")}`));
-
-								return;
-							}
-
-							done();
+				await new Promise((resolve, reject) => {
+					webpack(webpackConfig, (error, stats) => {
+						if (error) {
+							reject(error);
 
 							return;
 						}
 
-						done(new Error(stats.toString()));
+						if (stats.hasErrors()) {
+							const errorsPath = path.join(directoryForCase, "./errors.test.js");
 
-						return;
-					}
+							if (fs.existsSync(errorsPath)) {
+								const { errors } = stats.compilation;
+								// eslint-disable-next-line global-require, import/no-dynamic-require
+								const errorFilters = require(errorsPath);
+								const filteredErrors = errors.filter(
+									// eslint-disable-next-line no-shadow
+									error =>
+										!errorFilters.some(errorFilter => errorFilter.test(error))
+								);
 
-					if (stats.hasErrors() && stats.hasWarnings()) {
-						done(
-							new Error(
-								stats.toString({
-									context: path.resolve(__dirname, ".."),
-									errorDetails: true,
+								if (filteredErrors.length > 0) {
+									reject(new Error(`Errors:\n${filteredErrors.join(",\n")}`));
+
+									return;
+								}
+
+								resolve();
+
+								return;
+							}
+
+							reject(new Error(stats.toString()));
+
+							return;
+						}
+
+						if (stats.hasErrors() && stats.hasWarnings()) {
+							reject(
+								new Error(
+									stats.toString({
+										context: path.resolve(import.meta.dirname, ".."),
+										errorDetails: true,
+										warnings: true
+									})
+								)
+							);
+
+							return;
+						}
+
+						const expectedDirectory = path.resolve(directoryForCase, "expected");
+						const expectedDirectoryByVersion = path.join(
+							expectedDirectory,
+							`webpack-${webpack.version[0]}${yn(process.env.OLD_API) ? "" : "-importModule"
+							}`
+						);
+
+						if (/^hmr/.test(directory)) {
+							let res = fs
+								.readFileSync(path.resolve(outputDirectoryForCase, "main.js"))
+								.toString();
+
+							const date = Date.now().toString().slice(0, 6);
+							const dateRegexp = new RegExp(`${date}\\d+`, "gi");
+
+							res = res.replace(dateRegexp, "");
+
+							const matchAll = res.match(
+								/__webpack_require__\.h = \(\) => \(("[\d\w].*")\)/i
+							);
+							const replacer = new Array(matchAll[1].length);
+
+							res = res.replace(
+								/__webpack_require__\.h = \(\) => \(("[\d\w].*")\)/i,
+								`__webpack_require__.h = () => ("${replacer
+									.fill("x")
+									.join("")}")`
+							);
+
+							fs.writeFileSync(
+								path.resolve(outputDirectoryForCase, "main.js"),
+								res
+							);
+						}
+
+						try {
+							if (fs.existsSync(expectedDirectoryByVersion)) {
+								compareDirectory(
+									outputDirectoryForCase,
+									expectedDirectoryByVersion,
+									stats
+								);
+							} else if (fs.existsSync(expectedDirectory)) {
+								compareDirectory(outputDirectoryForCase, expectedDirectory, stats);
+							}
+
+							const warningsFile = path.resolve(directoryForCase, "warnings.js");
+
+							if (fs.existsSync(warningsFile)) {
+								const actualWarnings = stats.toString({
+									all: false,
 									warnings: true
-								})
-							)
-						);
+								});
+								// eslint-disable-next-line global-require, import/no-dynamic-require
+								const expectedWarnings = require(warningsFile);
+								expect(
+									stripAnsi(actualWarnings)
+										.replace(/\(from .*\)?/g, "(from xxx)")
+										.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
+										.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
+										.replace(/│     at .*\n/g, "")
+										.trim()
+								).toBe(
+									stripAnsi(expectedWarnings)
+										.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
+										.replace(/│     at .*\n/g, "")
+										.trim()
+								);
+							}
 
-						return;
-					}
+							const testFile = path.resolve(directoryForCase, "test.js");
 
-					const expectedDirectory = path.resolve(directoryForCase, "expected");
-					const expectedDirectoryByVersion = path.join(
-						expectedDirectory,
-						`webpack-${webpack.version[0]}${yn(process.env.OLD_API) ? "" : "-importModule"
-						}`
-					);
+							if (fs.existsSync(testFile)) {
+								const test = require(testFile);
+								test(outputDirectoryForCase, stats);
+							}
 
-					if (/^hmr/.test(directory)) {
-						let res = fs
-							.readFileSync(path.resolve(outputDirectoryForCase, "main.js"))
-							.toString();
-
-						const date = Date.now().toString().slice(0, 6);
-						const dateRegexp = new RegExp(`${date}\\d+`, "gi");
-
-						res = res.replace(dateRegexp, "");
-
-						const matchAll = res.match(
-							/__webpack_require__\.h = \(\) => \(("[\d\w].*")\)/i
-						);
-						const replacer = new Array(matchAll[1].length);
-
-						res = res.replace(
-							/__webpack_require__\.h = \(\) => \(("[\d\w].*")\)/i,
-							`__webpack_require__.h = () => ("${replacer
-								.fill("x")
-								.join("")}")`
-						);
-
-						fs.writeFileSync(
-							path.resolve(outputDirectoryForCase, "main.js"),
-							res
-						);
-					}
-
-					try {
-						if (fs.existsSync(expectedDirectoryByVersion)) {
-							compareDirectory(
-								outputDirectoryForCase,
-								expectedDirectoryByVersion,
-								stats
-							);
-						} else if (fs.existsSync(expectedDirectory)) {
-							compareDirectory(outputDirectoryForCase, expectedDirectory, stats);
+							resolve();
+						} catch (e) {
+							reject(e);
 						}
-
-						const warningsFile = path.resolve(directoryForCase, "warnings.js");
-
-						if (fs.existsSync(warningsFile)) {
-							const actualWarnings = stats.toString({
-								all: false,
-								warnings: true
-							});
-							// eslint-disable-next-line global-require, import/no-dynamic-require
-							const expectedWarnings = require(warningsFile);
-							expect(
-								actualWarnings
-									.replace(/\(from .*\)?/g, "(from xxx)")
-									.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
-									.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
-									.replace(/│     at .*\n/g, "")
-									.trim()
-							).toBe(
-								expectedWarnings
-									.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
-									.replace(/│     at .*\n/g, "")
-									.trim()
-							);
-						}
-
-						const testFile = path.resolve(directoryForCase, "test.js");
-
-						if (fs.existsSync(testFile)) {
-							const test = require(testFile);
-							test(outputDirectoryForCase, stats);
-						}
-
-						done();
-					} catch (e) {
-						done(e);
-					}
+					});
 				});
+				
 			});
 		}
 	}

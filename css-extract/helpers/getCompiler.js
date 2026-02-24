@@ -1,18 +1,17 @@
-const path = require("path");
-const { rspack: webpack } = require("@rspack/core");
-const { createFsFromVolume, Volume } = require("memfs");
-const { CssExtractRspackPlugin: MiniCssExtractPlugin } = require("@rspack/core");
+import path from "path";
+import { rspack as webpack, CssExtractRspackPlugin as MiniCssExtractPlugin } from "@rspack/core";
+import { createFsFromVolume, Volume } from "memfs";
 
-module.exports = (fixture, loaderOptions = {}, config = {}) => {
+export default (fixture, loaderOptions = {}, config = {}) => {
 	const { outputFileSystem, ...cnfg } = config;
 
 	const fullConfig = {
 		mode: "development",
 		devtool: cnfg.devtool || false,
-		context: path.resolve(__dirname, "../fixtures"),
-		entry: path.resolve(__dirname, "../fixtures", fixture),
+		context: path.resolve(import.meta.dirname, "../fixtures"),
+		entry: path.resolve(import.meta.dirname, "../fixtures", fixture),
 		output: {
-			path: path.resolve(__dirname, "../outputs"),
+			path: path.resolve(import.meta.dirname, "../outputs"),
 			filename: "[name].bundle.js",
 			chunkFilename: "[name].chunk.js"
 		},

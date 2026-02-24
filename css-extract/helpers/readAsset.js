@@ -1,6 +1,6 @@
-const path = require("path");
+import path from "path";
 
-module.exports = (asset, compiler, stats) => {
+const readAsset = (asset, compiler, stats) => {
 	const usedFs = compiler.outputFileSystem;
 	const outputPath = stats.compilation.outputOptions.path;
 
@@ -21,3 +21,5 @@ module.exports = (asset, compiler, stats) => {
 
 	return data;
 };
+
+export default readAsset;

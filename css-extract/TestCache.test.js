@@ -2,9 +2,12 @@
  * @jest-environment node
  */
 
-const path = require("path");
-const webpack = require("@rspack/core");
-const del = require("del");
+import path from "path";
+import webpack from "@rspack/core";
+import del from "del";
+import { jest, test, describe, afterEach } from "@jest/globals";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 
 describe("TestCache", () => {
 	afterEach(() => {
@@ -12,14 +15,14 @@ describe("TestCache", () => {
 	});
 
 	it("should work without cache", async () => {
-		const casesDirectory = path.resolve(__dirname, "cases");
+		const casesDirectory = path.resolve(import.meta.dirname, "cases");
 		const directoryForCase = path.resolve(casesDirectory, "asset-modules");
 		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = require(path.resolve(
+		const webpackConfig = (await import(path.resolve(
 			directoryForCase,
-			"webpack.config.js"
-		));
-		const outputPath = path.resolve(__dirname, "js/cache-false");
+			"webpack.config.mjs"
+		))).default;
+		const outputPath = path.resolve(import.meta.dirname, "js/cache-false");
 
 		await del([outputPath]);
 
@@ -28,6 +31,7 @@ describe("TestCache", () => {
 			mode: "development",
 			context: directoryForCase,
 			cache: false,
+			devtool: false,
 			output: {
 				path: outputPath
 			},
@@ -74,6 +78,7 @@ describe("TestCache", () => {
 			mode: "development",
 			context: directoryForCase,
 			cache: false,
+			devtool: false,
 			output: {
 				path: outputPath
 			},
@@ -110,14 +115,14 @@ describe("TestCache", () => {
 	});
 
 	it('should work with the "memory" cache', async () => {
-		const casesDirectory = path.resolve(__dirname, "cases");
+		const casesDirectory = path.resolve(import.meta.dirname, "cases");
 		const directoryForCase = path.resolve(casesDirectory, "asset-modules");
 		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = require(path.resolve(
+		const webpackConfig = (await import(path.resolve(
 			directoryForCase,
-			"webpack.config.js"
-		));
-		const outputPath = path.resolve(__dirname, "js/cache-memory");
+			"webpack.config.mjs"
+		))).default;
+		const outputPath = path.resolve(import.meta.dirname, "js/cache-memory");
 
 		await del([outputPath]);
 
@@ -126,6 +131,7 @@ describe("TestCache", () => {
 			mode: "development",
 			context: directoryForCase,
 			cache: true,
+			devtool: false,
 			output: {
 				path: outputPath
 			},
@@ -170,6 +176,7 @@ describe("TestCache", () => {
 			mode: "development",
 			context: directoryForCase,
 			cache: true,
+			devtool: false,
 			output: {
 				path: outputPath
 			},
@@ -208,16 +215,16 @@ describe("TestCache", () => {
 	});
 
 	it.skip('should work with the "filesystem" cache', async () => {
-		const casesDirectory = path.resolve(__dirname, "cases");
+		const casesDirectory = path.resolve(import.meta.dirname, "cases");
 		const directoryForCase = path.resolve(casesDirectory, "simple");
 		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = require(path.resolve(
+		const webpackConfig = (await import(path.resolve(
 			directoryForCase,
-			"webpack.config.js"
-		));
-		const outputPath = path.resolve(__dirname, "js/cache-filesystem");
+			"webpack.config.mjs"
+		))).default;
+		const outputPath = path.resolve(import.meta.dirname, "js/cache-filesystem");
 		const fileSystemCacheDirectory = path.resolve(
-			__dirname,
+			import.meta.dirname,
 			"./js/.cache/type-filesystem"
 		);
 
@@ -316,16 +323,16 @@ describe("TestCache", () => {
 	});
 
 	it.skip('should work with the "filesystem" cache #2', async () => {
-		const casesDirectory = path.resolve(__dirname, "cases");
+		const casesDirectory = path.resolve(import.meta.dirname, "cases");
 		const directoryForCase = path.resolve(casesDirectory, "at-import-layer");
 		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = require(path.resolve(
+		const webpackConfig = (await import(path.resolve(
 			directoryForCase,
-			"webpack.config.js"
-		));
-		const outputPath = path.resolve(__dirname, "js/cache-filesystem-1");
+			"webpack.config.mjs"
+		))).default;
+		const outputPath = path.resolve(import.meta.dirname, "js/cache-filesystem-1");
 		const fileSystemCacheDirectory = path.resolve(
-			__dirname,
+			import.meta.dirname,
 			"./js/.cache/type-filesystem-1"
 		);
 
@@ -421,19 +428,19 @@ describe("TestCache", () => {
 	});
 
 	it.skip('should work with the "filesystem" cache and asset modules', async () => {
-		const casesDirectory = path.resolve(__dirname, "cases");
+		const casesDirectory = path.resolve(import.meta.dirname, "cases");
 		const directoryForCase = path.resolve(casesDirectory, "asset-modules");
 		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = require(path.resolve(
+		const webpackConfig = (await import(path.resolve(
 			directoryForCase,
-			"webpack.config.js"
-		));
+			"webpack.config.mjs"
+		))).default;
 		const outputPath = path.resolve(
-			__dirname,
+			import.meta.dirname,
 			"js/cache-filesystem-asset-modules"
 		);
 		const fileSystemCacheDirectory = path.resolve(
-			__dirname,
+			import.meta.dirname,
 			"./js/.cache/type-filesystem"
 		);
 
@@ -532,19 +539,19 @@ describe("TestCache", () => {
 	});
 
 	it.skip('should work with the "filesystem" cache and file-loader', async () => {
-		const casesDirectory = path.resolve(__dirname, "cases");
+		const casesDirectory = path.resolve(import.meta.dirname, "cases");
 		const directoryForCase = path.resolve(casesDirectory, "file-loader");
 		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = require(path.resolve(
+		const webpackConfig = (await import(path.resolve(
 			directoryForCase,
-			"webpack.config.js"
-		));
+			"webpack.config.mjs"
+		))).default;
 		const outputPath = path.resolve(
-			__dirname,
+			import.meta.dirname,
 			"js/cache-filesystem-file-loader"
 		);
 		const fileSystemCacheDirectory = path.resolve(
-			__dirname,
+			import.meta.dirname,
 			"./js/.cache/type-filesystem"
 		);
 

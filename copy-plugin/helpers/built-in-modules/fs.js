@@ -1,1 +1,2 @@
-module.exports = require("fs");
+import fs from "fs";
+export default fs;

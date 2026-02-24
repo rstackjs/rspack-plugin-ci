@@ -1,18 +1,18 @@
 /* eslint-env browser */
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-const webpack = require("@rspack/core");
+import webpack from "@rspack/core";
 const { CssExtractRspackPlugin: MiniCssExtractPlugin } = webpack;
-const del = require("del");
+import del from "del";
 
-const {
+import {
 	compile,
 	getCompiler,
 	getErrors,
 	getWarnings,
 	runInJsDom
-} = require("./helpers/index");
+} from "./helpers/index";
 
 describe("emit option", () => {
 	it(`should work without emit option`, async () => {
@@ -22,7 +22,7 @@ describe("emit option", () => {
 			{
 				mode: "none",
 				output: {
-					path: path.resolve(__dirname, "../outputs"),
+					path: path.resolve(import.meta.dirname, "../outputs"),
 					filename: "[name].bundle.js"
 				},
 
@@ -51,7 +51,7 @@ describe("emit option", () => {
 			{
 				mode: "none",
 				output: {
-					path: path.resolve(__dirname, "../outputs")
+					path: path.resolve(import.meta.dirname, "../outputs")
 				},
 
 				plugins: [
@@ -79,7 +79,7 @@ describe("emit option", () => {
 			{
 				mode: "none",
 				output: {
-					path: path.resolve(__dirname, "../outputs")
+					path: path.resolve(import.meta.dirname, "../outputs")
 				},
 				plugins: [
 					new MiniCssExtractPlugin({
@@ -103,7 +103,7 @@ describe("emit option", () => {
 			{},
 			{
 				output: {
-					path: path.resolve(__dirname, "../outputs"),
+					path: path.resolve(import.meta.dirname, "../outputs"),
 					filename: "[name].bundle.js"
 				},
 				module: {
@@ -147,7 +147,7 @@ describe("emit option", () => {
 	});
 
 	it(`should work with locals and invalidate cache when emit option is "false"`, async () => {
-		const modifyAsset = path.resolve(__dirname, "fixtures", "locals/index.css");
+		const modifyAsset = path.resolve(import.meta.dirname, "fixtures", "locals/index.css");
 		const modifyAssetContent = fs.readFileSync(modifyAsset);
 
 		class AssetsModifyPlugin {
@@ -170,15 +170,16 @@ describe("emit option", () => {
 			}
 		}
 
-		const outputPath = path.resolve(__dirname, "./js/cache-memory");
+		const outputPath = path.resolve(import.meta.dirname, "./js/cache-memory");
 		const webpackConfig = {
 			mode: "development",
-			context: path.resolve(__dirname, "./fixtures"),
+			context: path.resolve(import.meta.dirname, "./fixtures"),
 			cache: true,
 			entry: "./locals.js",
 			output: {
 				path: outputPath
 			},
+			devtool: false,
 			module: {
 				rules: [
 					{
@@ -278,15 +279,16 @@ describe("emit option", () => {
 	});
 
 	it('should work with the "memory" cache and disabled "emit" option', async () => {
-		const outputPath = path.resolve(__dirname, "./js/cache-memory");
+		const outputPath = path.resolve(import.meta.dirname, "./js/cache-memory");
 		const webpackConfig = {
 			mode: "development",
-			context: path.resolve(__dirname, "fixtures"),
+			context: path.resolve(import.meta.dirname, "fixtures"),
 			cache: true,
 			output: {
 				path: outputPath
 			},
 			entry: "./style-url.js",
+			devtool: false,
 			module: {
 				rules: [
 					{
@@ -391,17 +393,18 @@ describe("emit option", () => {
 			}
 		}
 
-		const outputPath = path.resolve(__dirname, "./js/cache-memory");
-		const modifyAsset = path.resolve(__dirname, "fixtures", "style-url.css");
+		const outputPath = path.resolve(import.meta.dirname, "./js/cache-memory");
+		const modifyAsset = path.resolve(import.meta.dirname, "fixtures", "style-url.css");
 		const modifyAssetContent = fs.readFileSync(modifyAsset);
 		const webpackConfig = {
 			mode: "development",
-			context: path.resolve(__dirname, "fixtures"),
+			context: path.resolve(import.meta.dirname, "fixtures"),
 			cache: true,
 			output: {
 				path: outputPath
 			},
 			entry: "./style-url.js",
+			devtool: false,
 			module: {
 				rules: [
 					{

@@ -1,1 +1,2 @@
-module.exports = require("util");
+import util from "util";
+export default util;

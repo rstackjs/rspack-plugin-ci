@@ -10,4 +10,4 @@ function yn(value, defaultValue = false) {
 	return defaultValue;
 }
 
-module.exports = yn;
+export default yn;

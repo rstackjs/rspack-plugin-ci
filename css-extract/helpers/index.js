@@ -1,7 +1,7 @@
-exports.compile = require("./compile");
-exports.getCompiler = require("./getCompiler");
-exports.source = require("./source");
-exports.readAsset = require("./readAsset");
-exports.runInJsDom = require("./runInJsDom");
-exports.getErrors = require("./getErrors");
-exports.getWarnings = require("./getWarnings");
+export { default as compile } from "./compile.js";
+export { default as getCompiler } from "./getCompiler.js";
+export { default as source } from "./source.js";
+export { default as readAsset } from "./readAsset.js";
+export { default as runInJsDom } from "./runInJsDom.js";
+export { default as getErrors } from "./getErrors.js";
+export { default as getWarnings } from "./getWarnings.js";

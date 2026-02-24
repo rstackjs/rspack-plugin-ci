@@ -5,17 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { resolve } from "path";
-import rspack, { Compiler, Compilation, Configuration } from "@rspack/core";
+import { resolve, dirname } from "path";
+import rspack from "@rspack/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import { experiments } from "@rspack/core";
+import { SubresourceIntegrityPlugin } from "@rspack/core";
+import { jest, test, expect, describe } from "@jest/globals";
+import { fileURLToPath } from "url";
 
-const { SubresourceIntegrityPlugin } = experiments;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-jest.unmock("html-webpack-plugin");
+// jest.unmock("html-webpack-plugin");
 
 describe("sri-plugin/unit", () => {
-  function assert(value: unknown, message: string): asserts value {
+  function assert(value, message) {
     if (!value) {
       throw new Error(message);
     }
@@ -30,14 +33,14 @@ describe("sri-plugin/unit", () => {
     expect(() => {
       new SubresourceIntegrityPlugin(function dummy() {
         // dummy function, never called
-      } as any); // eslint-disable-line no-new
+      }); // eslint-disable-line no-new
     }).toThrow(
       /argument must be an object/
     );
   });
 
-  const runCompilation = (compiler: Compiler) =>
-    new Promise<Compilation>((resolve, reject) => {
+  const runCompilation = (compiler) =>
+    new Promise((resolve, reject) => {
       compiler.run((err, stats) => {
         if (err) {
           reject(err);
@@ -50,10 +53,10 @@ describe("sri-plugin/unit", () => {
     });
 
   const disableOutputPlugin = {
-    apply(compiler: Compiler) {
+    apply(compiler) {
       compiler.hooks.compilation.tap(
         "DisableOutputWebpackPlugin",
-        (compilation: Compilation) => {
+        (compilation) => {
           compilation.hooks.afterProcessAssets.tap(
             {
               name: "DisableOutputWebpackPlugin",
@@ -73,9 +76,9 @@ describe("sri-plugin/unit", () => {
     },
   };
 
-  const defaultOptions: Partial<Configuration> = {
+  const defaultOptions = {
     mode: "none",
-    entry: resolve(__dirname, "./__fixtures__/simple-project/src/."),
+    entry: resolve(import.meta.dirname, "./__fixtures__/simple-project/src/."),
     output: {
       crossOriginLoading: "anonymous",
     },
@@ -85,7 +88,7 @@ describe("sri-plugin/unit", () => {
   // test("warns when no standard hash function name is specified", async () => {
   test("throw error when not standard hash function name is specified", async () => {
     const plugin = new SubresourceIntegrityPlugin({
-      hashFuncNames: ["md5" as any],
+      hashFuncNames: ["md5"],
     });
 
     const compilation = await runCompilation(
@@ -128,7 +131,7 @@ describe("sri-plugin/unit", () => {
 
   test("errors if hash function names is not an array", async () => {
     const plugin = new SubresourceIntegrityPlugin({
-      hashFuncNames: "sha256" as any,
+      hashFuncNames: "sha256",
     });
 
     const compilation = await runCompilation(
@@ -147,7 +150,7 @@ describe("sri-plugin/unit", () => {
 
   test("errors if hash function names contains non-string", async () => {
     const plugin = new SubresourceIntegrityPlugin({
-      hashFuncNames: [1234] as any,
+      hashFuncNames: [1234],
     });
 
     const compilation = await runCompilation(
@@ -166,7 +169,7 @@ describe("sri-plugin/unit", () => {
 
   test("errors if hash function names are empty", async () => {
     const plugin = new SubresourceIntegrityPlugin({
-      hashFuncNames: [] as any,
+      hashFuncNames: [],
     });
 
     const compilation = await runCompilation(
@@ -185,7 +188,7 @@ describe("sri-plugin/unit", () => {
 
   test("errors if hash function names contains unsupported digest", async () => {
     const plugin = new SubresourceIntegrityPlugin({
-      hashFuncNames: ["frobnicate"] as any,
+      hashFuncNames: ["frobnicate"],
     });
 
     const compilation = await runCompilation(
@@ -250,7 +253,7 @@ describe("sri-plugin/unit", () => {
         ...defaultOptions,
         output: { crossOriginLoading: false },
         plugins: [plugin, disableOutputPlugin, {
-          apply(compiler: Compiler) {
+          apply(compiler) {
             const { RuntimeGlobals } = compiler.webpack;
             compiler.hooks.compilation.tap("test", (compilation) => {
               compilation.hooks.additionalTreeRuntimeRequirements.tap("test", (chunk, set) => {
@@ -265,8 +268,8 @@ describe("sri-plugin/unit", () => {
       })
     );
 
-    // compilation.mainTemplate.hooks.jsonpScript.call("", {} as unknown as Chunk);
-    // compilation.mainTemplate.hooks.linkPreload.call("", {} as unknown as Chunk);
+    // compilation.mainTemplate.hooks.jsonpScript.call("", {});
+    // compilation.mainTemplate.hooks.linkPreload.call("", {});
 
     expect(compilation.errors.length).toBe(1);
     expect(compilation.warnings.length).toBe(1);
@@ -296,7 +299,7 @@ describe("sri-plugin/unit", () => {
     };
 
     HtmlWebpackPlugin.getHooks(
-      compilation as any
+      compilation
     ).alterAssetTagGroups.promise({
       headTags: [],
       bodyTags: [tag],
@@ -328,7 +331,7 @@ describe("sri-plugin/unit", () => {
     const compilation = await runCompilation(
       rspack({
         ...defaultOptions,
-        entry: resolve(__dirname, "./__fixtures__/unresolved/src/."),
+        entry: resolve(import.meta.dirname, "./__fixtures__/unresolved/src/."),
         plugins: [plugin, disableOutputPlugin],
       })
     );

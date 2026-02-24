@@ -7,11 +7,14 @@
 
 import { readdirSync, readFileSync } from "fs";
 import spawn from "cross-spawn";
-import { join } from "path";
+import { join, dirname } from "path";
 import { rimraf } from "rimraf";
 import { platform } from "os";
+import { jest, test, describe } from "@jest/globals";
+import { fileURLToPath } from "url";
 
-jest.unmock("html-webpack-plugin");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 jest.setTimeout(120000);
 
@@ -25,6 +28,7 @@ const DISABLED_CASES = [
   "sourcemap-code-splitting", // TODO: sourcemap hash content failed
   "webpack-assets-manifest", // TODO: support webpack-assets-manifest plugin
   "webpack-fix-style-only-entries", // TODO: support webpack-assets-manifest plugin
+  "issue-147", // TODO: deprecated hooks
   "wsi-test-helper.js",
 ];
 
@@ -35,7 +39,7 @@ const DISABLED_RSPACK_CASES = [
 const exampleDir = join(__dirname, "examples");
 const rspackCliBin = join(__dirname, "../node_modules/@rspack/cli/bin/rspack.js");
 
-function createTestCases(type: "webpack" | "rspack") {
+function createTestCases(type) {
    readdirSync(exampleDir)
     .filter(i => !(type === "rspack" ? DISABLED_RSPACK_CASES : DISABLED_CASES).includes(i))
     .forEach((example) => {
@@ -49,9 +53,9 @@ function createTestCases(type: "webpack" | "rspack") {
       const testFn = platform() === "darwin" ? test : test.concurrent;
       testFn(`${example}/${type}`, async () => {
         rimraf.sync(join(exampleDirectory, "dist", type));
-        await new Promise<void>((resolve, reject) => {
-          const stdout: string[] = [];
-          const stderr: string[] = [];
+        await new Promise((resolve, reject) => {
+          const stdout = [];
+          const stderr = [];
           // CHANGED: run rspack and remove coverage
           const cmd = spawn(
             "node",

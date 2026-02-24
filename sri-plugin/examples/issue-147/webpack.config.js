@@ -1,8 +1,16 @@
-const { createHtmlPlugin, createIntegrityPlugin, getDist } = require("../wsi-test-helper");
-const path = require("path");
-const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+import { createHtmlPlugin, createIntegrityPlugin, getDist } from '../wsi-test-helper.js';
+import path from 'path';
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = () => ({
+
+
+
+
+export default () => ({
   entry: {
     app: path.resolve(__dirname, "index"),
   },

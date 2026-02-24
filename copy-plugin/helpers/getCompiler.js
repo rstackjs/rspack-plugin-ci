@@ -1,8 +1,11 @@
-const path = require("path");
+import rspack from "@rspack/core";
+import path from "path";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const { rspack } = require("@rspack/core");
-
-module.exports = (config = {}) => {
+export default (config = {}) => {
 	const fullConfig = {
 		mode: "development",
 		context: path.resolve(__dirname, "../fixtures"),
@@ -10,6 +13,7 @@ module.exports = (config = {}) => {
 		output: {
 			path: path.resolve(__dirname, "../build")
 		},
+		devtool: false,
 		module: {
 			rules: [
 				{

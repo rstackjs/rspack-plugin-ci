@@ -1,12 +1,17 @@
-const path = require("path");
-const fs = require("fs");
+import path from "path";
+import fs from "fs";
+import rspack from "@rspack/core";
 
-const { rspack } = require("@rspack/core");
-
-const { run, runEmit, runChange } = require("./helpers/run");
-
-const { readAssets, getCompiler, compile } = require("./helpers");
-const { rimrafSync } = require("rimraf");
+import { run, runEmit, runChange } from "./helpers/run";
+import { readAssets, getCompiler, compile } from "./helpers";
+import { rimrafSync } from "rimraf";
+import { createRequire } from "module";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { jest, test, describe } from "@jest/globals";
+const require = createRequire(import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const FIXTURES_DIR = path.join(__dirname, "fixtures");
 
@@ -409,7 +414,7 @@ describe("CopyPlugin", () => {
 				]
 			})
 				.then(({ stats }) => {
-					const stringStats = stats.toString();
+					const stringStats = stats.toString({ assets: true });
 
 					expect(stringStats.match(/\[copied]/g).length).toBe(4);
 				})
@@ -422,6 +427,7 @@ describe("CopyPlugin", () => {
 				{
 					mode: "development",
 					context: path.resolve(__dirname, "./fixtures"),
+					devtool: false,
 					plugins: [
 						new rspack.CopyRspackPlugin({
 							patterns: [
@@ -449,6 +455,7 @@ describe("CopyPlugin", () => {
 					],
 					mode: "development",
 					entry: path.resolve(__dirname, "./helpers/enter.js"),
+					devtool: false,
 					output: {
 						path: path.resolve(__dirname, "./outputs/multi-compiler/dist/b")
 					}
@@ -477,6 +484,7 @@ describe("CopyPlugin", () => {
 				{
 					mode: "development",
 					context: path.resolve(__dirname, "./fixtures"),
+					devtool: false,
 					plugins: [
 						new rspack.CopyRspackPlugin({
 							patterns: [
@@ -510,6 +518,7 @@ describe("CopyPlugin", () => {
 				{
 					mode: "development",
 					context: path.resolve(__dirname, "./fixtures"),
+					devtool: false,
 					plugins: [
 						new rspack.CopyRspackPlugin({
 							patterns: [
@@ -544,6 +553,7 @@ describe("CopyPlugin", () => {
 				{
 					mode: "development",
 					context: path.resolve(__dirname, "./fixtures"),
+					devtool: false,
 					plugins: [
 						new rspack.CopyRspackPlugin({
 							patterns: [

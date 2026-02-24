@@ -1,9 +1,19 @@
-const WebpackAssetsManifest = require("webpack-assets-manifest");
-const expect = require("expect");
-const { readFileSync } = require("fs");
-const { join } = require("path");
-const { createIntegrityPlugin, getDist } = require("../wsi-test-helper");
-module.exports = {
+import WebpackAssetsManifest from 'webpack-assets-manifest';
+import expect from 'expect';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { createIntegrityPlugin, getDist } from '../wsi-test-helper.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+
+
+
+
+
+export default {
   entry: {
     index: "./index.js",
   },

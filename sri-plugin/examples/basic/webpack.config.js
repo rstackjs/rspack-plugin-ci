@@ -1,7 +1,14 @@
-const expect = require("expect");
-const { createIntegrityPlugin, getDist } = require("../wsi-test-helper");
+import expect from 'expect';
+import { createIntegrityPlugin, getDist } from '../wsi-test-helper.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+
+
+
+export default {
   entry: {
     index: "./index.js",
   },
@@ -18,7 +25,7 @@ module.exports = {
       apply: (compiler) => {
         compiler.hooks.done.tap("wsi-test", (stats) => {
           expect(
-            !stats.toJson().assets.find((asset) => asset.name == "index.js")
+            !stats.toJson({ assets: true }).assets.find((asset) => asset.name == "index.js")
               .integrity
           ).not.toBeNull();
         });

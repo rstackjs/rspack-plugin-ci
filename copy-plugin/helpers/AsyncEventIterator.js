@@ -3,7 +3,7 @@
  * @extends {AsyncIterableIterator<T>}
  * @extends {AsyncIterator<T>}
  */
-class AsyncEventIterator {
+export default class AsyncEventIterator {
 	constructor() {
 		/**
 		 * @member {(data: T) => any} resolve
@@ -44,4 +44,3 @@ class AsyncEventIterator {
 	}
 }
 
-module.exports = AsyncEventIterator;

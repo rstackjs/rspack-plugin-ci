@@ -1,10 +1,16 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WebpackAssetsManifest = require("webpack-assets-manifest");
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
-const expect = require("expect");
-const { createIntegrityPlugin, getDist } = require("../wsi-test-helper");
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import WebpackAssetsManifest from 'webpack-assets-manifest';
+import FixStyleOnlyEntriesPlugin from 'webpack-fix-style-only-entries';
+import expect from 'expect';
+import { createIntegrityPlugin, getDist } from '../wsi-test-helper.js';
 
-module.exports = {
+
+
+
+
+
+
+export default {
   mode: "production",
   entry: {
     index: "./index.js",

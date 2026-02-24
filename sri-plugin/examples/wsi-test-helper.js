@@ -6,13 +6,16 @@
  */
 
 
-const getPort = require("get-port");
-const puppeteer = require("puppeteer");
-const Fastify = require("fastify");
-const FastifyStatic = require("fastify-static");
-const { resolve, join } = require("path");
-const { HtmlRspackPlugin, experiments: { SubresourceIntegrityPlugin } } = require("@rspack/core");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+import getPort from "get-port";
+import puppeteer from "puppeteer";
+import Fastify from "fastify";
+import FastifyStatic from "fastify-static";
+import { resolve, join } from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import { HtmlRspackPlugin, SubresourceIntegrityPlugin } from "../test-utils.js";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
 
 function createPrinter(prefix) {
   return (message) => {
@@ -146,12 +149,11 @@ function getDist(dir) {
   return join(dir, `dist/${HTML_PLUGIN || "webpack"}`);
 }
 
-module.exports = {
+export {
   RunInPuppeteerPlugin,
   testWithPuppeteer,
   createHtmlPlugin,
   createIntegrityPlugin,
-  getHtmlPlugin,
   getHtmlPlugin,
   getDist
 };

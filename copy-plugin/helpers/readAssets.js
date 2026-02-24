@@ -1,5 +1,6 @@
-const readAsset = require("./readAsset");
-function transformWindowPath(path) {
+import readAsset from "./readAsset";
+
+export function transformWindowPath(path) {
 	if (process.platform === "win32") {
 		return path.replace(/\\/g, "/");
 	}
@@ -18,4 +19,4 @@ function readAssets(compiler, stats) {
 }
 
 readAssets.transformWindowPath = transformWindowPath;
-module.exports = readAssets;
+export default readAssets;

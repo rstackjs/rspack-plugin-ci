@@ -1,9 +1,18 @@
-const { createHtmlPlugin, createIntegrityPlugin, getDist } = require("../wsi-test-helper");
-const { CssExtractRspackPlugin } = require("@rspack/core");
-const expect = require("expect");
-const { RunInPuppeteerPlugin } = require("../wsi-test-helper");
+import { createHtmlPlugin, createIntegrityPlugin, getDist } from '../wsi-test-helper.js';
+import { CssExtractRspackPlugin } from '@rspack/core';
+import expect from 'expect';
+import { RunInPuppeteerPlugin } from '../wsi-test-helper.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+
+
+
+
+
+export default {
   // mode: "development",
   devtool: "cheap-module-source-map",
   entry: "./index.js",
@@ -40,7 +49,7 @@ module.exports = {
       apply: (compiler) => {
         compiler.hooks.done.tap("wsi-test", (stats) => {
           const cssAsset = stats
-            .toJson()
+            .toJson({ assets: true })
             .assets.find((asset) => asset.name.match(/\.css$/));
 
           expect(cssAsset.info.contenthash).toBeDefined();

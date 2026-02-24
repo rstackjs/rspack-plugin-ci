@@ -1,6 +1,6 @@
-const path = require("path");
+import path from "path";
 
-module.exports = (asset, compiler, stats) => {
+export default (asset, compiler, stats) => {
 	const usedFs = compiler.outputFileSystem;
 	const outputPath = stats.compilation.outputOptions.path;
 

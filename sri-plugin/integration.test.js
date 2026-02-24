@@ -5,30 +5,26 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  Stats,
-  StatsAsset,
-  RspackOptionsNormalized,
-} from "@rspack/core";
 import { resolve } from "path";
 import tmp from "tmp-promise";
-import { experiments } from "@rspack/core";
-import { runRspack } from "./test-utils";
+import { runRspack, SubresourceIntegrityPlugin } from "./test-utils";
 import merge from "lodash/merge";
-const { SubresourceIntegrityPlugin } = experiments;
+import { jest, test, expect } from "@jest/globals";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 
-jest.unmock("html-webpack-plugin");
+// jest.unmock("html-webpack-plugin");
 
 async function runRspackForSimpleProject(
-  options: Partial<RspackOptionsNormalized> = {}
-): Promise<Stats> {
+  options = {}
+) {
   const tmpDir = await tmp.dir({ unsafeCleanup: true });
   return await runRspack(
     merge(
       {
         mode: "production",
         output: { path: tmpDir.path, crossOriginLoading: "anonymous" },
-        entry: resolve(__dirname, "./__fixtures__/simple-project/src/."),
+        entry: resolve(import.meta.dirname, "./__fixtures__/simple-project/src/."),
         plugins: [new SubresourceIntegrityPlugin({
           htmlPlugin: require.resolve("html-webpack-plugin"),
         })],
@@ -41,21 +37,21 @@ async function runRspackForSimpleProject(
 describe("sri-plugin/integration", () => {
   test("enabled with webpack mode=production", async () => {
     const mainAsset = (await runRspackForSimpleProject())
-      .toJson()
-      .assets?.find((asset: StatsAsset) => asset.name === "main.js");
+      .toJson({ assets: true })
+      .assets?.find((asset) => asset.name === "main.js");
     expect(mainAsset).toBeDefined();
     expect(mainAsset?.["integrity"]).toMatch(/^sha384-\S+$/);
   });
 
   test("disabled with webpack mode=development", async () => {
     const mainAsset = (await runRspackForSimpleProject({ mode: "development" }))
-      .toJson()
-      .assets?.find((asset: StatsAsset) => asset.name === "main.js");
+      .toJson({ assets: true })
+      .assets?.find((asset) => asset.name === "main.js");
     expect(mainAsset).toBeDefined();
     expect(mainAsset?.["integrity"]).toBeUndefined();
   });
 
-  const isHashWarning = (warning: Error) =>
+  const isHashWarning = (warning) =>
     warning.message.match(/Using \[hash\], \[fullhash\], \[modulehash\], or \[chunkhash\] can be risky/);
 
   test("warns when [fullhash] is used", async () => {

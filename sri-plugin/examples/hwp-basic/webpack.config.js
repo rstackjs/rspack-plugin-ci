@@ -1,6 +1,12 @@
-const { createIntegrityPlugin, createHtmlPlugin, RunInPuppeteerPlugin, getDist } = require("../wsi-test-helper");
+import { createIntegrityPlugin, createHtmlPlugin, RunInPuppeteerPlugin, getDist } from '../wsi-test-helper.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+
+
+export default {
   entry: {
     index: "./index.js",
   },

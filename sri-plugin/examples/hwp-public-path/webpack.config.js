@@ -1,11 +1,22 @@
-const expect = require("expect");
-const htmlparser2 = require("htmlparser2");
-const { readFileSync } = require("fs");
-const { selectAll } = require("css-select");
-const { createIntegrityPlugin, createHtmlPlugin, getDist } = require("../wsi-test-helper");
-const { join } = require("path");
+import expect from 'expect';
+import * as htmlparser2 from 'htmlparser2';
+import { readFileSync } from 'fs';
+import { selectAll } from 'css-select';
+import { createIntegrityPlugin, createHtmlPlugin, getDist } from '../wsi-test-helper.js';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+
+
+
+
+
+
+
+export default {
   mode: "production",
   entry: "./index.js",
   output: {
@@ -24,7 +35,7 @@ module.exports = {
         compiler.hooks.done.tapPromise("wsi-test", async (stats) => {
           expect(stats.compilation.warnings.length).toEqual(0);
           const jsIntegrity =
-            stats.toJson().assets.find((asset) => asset.name === "bundle.js")
+            stats.toJson({ assets: true }).assets.find((asset) => asset.name === "bundle.js")
               .integrity || stats.compilation.assets["bundle.js"].integrity;
           expect(jsIntegrity).toMatch(/^sha/);
 

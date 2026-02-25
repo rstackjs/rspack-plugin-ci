@@ -1,11 +1,23 @@
-const { createIntegrityPlugin, createHtmlPlugin, getDist } = require("../wsi-test-helper");
-const HtmlWebpackExternalsPlugin = require("html-webpack-externals-plugin");
-const expect = require("expect");
-const htmlparser2 = require("htmlparser2");
-const { readFileSync } = require("fs");
-const { selectAll } = require("css-select");
-const { join } = require("path");
-module.exports = {
+import { createIntegrityPlugin, createHtmlPlugin, getDist } from '../wsi-test-helper.js';
+import HtmlWebpackExternalsPlugin from 'html-webpack-externals-plugin';
+import expect from 'expect';
+import * as htmlparser2 from 'htmlparser2';
+import { readFileSync } from 'fs';
+import { selectAll } from 'css-select';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+
+
+
+
+
+
+
+export default {
   mode: "production",
   entry: "./index.js",
   output: {

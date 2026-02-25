@@ -1,1 +1,2 @@
-module.exports = require("process");
+import process from "process";
+export default process;

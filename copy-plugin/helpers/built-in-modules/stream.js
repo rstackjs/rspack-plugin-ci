@@ -1,1 +1,2 @@
-module.exports = require("stream");
+import stream from "stream";
+export default stream;

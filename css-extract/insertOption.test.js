@@ -1,15 +1,15 @@
 /* eslint-env browser */
-const path = require("path");
+import path from "path";
 
-const { CssExtractRspackPlugin } = require("@rspack/core");
+import { CssExtractRspackPlugin } from "@rspack/core";
 
-const {
+import {
 	compile,
 	getCompiler,
 	getErrors,
 	getWarnings,
 	runInJsDom
-} = require("./helpers/index");
+} from "./helpers/index";
 
 describe("insert option", () => {
 	it(`should work without insert option`, async () => {
@@ -20,7 +20,7 @@ describe("insert option", () => {
 				mode: "none",
 				output: {
 					publicPath: "",
-					path: path.resolve(__dirname, "../outputs"),
+					path: path.resolve(import.meta.dirname, "../outputs"),
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -48,7 +48,7 @@ describe("insert option", () => {
 				mode: "none",
 				output: {
 					publicPath: "",
-					path: path.resolve(__dirname, "../outputs"),
+					path: path.resolve(import.meta.dirname, "../outputs"),
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -77,7 +77,7 @@ describe("insert option", () => {
 				mode: "none",
 				output: {
 					publicPath: "",
-					path: path.resolve(__dirname, "../outputs"),
+					path: path.resolve(import.meta.dirname, "../outputs"),
 					filename: "[name].bundle.js"
 				},
 				plugins: [

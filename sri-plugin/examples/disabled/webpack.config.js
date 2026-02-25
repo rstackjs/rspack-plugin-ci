@@ -1,7 +1,14 @@
-const expect = require("expect");
-const { createIntegrityPlugin, getDist } = require("../wsi-test-helper");
+import expect from 'expect';
+import { createIntegrityPlugin, getDist } from '../wsi-test-helper.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+
+
+
+export default {
   mode: "production",
   entry: "./index.js",
   output: {
@@ -19,7 +26,7 @@ module.exports = {
           expect(stats.compilation.warnings.length).toEqual(0);
           expect(
             Object.keys(
-              stats.toJson().assets.find((asset) => asset.name === "bundle.js")
+              stats.toJson({ assets: true }).assets.find((asset) => asset.name === "bundle.js")
             )
           ).not.toContain("integrity");
         });

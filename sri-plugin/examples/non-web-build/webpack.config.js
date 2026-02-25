@@ -1,7 +1,14 @@
-const { createHtmlPlugin, createIntegrityPlugin, getDist } = require("../wsi-test-helper");
-const expect = require("expect");
+import { createHtmlPlugin, createIntegrityPlugin, getDist } from '../wsi-test-helper.js';
+import expect from 'expect';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+
+
+
+export default {
   mode: "production",
   entry: {
     index: "./index.js",

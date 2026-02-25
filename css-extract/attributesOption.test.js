@@ -1,15 +1,15 @@
 /* eslint-env browser */
-const path = require("path");
+import path from "path";
 
-const { CssExtractRspackPlugin: MiniCssExtractPlugin } = require("@rspack/core");
+import { CssExtractRspackPlugin as MiniCssExtractPlugin } from "@rspack/core";
 
-const {
+import {
 	compile,
 	getCompiler,
 	getErrors,
 	getWarnings,
 	runInJsDom
-} = require("./helpers/index");
+} from "./helpers/index.js";
 
 describe("attributes option", () => {
 	it(`should work without attributes option`, async () => {
@@ -19,7 +19,7 @@ describe("attributes option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(__dirname, "../outputs"),
+					path: path.resolve(import.meta.dirname, "../outputs"),
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -47,7 +47,7 @@ describe("attributes option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(__dirname, "../outputs"),
+					path: path.resolve(import.meta.dirname, "../outputs"),
 					filename: "[name].bundle.js"
 				},
 				plugins: [

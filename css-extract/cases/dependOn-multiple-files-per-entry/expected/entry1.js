@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["entry1"], {
+(self["rspackChunk"] = self["rspackChunk"] || []).push([["entry1"], {
 "./entryA.js"(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
 __webpack_require__.r(__webpack_exports__);
 /* import */ var _styleA_css__rspack_import_0 = __webpack_require__("./styleA.css");

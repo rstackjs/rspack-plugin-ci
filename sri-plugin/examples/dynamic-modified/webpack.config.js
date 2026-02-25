@@ -1,10 +1,18 @@
-const { RunInPuppeteerPlugin, createIntegrityPlugin, createHtmlPlugin, getDist } = require("../wsi-test-helper");
-const { writeFileSync } = require("fs");
-const { join } = require("path");
+import { RunInPuppeteerPlugin, createIntegrityPlugin, createHtmlPlugin, getDist } from '../wsi-test-helper.js';
+import { writeFileSync } from 'fs';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+
+
+
 
 let gotError = false;
 
-module.exports = {
+export default {
   entry: {
     index: "./index.js",
   },

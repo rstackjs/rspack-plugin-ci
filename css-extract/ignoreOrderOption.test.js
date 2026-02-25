@@ -1,20 +1,21 @@
-const path = require("path");
-
-const { rspack: webpack } = require("@rspack/core");
+import path from "path";
+import { rspack as webpack } from "@rspack/core";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 
 describe("IgnoreOrder", () => {
-	it("should emit warnings", done => {
-		const casesDirectory = path.resolve(__dirname, "cases");
+	it("should emit warnings", async () => {
+		const casesDirectory = path.resolve(import.meta.dirname, "cases");
 		const directoryForCase = path.resolve(casesDirectory, "ignoreOrderFalse");
 		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = require(path.resolve(
+		const webpackConfig = (await import(path.resolve(
 			directoryForCase,
-			"webpack.config.js"
-		));
+			"webpack.config.mjs"
+		))).default;
 		const compiler = webpack({
 			...webpackConfig,
 			output: {
-				path: path.join(__dirname, "js", "ignoreOrderTest", "ignoreOrderFalse")
+				path: path.join(import.meta.dirname, "js", "ignoreOrderTest", "ignoreOrderFalse")
 			},
 			mode: "development",
 			context: directoryForCase,
@@ -23,24 +24,26 @@ describe("IgnoreOrder", () => {
 				css: false,
 			}
 		});
-		compiler.run((err1, stats) => {
-			expect(stats.hasWarnings()).toBe(true);
-			done();
+		await new Promise(resolve => {
+			compiler.run((err1, stats) => {
+				expect(stats.hasWarnings()).toBe(true);
+				resolve();
+			});
 		});
 	});
 
-	it("should not emit warnings", done => {
-		const casesDirectory = path.resolve(__dirname, "cases");
+	it("should not emit warnings", async () => {
+		const casesDirectory = path.resolve(import.meta.dirname, "cases");
 		const directoryForCase = path.resolve(casesDirectory, "ignoreOrder");
 		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = require(path.resolve(
+		const webpackConfig = (await import(path.resolve(
 			directoryForCase,
-			"webpack.config.js"
-		));
+			"webpack.config.mjs"
+		))).default;
 		const compiler = webpack({
 			...webpackConfig,
 			output: {
-				path: path.join(__dirname, "js", "ignoreOrderTest", "ignoreOrder")
+				path: path.join(import.meta.dirname, "js", "ignoreOrderTest", "ignoreOrder")
 			},
 			mode: "development",
 			context: directoryForCase,
@@ -49,9 +52,11 @@ describe("IgnoreOrder", () => {
 				css: false,
 			}
 		});
-		compiler.run((err1, stats) => {
-			expect(stats.hasWarnings()).toBe(false);
-			done();
+		await new Promise(resolve => {
+			compiler.run((err1, stats) => {
+				expect(stats.hasWarnings()).toBe(false);
+				resolve();
+			});
 		});
 	});
 });

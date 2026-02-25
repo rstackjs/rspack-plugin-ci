@@ -2,17 +2,20 @@
  * Integration and unit tests for all features but caching
  */
 
-/* eslint-env jest */
-"use strict";
+import path from "path";
+import fs from "fs";
+import rspack, { CssExtractRspackPlugin as MiniCssExtractPlugin, HtmlRspackPlugin as HtmlWebpackPlugin } from "@rspack/core";
+import { rimrafSync } from "rimraf";
+import _ from "lodash";
+import { createRequire } from "module";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { jest, test, describe } from "@jest/globals";
+const require = createRequire(import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const path = require("path");
-const fs = require("fs");
-/// DIFF const webpack = require("webpack");
-const webpack = require("@rspack/core");
-const { rimrafSync } = require("rimraf");
-const _ = require("lodash");
-/// DIFF const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const MiniCssExtractPlugin = webpack.CssExtractRspackPlugin;
+const webpack = rspack;
 
 const webpackMajorVersion = Number(
   /// DIFF: require("webpack/package.json")
@@ -24,9 +27,6 @@ const itUnixOnly =
 if (isNaN(webpackMajorVersion)) {
   throw new Error("Cannot parse webpack major version");
 }
-
-/// DIFF: const HtmlWebpackPlugin = require("@rspack/");
-const HtmlWebpackPlugin = webpack.HtmlRspackPlugin;
 
 
 /// DIFF: const OUTPUT_DIR = path.resolve(__dirname, "../dist/basic-spec");
@@ -106,7 +106,7 @@ function testHtmlPlugin(
 }
 
 function getChunksInfoFromStats(stats) {
-  const chunks = stats.compilation.getStats().toJson().chunks;
+  const chunks = stats.compilation.getStats().toJson({ chunks: true }).chunks;
   const chunksInfo = {};
   for (let i = 0; i < chunks.length; i++) {
     const chunk = chunks[i];

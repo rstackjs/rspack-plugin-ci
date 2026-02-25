@@ -1,12 +1,24 @@
-const { createIntegrityPlugin, createHtmlPlugin, getDist } = require("../wsi-test-helper");
-const { CssExtractRspackPlugin } = require("@rspack/core");
-const expect = require("expect");
-const htmlparser2 = require("htmlparser2");
-const { readFileSync } = require("fs");
-const { selectAll } = require("css-select");
-const { join } = require("path");
+import { createIntegrityPlugin, createHtmlPlugin, getDist } from '../wsi-test-helper.js';
+import { CssExtractRspackPlugin } from '@rspack/core';
+import expect from 'expect';
+import * as htmlparser2 from 'htmlparser2';
+import { readFileSync } from 'fs';
+import { selectAll } from 'css-select';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+
+
+
+
+
+
+
+
+export default {
   mode: "production",
   entry: "./index.js",
   output: {
@@ -43,14 +55,14 @@ module.exports = {
           expect(stats.compilation.errors.length).toEqual(0);
 
           const jsIntegrity = stats
-            .toJson()
+            .toJson({ assets: true })
             .assets.find(
               (asset) => asset.name === "subdir/bundle.js"
             ).integrity;
           expect(jsIntegrity).toMatch(/^sha/);
 
           const cssIntegrity = stats
-            .toJson()
+            .toJson({ assets: true })
             .assets.find(
               (asset) => asset.name === "subdir/styles.css"
             ).integrity;

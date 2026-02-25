@@ -1,1 +1,2 @@
-module.exports = require("path");
+import path from "path";
+export default path;

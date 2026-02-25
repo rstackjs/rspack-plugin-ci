@@ -1,1 +1,2 @@
-module.exports = require("url");
+import url from "url";
+export default url;

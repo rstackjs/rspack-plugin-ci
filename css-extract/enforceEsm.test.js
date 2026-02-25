@@ -1,4 +1,4 @@
-const { getCompiler, source, compile } = require("./helpers");
+import { getCompiler, source, compile } from "./helpers";
 
 it("should enforce esm for empty module without options.esModule", async () => {
 	expect.assertions(3);

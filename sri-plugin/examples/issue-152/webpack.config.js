@@ -1,6 +1,13 @@
-const expect = require("expect");
-const { createIntegrityPlugin, getDist } = require("../wsi-test-helper");
-module.exports = {
+import expect from 'expect';
+import { createIntegrityPlugin, getDist } from '../wsi-test-helper.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+
+
+export default {
   entry: "./index.js",
   output: {
     filename: "[contenthash].js",

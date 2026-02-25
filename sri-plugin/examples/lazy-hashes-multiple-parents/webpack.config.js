@@ -1,9 +1,18 @@
-const { createHtmlPlugin, createIntegrityPlugin, getDist } = require("../wsi-test-helper");
-const { readFileSync } = require("fs");
-const { join } = require("path");
-const expect = require("expect");
+import { createHtmlPlugin, createIntegrityPlugin, getDist } from '../wsi-test-helper.js';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import expect from 'expect';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+
+
+
+
+
+export default {
   entry: {
     index: "./index.js",
   },
@@ -23,7 +32,7 @@ module.exports = {
           if (stats && stats.hasErrors()) {
             throw new Error(
               stats
-                .toJson()
+                .toJson({ assets: true })
                 .errors.map((error) => error.message)
                 .join(", ")
             );
@@ -75,7 +84,7 @@ module.exports = {
 
           expect(
             stats
-              .toJson()
+              .toJson({ assets: true })
               .assets.filter(({ name }) => /\.js$/.test(name))
               .every(({ integrity }) => !!integrity)
           ).toEqual(true);

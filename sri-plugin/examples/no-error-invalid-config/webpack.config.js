@@ -1,8 +1,16 @@
-const { createIntegrityPlugin, getDist } = require("../wsi-test-helper");
-const expect = require("expect");
-const ChunkRenderError = require("webpack/lib/ChunkRenderError");
+import { createIntegrityPlugin, getDist } from '../wsi-test-helper.js';
+import expect from 'expect';
+import ChunkRenderError from 'webpack/lib/ChunkRenderError';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+
+
+
+
+export default {
   mode: "production",
   entry: "./index.js",
   output: {

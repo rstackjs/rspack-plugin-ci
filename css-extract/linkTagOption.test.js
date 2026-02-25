@@ -1,13 +1,13 @@
 /* eslint-env browser */
-const path = require("path");
-const { CssExtractRspackPlugin } = require("@rspack/core");
-const {
+import path from "path";
+import { CssExtractRspackPlugin } from "@rspack/core";
+import {
 	compile,
 	getCompiler,
 	getErrors,
 	getWarnings,
 	runInJsDom
-} = require("./helpers/index");
+} from "./helpers/index.js";
 
 describe("linkType option", () => {
 	it(`should work without linkType option`, async () => {
@@ -17,7 +17,7 @@ describe("linkType option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(__dirname, "../outputs"),
+					path: path.resolve(import.meta.dirname, "../outputs"),
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -44,7 +44,7 @@ describe("linkType option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(__dirname, "../outputs"),
+					path: path.resolve(import.meta.dirname, "../outputs"),
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -72,7 +72,7 @@ describe("linkType option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(__dirname, "../outputs"),
+					path: path.resolve(import.meta.dirname, "../outputs"),
 					filename: "[name].bundle.js"
 				},
 				plugins: [

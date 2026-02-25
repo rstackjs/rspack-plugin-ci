@@ -1,15 +1,14 @@
-const jsdom = require("jsdom");
-
-const { readAsset } = require("./index");
+import { JSDOM, VirtualConsole } from "jsdom";
+import { readAsset } from "./index.js";
 
 function runInJsDom(assetName, compiler, stats, testFn) {
 	const bundle = readAsset(assetName, compiler, stats);
-	const virtualConsole = new jsdom.VirtualConsole();
+	const virtualConsole = new VirtualConsole();
 
 	virtualConsole.sendTo(console);
 
 	try {
-		const dom = new jsdom.JSDOM(
+		const dom = new JSDOM(
 			`<!doctype html>
 <html>
 <head>
@@ -41,4 +40,4 @@ function runInJsDom(assetName, compiler, stats, testFn) {
 	}
 }
 
-module.exports = runInJsDom;
+export default runInJsDom;

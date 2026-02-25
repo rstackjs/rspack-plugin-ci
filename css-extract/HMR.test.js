@@ -4,9 +4,12 @@
 /* eslint-env browser */
 /* eslint-disable no-console */
 
-const path = require("path");
+import path from "path";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 const rspackPath = require.resolve("@rspack/core");
-const hotModuleReplacement = require(path.join(rspackPath, '../cssExtractHmr.js')).cssReload;
+import { jest, test, describe } from "@jest/globals";
+const hotModuleReplacement = (await import(path.join(rspackPath, '../cssExtractHmr.js'))).cssReload;
 // const hotLoader = require(path.join(rspackPath, './cssExtractHmr.js')).cssReload;
 
 function getLoadEvent() {

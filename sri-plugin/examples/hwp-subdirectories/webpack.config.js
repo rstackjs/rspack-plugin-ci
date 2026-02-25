@@ -1,11 +1,22 @@
-const expect = require("expect");
-const htmlparser2 = require("htmlparser2");
-const { readFileSync } = require("fs");
-const { selectAll } = require("css-select");
-const { createIntegrityPlugin, createHtmlPlugin, getDist } = require("../wsi-test-helper");
-const { join } = require("path");
+import expect from 'expect';
+import * as htmlparser2 from 'htmlparser2';
+import { readFileSync } from 'fs';
+import { selectAll } from 'css-select';
+import { createIntegrityPlugin, createHtmlPlugin, getDist } from '../wsi-test-helper.js';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+
+
+
+
+
+
+
+export default {
   entry: "./index.js",
   output: {
     filename: "subdir/bundle.js",
@@ -25,7 +36,7 @@ module.exports = {
         compiler.hooks.done.tapPromise("wsi-test", async (stats) => {
           const jsIntegrity =
             stats
-              .toJson()
+              .toJson({ assets: true })
               .assets.find((asset) => asset.name === "subdir/bundle.js")
               .integrity ||
             stats.compilation.assets["subdir/bundle.js"].integrity;

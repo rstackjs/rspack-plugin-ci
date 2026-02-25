@@ -1,6 +1,8 @@
-const path = require("path");
+import path from "path";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 const rspackPath = require.resolve("@rspack/core");
-const { normalizeUrl } = require(path.join(rspackPath, '../cssExtractHmr.js'));
+const { normalizeUrl } = (await import(path.join(rspackPath, '../cssExtractHmr.js')));
 const dataUrls = require("./fixtures/json/data-urls.json");
 
 describe("normalize-url", () => {

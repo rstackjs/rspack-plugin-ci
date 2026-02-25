@@ -1,4 +1,4 @@
-const { CssExtractRspackPlugin } = require("@rspack/core");
+import { CssExtractRspackPlugin } from "@rspack/core";
 
 describe.skip("validate options", () => {
 	const tests = {

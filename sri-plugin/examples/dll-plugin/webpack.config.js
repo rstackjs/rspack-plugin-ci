@@ -1,10 +1,16 @@
-const { experiments: { SubresourceIntegrityPlugin } } = require("@rspack/core");
-const WebpackBeforeBuildPlugin = require("before-build-webpack");
-const webpack = require("@rspack/core");
-const path = require("path");
-const { RunInPuppeteerPlugin, createIntegrityPlugin, createHtmlPlugin, getHtmlPlugin, getDist } = require("../wsi-test-helper");
+import WebpackBeforeBuildPlugin from 'before-build-webpack';
+import webpack from '@rspack/core';
+import path from 'path';
+import { RunInPuppeteerPlugin, createIntegrityPlugin, createHtmlPlugin, getHtmlPlugin, getDist } from '../wsi-test-helper.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { createRequire } from 'module';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-module.exports = {
+const require = createRequire(import.meta.url);
+
+export default {
   resolve: {
     extensions: [".js", ".jsx"],
   },
@@ -57,7 +63,7 @@ module.exports = {
                   compiler.hooks.thisCompilation.tap(
                     "wsi-test",
                     (compilation) => {
-                      const hooks = getHtmlPlugin().getHooks(compilation);
+                      const hooks = getHtmlPlugin().getCompilationHooks(compilation);
 
                       hooks.alterAssetTags.tapPromise(
                         "wsi-test",

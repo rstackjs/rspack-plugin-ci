@@ -1,3 +1,3 @@
-const yn = require("../../helpers/yn");
+// const yn = require("../../helpers/yn");
 
-module.exports = () => yn(process.env.OLD_API);
+module.exports = () => false;

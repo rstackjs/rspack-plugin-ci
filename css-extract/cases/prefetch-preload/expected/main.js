@@ -1,5 +1,14 @@
 (() => {
-var __webpack_modules__ = ({});
+var __webpack_modules__ = ({
+"./index.js"(__unused_rspack_module, __unused_rspack_exports, __webpack_require__) {
+__webpack_require__.e(/* import() | a */ "a").then(__webpack_require__.bind(__webpack_require__, "./a.css"));
+__webpack_require__.e(/* import() | b */ "b").then(__webpack_require__.t.bind(__webpack_require__, "./b.js", 23));
+__webpack_require__.e(/* import() | c */ "c").then(__webpack_require__.t.bind(__webpack_require__, "./c.js", 23));
+
+
+},
+
+});
 // The module cache
 var __webpack_module_cache__ = {};
 
@@ -26,24 +35,6 @@ return module.exports;
 // expose the modules object (__webpack_modules__)
 __webpack_require__.m = __webpack_modules__;
 
-// webpack/runtime/chunk_prefetch_function/prefetch
-(() => {
-__webpack_require__.F = {};
-__webpack_require__.E = (chunkId) => {
-  Object.keys(__webpack_require__.F).map((key) => {
-    __webpack_require__.F[key](chunkId);
-  });
-}
-})();
-// webpack/runtime/chunk_prefetch_function/preload
-(() => {
-__webpack_require__.H = {};
-__webpack_require__.G = (chunkId) => {
-  Object.keys(__webpack_require__.H).map((key) => {
-    __webpack_require__.H[key](chunkId);
-  });
-}
-})();
 // webpack/runtime/create_fake_namespace_object
 (() => {
 var getProto = Object.getPrototypeOf ? (obj) => (Object.getPrototypeOf(obj)) : (obj) => (obj.__proto__);
@@ -158,7 +149,6 @@ __webpack_require__.l = function (url, done, key, chunkId) {
 		needAttach = true;
 		script = document.createElement('script');
 
-
 script.timeout = 120;
 if (__webpack_require__.nc) {
   script.setAttribute("nonce", __webpack_require__.nc);
@@ -241,6 +231,28 @@ __webpack_require__.O = (result, chunkIds, fn, priority) => {
 	return result;
 };
 
+})();
+// webpack/runtime/prefetch
+(() => {
+__webpack_require__.F = {};
+__webpack_require__.E = (chunkId) => {
+  Object.keys(__webpack_require__.F).map((key) => {
+    __webpack_require__.F[key](chunkId);
+  });
+}
+})();
+// webpack/runtime/preload
+(() => {
+__webpack_require__.H = {};
+__webpack_require__.G = (chunkId) => {
+  Object.keys(__webpack_require__.H).map((key) => {
+    __webpack_require__.H[key](chunkId);
+  });
+}
+})();
+// webpack/runtime/rspack_version
+(() => {
+__webpack_require__.rv = () => ("2.0.0-beta.2")
 })();
 // webpack/runtime/auto_public_path
 (() => {
@@ -464,7 +476,6 @@ if (installedChunkData !== 0) {
     installedChunks[chunkId] = null;
     var link = document.createElement('link');
 
-
 if (__webpack_require__.nc) {
   link.setAttribute("nonce", __webpack_require__.nc);
 }
@@ -478,7 +489,6 @@ __webpack_require__.H.j = (chunkId) => {
   if ((!__webpack_require__.o(installedChunks, chunkId) || installedChunks[chunkId] === undefined) && true) {
     installedChunks[chunkId] = null;
     var link = document.createElement('link');
-
 
 if (__webpack_require__.nc) {
   link.setAttribute("nonce", __webpack_require__.nc);
@@ -523,10 +533,14 @@ var __rspack_jsonp = (parentChunkLoadingFunction, data) => {
 	
 };
 
-var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+var chunkLoadingGlobal = self["rspackChunk"] = self["rspackChunk"] || [];
 chunkLoadingGlobal.forEach(__rspack_jsonp.bind(null, 0));
 chunkLoadingGlobal.push = __rspack_jsonp.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 
+})();
+// webpack/runtime/rspack_unique_id
+(() => {
+__webpack_require__.ruid = "bundler=rspack@2.0.0-beta.2";
 })();
 // webpack/runtime/chunk_prefetch_startup
 (() => {
@@ -552,11 +566,10 @@ __webpack_require__.f.preload =  (chunkId) => {
   Array.isArray(chunks) && chunks.map(__webpack_require__.G);
 };
 })();
-var __webpack_exports__ = {};
-__webpack_require__.e(/* import() | a */ "a").then(__webpack_require__.bind(__webpack_require__, "./a.css"));
-__webpack_require__.e(/* import() | b */ "b").then(__webpack_require__.t.bind(__webpack_require__, "./b.js", 23));
-__webpack_require__.e(/* import() | c */ "c").then(__webpack_require__.t.bind(__webpack_require__, "./c.js", 23));
-
+// module factories are used so entry inlining is disabled
+// startup
+// Load entry module and return exports
+var __webpack_exports__ = __webpack_require__("./index.js");
 __webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 })()
 ;

@@ -1,5 +1,5 @@
-module.exports = function getSource(name, stats) {
-	const { modules } = stats.toJson({ source: true });
+export default function getSource(name, stats) {
+	const { modules } = stats.toJson({ source: true, modules: true });
 
 	for (let i = 0; i < modules.length; i++) {
 		const module = modules[i];
@@ -17,4 +17,4 @@ module.exports = function getSource(name, stats) {
 
 	// eslint-disable-next-line no-undefined
 	return undefined;
-};
+}

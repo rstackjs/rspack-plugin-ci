@@ -1,12 +1,10 @@
 // Ideally we pass in patterns and confirm the resulting assets
-const fs = require("fs");
-const { rspack } = require("@rspack/core");
-const AsyncEventIterator = require("./AsyncEventIterator");
-
-const removeIllegalCharacterForWindows = require("./removeIllegalCharacterForWindows");
-
-const { compile, getCompiler, readAssets } = require("./index");
-const { transformWindowPath } = require("./readAssets");
+import fs from "fs";
+import rspack from "@rspack/core";
+import AsyncEventIterator from "./AsyncEventIterator";
+import removeIllegalCharacterForWindows from "./removeIllegalCharacterForWindows";
+import { compile, getCompiler, readAssets } from "./index";
+import { transformWindowPath } from "./readAssets";
 
 function resolveCopy(copy) {
 	if (!copy) {
@@ -219,4 +217,4 @@ async function runChange(opts) {
 	});
 }
 
-module.exports = { run, runChange, runEmit, runForce };
+export { run, runChange, runEmit, runForce };

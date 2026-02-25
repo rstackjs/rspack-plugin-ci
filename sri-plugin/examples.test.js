@@ -10,13 +10,13 @@ import spawn from "cross-spawn";
 import { join, dirname } from "path";
 import { rimraf } from "rimraf";
 import { platform } from "os";
-import { jest, test, describe } from "@jest/globals";
+import { rstest, test, describe } from "@rstest/core";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-jest.setTimeout(120000);
+rstest.setConfig({ testTimeout: 120000 });
 
 const DISABLED_CASES = [
   "hwp-externals", // TODO: html-webpack-externals-plugin failed

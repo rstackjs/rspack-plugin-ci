@@ -9,11 +9,11 @@ import { resolve } from "path";
 import tmp from "tmp-promise";
 import { runRspack, SubresourceIntegrityPlugin } from "./test-utils";
 import merge from "lodash/merge";
-import { jest, test, expect } from "@jest/globals";
+import { rstest, test, expect } from "@rstest/core";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-// jest.unmock("html-webpack-plugin");
+// rstest.unmock("html-webpack-plugin");
 
 async function runRspackForSimpleProject(
   options = {}

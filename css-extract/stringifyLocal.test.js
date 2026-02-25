@@ -12,7 +12,7 @@ describe("stringifyLocal", () => {
   it(`arrow function`, async () => {
     const testFn = () => "classA";
 
-    expect(stringifyLocal(testFn)).toBe('() => "classA"');
+    expect(stringifyLocal(testFn)).toBe('()=>"classA"');
   });
 
   it(`function`, async () => {
@@ -20,10 +20,10 @@ describe("stringifyLocal", () => {
       return "classA";
     };
 
-    expect(stringifyLocal(testFn)).toMatchInlineSnapshot(`
-      "function testFn() {
-            return \\"classA\\";
-          }"
-    `);
+     expect(stringifyLocal(testFn)).toMatchInlineSnapshot(`
+       "function testFn() {
+                   return \\"classA\\";
+               }"
+     `);
   });
 });

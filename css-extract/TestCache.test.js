@@ -1,17 +1,14 @@
-/**
- * @jest-environment node
- */
 
 import path from "path";
 import webpack from "@rspack/core";
 import del from "del";
-import { jest, test, describe, afterEach } from "@jest/globals";
+import { rstest, test, describe, afterEach } from "@rstest/core";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 describe("TestCache", () => {
 	afterEach(() => {
-		jest.clearAllMocks();
+		rstest.clearAllMocks();
 	});
 
 	it("should work without cache", async () => {
@@ -51,12 +48,12 @@ describe("TestCache", () => {
 				compiler1.close(() => {
 					expect(Object.keys(stats.compilation.assets).sort())
 						.toMatchInlineSnapshot(`
-				Array [
-				  "main.css",
-				  "main.js",
-				  "static/react.svg",
-				]
-			`);
+							Array [
+							  "main.css",
+							  "main.js",
+							  "static/react.svg",
+							]
+						`);
 					// expect(Array.from(stats.compilation.emittedAssets).sort())
 					// 	.toMatchInlineSnapshot(`
 					//   Array [
@@ -96,12 +93,12 @@ describe("TestCache", () => {
 				compiler2.close(() => {
 					expect(Object.keys(stats.compilation.assets).sort())
 						.toMatchInlineSnapshot(`
-				Array [
-				  "main.css",
-				  "main.js",
-				  "static/react.svg",
-				]
-			`);
+							Array [
+							  "main.css",
+							  "main.js",
+							  "static/react.svg",
+							]
+						`);
 					// expect(
 					// 	Array.from(stats.compilation.emittedAssets).sort()
 					// ).toMatchInlineSnapshot(`Array []`);
@@ -149,12 +146,12 @@ describe("TestCache", () => {
 				compiler1.close(() => {
 					expect(Object.keys(stats.compilation.assets).sort())
 						.toMatchInlineSnapshot(`
-				Array [
-				  "main.css",
-				  "main.js",
-				  "static/react.svg",
-				]
-			`);
+							Array [
+							  "main.css",
+							  "main.js",
+							  "static/react.svg",
+							]
+						`);
 					// expect(Array.from(stats.compilation.emittedAssets).sort())
 					// 	.toMatchInlineSnapshot(`
 					//   Array [
@@ -196,12 +193,12 @@ describe("TestCache", () => {
 				compiler2.close(() => {
 					expect(Object.keys(stats.compilation.assets).sort())
 						.toMatchInlineSnapshot(`
-				Array [
-				  "main.css",
-				  "main.js",
-				  "static/react.svg",
-				]
-			`);
+							Array [
+							  "main.css",
+							  "main.js",
+							  "static/react.svg",
+							]
+						`);
 					// expect(
 					// 	Array.from(stats.compilation.emittedAssets).sort()
 					// ).toMatchInlineSnapshot(`Array []`);

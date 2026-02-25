@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Rstest Snapshot v1
 
-exports[`noRuntime option should work without the 'runtime' option: DOM 1`] = `
+exports[`noRuntime option > should work without the 'runtime' option > DOM 1`] = `
 "<!DOCTYPE html><html><head>
   <title>style-loader test</title>
   <style id=\\"existing-style\\">.existing { color: yellow }</style>
@@ -14,6 +14,6 @@ exports[`noRuntime option should work without the 'runtime' option: DOM 1`] = `
 </body></html>"
 `;
 
-exports[`noRuntime option should work without the 'runtime' option: errors 1`] = `Array []`;
+exports[`noRuntime option > should work without the 'runtime' option > errors 1`] = `Array []`;
 
-exports[`noRuntime option should work without the 'runtime' option: warnings 1`] = `Array []`;
+exports[`noRuntime option > should work without the 'runtime' option > warnings 1`] = `Array []`;

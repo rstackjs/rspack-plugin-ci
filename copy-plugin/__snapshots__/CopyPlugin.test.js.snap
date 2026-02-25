@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Rstest Snapshot v1
 
-exports[`CopyPlugin basic should work with multi compiler mode: assets 1`] = `
+exports[`CopyPlugin > basic > should work with multi compiler mode > assets 1`] = `
 Object {
   ".dottedfile": "dottedfile contents
 ",
@@ -10,7 +10,7 @@ Object {
 }
 `;
 
-exports[`CopyPlugin basic should work with multi compiler mode: assets 2`] = `
+exports[`CopyPlugin > basic > should work with multi compiler mode > assets 2`] = `
 Object {
   ".dottedfile": "dottedfile contents
 ",
@@ -20,15 +20,15 @@ Object {
 }
 `;
 
-exports[`CopyPlugin basic should work with multi compiler mode: errors 1`] = `Array []`;
+exports[`CopyPlugin > basic > should work with multi compiler mode > errors 1`] = `Array []`;
 
-exports[`CopyPlugin basic should work with multi compiler mode: errors 2`] = `Array []`;
+exports[`CopyPlugin > basic > should work with multi compiler mode > errors 2`] = `Array []`;
 
-exports[`CopyPlugin basic should work with multi compiler mode: warnings 1`] = `Array []`;
+exports[`CopyPlugin > basic > should work with multi compiler mode > warnings 1`] = `Array []`;
 
-exports[`CopyPlugin basic should work with multi compiler mode: warnings 2`] = `Array []`;
+exports[`CopyPlugin > basic > should work with multi compiler mode > warnings 2`] = `Array []`;
 
-exports[`CopyPlugin basic should work with to fn: assets 1`] = `
+exports[`CopyPlugin > basic > should work with to fn > assets 1`] = `
 Object {
   "directory/.dottedfile": "dottedfile contents
 ",
@@ -38,7 +38,7 @@ Object {
 }
 `;
 
-exports[`CopyPlugin basic should work with transform async fn: assets 1`] = `
+exports[`CopyPlugin > basic > should work with transform async fn > assets 1`] = `
 Object {
   ".dottedfile": "dottedfile contents
 transform aaaa",
@@ -48,7 +48,7 @@ transform aaaa",
 }
 `;
 
-exports[`CopyPlugin basic should work with transform fn: assets 1`] = `
+exports[`CopyPlugin > basic > should work with transform fn > assets 1`] = `
 Object {
   ".dottedfile": "dottedfile contents
 transform aaaa",
@@ -58,14 +58,14 @@ transform aaaa",
 }
 `;
 
-exports[`CopyPlugin stats should minify: assets 1`] = `
+exports[`CopyPlugin > stats > should minify > assets 1`] = `
 Object {
   "asset-modules/deepnested.txt": "",
   "unoptimized.js": "const a=1;console.log(1);",
 }
 `;
 
-exports[`CopyPlugin stats should not minify: assets 1`] = `
+exports[`CopyPlugin > stats > should not minify > assets 1`] = `
 Object {
   "asset-modules/deepnested.txt": "",
   "unoptimized.js": "const a = 1;

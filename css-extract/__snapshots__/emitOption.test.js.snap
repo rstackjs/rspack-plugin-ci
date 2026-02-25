@@ -1,38 +1,38 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Rstest Snapshot v1
 
-exports[`emit option should invalidate the cache with disabled "emit" option: assets 1`] = `
+exports[`emit option > should invalidate the cache with disabled "emit" option > assets 1`] = `
 Array [
   "main.js",
   "static/react.svg",
 ]
 `;
 
-exports[`emit option should invalidate the cache with disabled "emit" option: assets 2`] = `
+exports[`emit option > should invalidate the cache with disabled "emit" option > assets 2`] = `
 Array [
   "main.js",
 ]
 `;
 
-exports[`emit option should invalidate the cache with disabled "emit" option: errors 1`] = `Array []`;
+exports[`emit option > should invalidate the cache with disabled "emit" option > errors 1`] = `Array []`;
 
-exports[`emit option should invalidate the cache with disabled "emit" option: errors 2`] = `Array []`;
+exports[`emit option > should invalidate the cache with disabled "emit" option > errors 2`] = `Array []`;
 
-exports[`emit option should invalidate the cache with disabled "emit" option: warnings 1`] = `Array []`;
+exports[`emit option > should invalidate the cache with disabled "emit" option > warnings 1`] = `Array []`;
 
-exports[`emit option should invalidate the cache with disabled "emit" option: warnings 2`] = `Array []`;
+exports[`emit option > should invalidate the cache with disabled "emit" option > warnings 2`] = `Array []`;
 
-exports[`emit option should work when emit option is "false": assets 1`] = `
+exports[`emit option > should work when emit option is "false" > assets 1`] = `
 Array [
   "main.js",
   "react.svg",
 ]
 `;
 
-exports[`emit option should work when emit option is "false": errors 1`] = `Array []`;
+exports[`emit option > should work when emit option is "false" > errors 1`] = `Array []`;
 
-exports[`emit option should work when emit option is "false": warnings 1`] = `Array []`;
+exports[`emit option > should work when emit option is "false" > warnings 1`] = `Array []`;
 
-exports[`emit option should work when emit option is "true": assets 1`] = `
+exports[`emit option > should work when emit option is "true" > assets 1`] = `
 Array [
   "main.css",
   "main.js",
@@ -40,11 +40,11 @@ Array [
 ]
 `;
 
-exports[`emit option should work when emit option is "true": errors 1`] = `Array []`;
+exports[`emit option > should work when emit option is "true" > errors 1`] = `Array []`;
 
-exports[`emit option should work when emit option is "true": warnings 1`] = `Array []`;
+exports[`emit option > should work when emit option is "true" > warnings 1`] = `Array []`;
 
-exports[`emit option should work with locals and invalidate cache when emit option is "false": DOM 1`] = `
+exports[`emit option > should work with locals and invalidate cache when emit option is "false" > DOM 1`] = `
 "<!DOCTYPE html><html><head>
   <title>style-loader test</title>
   <style id=\\"existing-style\\">.existing { color: yellow }</style>
@@ -56,7 +56,7 @@ css.baz: ak_rhnl0eZA3DHad
 </body></html>"
 `;
 
-exports[`emit option should work with locals and invalidate cache when emit option is "false": DOM 2`] = `
+exports[`emit option > should work with locals and invalidate cache when emit option is "false" > DOM 2`] = `
 "<!DOCTYPE html><html><head>
   <title>style-loader test</title>
   <style id=\\"existing-style\\">.existing { color: yellow }</style>
@@ -68,27 +68,27 @@ css.baz: ak_rhnl0eZA3DHad
 </body></html>"
 `;
 
-exports[`emit option should work with locals and invalidate cache when emit option is "false": assets 1`] = `
+exports[`emit option > should work with locals and invalidate cache when emit option is "false" > assets 1`] = `
 Array [
   "main.js",
 ]
 `;
 
-exports[`emit option should work with locals and invalidate cache when emit option is "false": assets 2`] = `
+exports[`emit option > should work with locals and invalidate cache when emit option is "false" > assets 2`] = `
 Array [
   "main.js",
 ]
 `;
 
-exports[`emit option should work with locals and invalidate cache when emit option is "false": errors 1`] = `Array []`;
+exports[`emit option > should work with locals and invalidate cache when emit option is "false" > errors 1`] = `Array []`;
 
-exports[`emit option should work with locals and invalidate cache when emit option is "false": errors 2`] = `Array []`;
+exports[`emit option > should work with locals and invalidate cache when emit option is "false" > errors 2`] = `Array []`;
 
-exports[`emit option should work with locals and invalidate cache when emit option is "false": warnings 1`] = `Array []`;
+exports[`emit option > should work with locals and invalidate cache when emit option is "false" > warnings 1`] = `Array []`;
 
-exports[`emit option should work with locals and invalidate cache when emit option is "false": warnings 2`] = `Array []`;
+exports[`emit option > should work with locals and invalidate cache when emit option is "false" > warnings 2`] = `Array []`;
 
-exports[`emit option should work with locals when emit option is "false": DOM 1`] = `
+exports[`emit option > should work with locals when emit option is "false" > DOM 1`] = `
 "<!DOCTYPE html><html><head>
   <title>style-loader test</title>
   <style id=\\"existing-style\\">.existing { color: yellow }</style>
@@ -100,33 +100,33 @@ css.baz: ak_rhnl0eZA3DHad
 </body></html>"
 `;
 
-exports[`emit option should work with locals when emit option is "false": errors 1`] = `Array []`;
+exports[`emit option > should work with locals when emit option is "false" > errors 1`] = `Array []`;
 
-exports[`emit option should work with locals when emit option is "false": warnings 1`] = `Array []`;
+exports[`emit option > should work with locals when emit option is "false" > warnings 1`] = `Array []`;
 
-exports[`emit option should work with the "memory" cache and disabled "emit" option: assets 1`] = `
+exports[`emit option > should work with the "memory" cache and disabled "emit" option > assets 1`] = `
 Array [
   "main.js",
   "static/react.svg",
 ]
 `;
 
-exports[`emit option should work with the "memory" cache and disabled "emit" option: assets 2`] = `
+exports[`emit option > should work with the "memory" cache and disabled "emit" option > assets 2`] = `
 Array [
   "main.js",
   "static/react.svg",
 ]
 `;
 
-exports[`emit option should work with the "memory" cache and disabled "emit" option: errors 1`] = `Array []`;
+exports[`emit option > should work with the "memory" cache and disabled "emit" option > errors 1`] = `Array []`;
 
-exports[`emit option should work with the "memory" cache and disabled "emit" option: errors 2`] = `Array []`;
+exports[`emit option > should work with the "memory" cache and disabled "emit" option > errors 2`] = `Array []`;
 
-exports[`emit option should work with the "memory" cache and disabled "emit" option: warnings 1`] = `Array []`;
+exports[`emit option > should work with the "memory" cache and disabled "emit" option > warnings 1`] = `Array []`;
 
-exports[`emit option should work with the "memory" cache and disabled "emit" option: warnings 2`] = `Array []`;
+exports[`emit option > should work with the "memory" cache and disabled "emit" option > warnings 2`] = `Array []`;
 
-exports[`emit option should work without emit option: assets 1`] = `
+exports[`emit option > should work without emit option > assets 1`] = `
 Array [
   "main.bundle.js",
   "main.css",
@@ -134,6 +134,6 @@ Array [
 ]
 `;
 
-exports[`emit option should work without emit option: errors 1`] = `Array []`;
+exports[`emit option > should work without emit option > errors 1`] = `Array []`;
 
-exports[`emit option should work without emit option: warnings 1`] = `Array []`;
+exports[`emit option > should work without emit option > warnings 1`] = `Array []`;

@@ -15,7 +15,7 @@ import {
 } from "./helpers/index";
 
 describe("emit option", () => {
-	it(`should work without emit option`, async () => {
+	it('should work without emit option', async () => {
 		const compiler = getCompiler(
 			"style-url.js",
 			{},
@@ -42,7 +42,7 @@ describe("emit option", () => {
 		expect(getErrors(stats)).toMatchSnapshot("errors");
 	});
 
-	it(`should work when emit option is "true"`, async () => {
+	it('should work when emit option is "true"', async () => {
 		const compiler = getCompiler(
 			"style-url.js",
 			{
@@ -70,7 +70,7 @@ describe("emit option", () => {
 		expect(getErrors(stats)).toMatchSnapshot("errors");
 	});
 
-	it(`should work when emit option is "false"`, async () => {
+	it('should work when emit option is "false"', async () => {
 		const compiler = getCompiler(
 			"style-url.js",
 			{
@@ -97,7 +97,7 @@ describe("emit option", () => {
 		expect(getErrors(stats)).toMatchSnapshot("errors");
 	});
 
-	it(`should work with locals when emit option is "false"`, async () => {
+	it('should work with locals when emit option is "false"', async () => {
 		const compiler = getCompiler(
 			"locals.js",
 			{},
@@ -146,7 +146,7 @@ describe("emit option", () => {
 		expect(getErrors(stats)).toMatchSnapshot("errors");
 	});
 
-	it(`should work with locals and invalidate cache when emit option is "false"`, async () => {
+	it('should work with locals and invalidate cache when emit option is "false"', async () => {
 		const modifyAsset = path.resolve(import.meta.dirname, "fixtures", "locals/index.css");
 		const modifyAssetContent = fs.readFileSync(modifyAsset);
 

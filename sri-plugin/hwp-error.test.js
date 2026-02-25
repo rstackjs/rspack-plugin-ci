@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { jest, test, expect } from "@jest/globals";
+import { describe, expect, rstest, test } from "@rstest/core";
 import { resolve } from "path";
 import { runRspack, SubresourceIntegrityPlugin } from "./test-utils";
 
-jest.unstable_mockModule("html-webpack-plugin", () => ({
+rstest.mock("html-webpack-plugin", () => ({
   get getHooks() {
     throw new Error("bogus hwp accessed");
   },

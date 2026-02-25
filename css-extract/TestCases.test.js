@@ -1,18 +1,14 @@
-/**
- * @jest-environment node
- */
-
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import webpack from "@rspack/core";
 import yn from "./helpers/yn";
-import { jest, test, describe, afterEach } from "@jest/globals";
-import { stripVTControlCharacters as stripAnsi } from 'util';
-import { createRequire } from "module";
+import { describe, expect, it, afterAll } from "@rstest/core";
+import { stripVTControlCharacters as stripAnsi } from 'node:util';
+import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 
 const { CssExtractRspackPlugin } = webpack;
-const UPDATE_TEST = global.updateSnapshot;
+const UPDATE_TEST = process.env.UPDATE_SNAPSHOT === "true";
 
 function clearDirectory(dirPath) {
 	let files;
@@ -186,6 +182,10 @@ describe("TestCases", () => {
 	});
 
 	clearDirectory(outputDirectory);
+
+	afterAll(() => {
+		clearDirectory(outputDirectory);
+	});
 
 	for (const directory of tests) {
 		if (!/^(\.|_)/.test(directory)) {

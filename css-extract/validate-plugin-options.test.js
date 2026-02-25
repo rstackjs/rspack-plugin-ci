@@ -1,4 +1,5 @@
 import { CssExtractRspackPlugin } from "@rspack/core";
+import { describe, expect, it } from "@rstest/core";
 
 describe.skip("validate options", () => {
 	const tests = {

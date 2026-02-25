@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Rstest Snapshot v1
 
-exports[`linkType option should work when linkType option is "false": DOM 1`] = `
+exports[`linkType option > should work when linkType option is "false" > DOM 1`] = `
 "<!DOCTYPE html><html><head>
   <title>style-loader test</title>
   <style id=\\"existing-style\\">.existing { color: yellow }</style>
@@ -14,11 +14,11 @@ exports[`linkType option should work when linkType option is "false": DOM 1`] = 
 </body></html>"
 `;
 
-exports[`linkType option should work when linkType option is "false": errors 1`] = `Array []`;
+exports[`linkType option > should work when linkType option is "false" > errors 1`] = `Array []`;
 
-exports[`linkType option should work when linkType option is "false": warnings 1`] = `Array []`;
+exports[`linkType option > should work when linkType option is "false" > warnings 1`] = `Array []`;
 
-exports[`linkType option should work when linkType option is "text/css": DOM 1`] = `
+exports[`linkType option > should work when linkType option is "text/css" > DOM 1`] = `
 "<!DOCTYPE html><html><head>
   <title>style-loader test</title>
   <style id=\\"existing-style\\">.existing { color: yellow }</style>
@@ -32,11 +32,11 @@ exports[`linkType option should work when linkType option is "text/css": DOM 1`]
 </body></html>"
 `;
 
-exports[`linkType option should work when linkType option is "text/css": errors 1`] = `Array []`;
+exports[`linkType option > should work when linkType option is "text/css" > errors 1`] = `Array []`;
 
-exports[`linkType option should work when linkType option is "text/css": warnings 1`] = `Array []`;
+exports[`linkType option > should work when linkType option is "text/css" > warnings 1`] = `Array []`;
 
-exports[`linkType option should work without linkType option: DOM 1`] = `
+exports[`linkType option > should work without linkType option > DOM 1`] = `
 "<!DOCTYPE html><html><head>
   <title>style-loader test</title>
   <style id=\\"existing-style\\">.existing { color: yellow }</style>
@@ -50,6 +50,6 @@ exports[`linkType option should work without linkType option: DOM 1`] = `
 </body></html>"
 `;
 
-exports[`linkType option should work without linkType option: errors 1`] = `Array []`;
+exports[`linkType option > should work without linkType option > errors 1`] = `Array []`;
 
-exports[`linkType option should work without linkType option: warnings 1`] = `Array []`;
+exports[`linkType option > should work without linkType option > warnings 1`] = `Array []`;

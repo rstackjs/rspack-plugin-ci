@@ -5,6 +5,7 @@ import AsyncEventIterator from "./AsyncEventIterator";
 import removeIllegalCharacterForWindows from "./removeIllegalCharacterForWindows";
 import { compile, getCompiler, readAssets } from "./index";
 import { transformWindowPath } from "./readAssets";
+import { expect } from "@rstest/core";
 
 function resolveCopy(copy) {
 	if (!copy) {

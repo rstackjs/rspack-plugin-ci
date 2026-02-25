@@ -2,6 +2,7 @@
 import path from "path";
 
 import { CssExtractRspackPlugin as MiniCssExtractPlugin } from "@rspack/core";
+import { describe, expect, it } from "@rstest/core";
 
 import {
 	compile,

@@ -1,374 +1,313 @@
-/**
- @jest-environment jsdom
- */
 /* eslint-env browser */
 /* eslint-disable no-console */
 
-import path from "path";
-import { createRequire } from "module";
+import path from "node:path";
+import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const rspackPath = require.resolve("@rspack/core");
-import { jest, test, describe } from "@jest/globals";
-const hotModuleReplacement = (await import(path.join(rspackPath, '../cssExtractHmr.js'))).cssReload;
+import { afterEach, beforeEach, describe, expect, it, rstest } from "@rstest/core";
+const hotModuleReplacement = (
+  await import(path.join(rspackPath, "../cssExtractHmr.js"))
+).cssReload;
 // const hotLoader = require(path.join(rspackPath, './cssExtractHmr.js')).cssReload;
-
 function getLoadEvent() {
-	const event = document.createEvent("Event");
+  const event = document.createEvent("Event");
 
-	event.initEvent("load", false, false);
+  event.initEvent("load", false, false);
 
-	return event;
+  return event;
 }
 
 function getErrorEvent() {
-	const event = document.createEvent("Event");
+  const event = document.createEvent("Event");
 
-	event.initEvent("error", false, false);
+  event.initEvent("error", false, false);
 
-	return event;
+  return event;
 }
 
 describe("HMR", () => {
-	let consoleMock = null;
+  let consoleMock = null;
 
-	beforeEach(() => {
-		consoleMock = jest.spyOn(console, "log").mockImplementation(() => () => { });
+  beforeEach(() => {
+    consoleMock = rstest
+      .spyOn(console, "log")
+      .mockImplementation(() => () => {});
 
-		jest.spyOn(Date, "now").mockImplementation(() => 1479427200000);
+    rstest.spyOn(Date, "now").mockImplementation(() => 1479427200000);
 
-		document.head.innerHTML = '<link rel="stylesheet" href="/dist/main.css" />';
-		document.body.innerHTML = '<script src="/dist/main.js"></script>';
-	});
+    document.head.innerHTML = '<link rel="stylesheet" href="/dist/main.css" />';
+    document.body.innerHTML = '<script src="/dist/main.js"></script>';
+  });
 
-	afterEach(() => {
-		consoleMock.mockClear();
-	});
+  afterEach(() => {
+    consoleMock.mockClear();
+  });
 
-	it("should works", done => {
-		const update = hotModuleReplacement("./src/style.css", {});
+  it("should works", async () => {
+    const update = hotModuleReplacement("./src/style.css", {});
 
-		update();
+    update();
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-			links[1].dispatchEvent(getLoadEvent());
+    links[1].dispatchEvent(getLoadEvent());
 
-			expect(links[1].isLoaded).toBe(true);
+    expect(links[1].isLoaded).toBe(true);
+  });
 
-			done();
-		}, 100);
-	});
+  it("should works with multiple updates", async () => {
+    const update = hotModuleReplacement("./src/style.css", {});
 
-	it("should works with multiple updates", done => {
-		const update = hotModuleReplacement("./src/style.css", {});
+    update();
 
-		update();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
+    links[1].dispatchEvent(getLoadEvent());
 
-			links[1].dispatchEvent(getLoadEvent());
+    expect(links[1].isLoaded).toBe(true);
 
-			expect(links[1].isLoaded).toBe(true);
+    rstest.spyOn(Date, "now").mockImplementation(() => 1479427200001);
 
-			jest.spyOn(Date, "now").mockImplementation(() => 1479427200001);
+    const update2 = hotModuleReplacement("./src/style.css", {});
 
-			const update2 = hotModuleReplacement("./src/style.css", {});
+    update2();
 
-			update2();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    const links2 = Array.prototype.slice.call(
+      document.querySelectorAll("link"),
+    );
 
-			setTimeout(() => {
-				const links2 = Array.prototype.slice.call(
-					document.querySelectorAll("link")
-				);
+    expect(links2[0].visited).toBe(true);
+    expect(links2[0].isLoaded).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-				expect(links2[0].visited).toBe(true);
-				expect(links2[0].isLoaded).toBe(true);
-				expect(document.head.innerHTML).toMatchSnapshot();
+    links2[1].dispatchEvent(getLoadEvent());
 
-				links2[1].dispatchEvent(getLoadEvent());
+    expect(links2[1].isLoaded).toBe(true);
+  });
 
-				expect(links2[1].isLoaded).toBe(true);
+  it("should reloads with locals", async () => {
+    const update = hotModuleReplacement("./src/style.css", {
+      locals: { foo: "bar" },
+    });
 
-				done();
-			}, 100);
-		}, 100);
-	});
+    update();
 
-	it("should reloads with locals", done => {
-		const update = hotModuleReplacement("./src/style.css", {
-			locals: { foo: "bar" }
-		});
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-		update();
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+    links[1].dispatchEvent(getLoadEvent());
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
+    expect(links[1].isLoaded).toBe(true);
+  });
 
-			links[1].dispatchEvent(getLoadEvent());
+  it("should work reload all css", async () => {
+    const update = hotModuleReplacement("./src/style.css", {
+      filename: "unreload_url",
+    });
 
-			expect(links[1].isLoaded).toBe(true);
+    update();
 
-			done();
-		}, 100);
-	});
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-	it("should work reload all css", done => {
-		const update = hotModuleReplacement("./src/style.css", {
-			filename: "unreload_url"
-		});
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-		update();
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+    links[1].dispatchEvent(getLoadEvent());
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+    expect(links[1].isLoaded).toBe(true);
+  });
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
+  it("should reloads with non http/https link href", async () => {
+    document.head.innerHTML =
+      '<link rel="stylesheet" href="/dist/main.css" /><link rel="shortcut icon" href="data:;base64,=" />';
 
-			links[1].dispatchEvent(getLoadEvent());
+    const update = hotModuleReplacement("./src/style.css", {});
 
-			expect(links[1].isLoaded).toBe(true);
+    update();
 
-			done();
-		}, 100);
-	});
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-	it("should reloads with non http/https link href", done => {
-		document.head.innerHTML =
-			'<link rel="stylesheet" href="/dist/main.css" /><link rel="shortcut icon" href="data:;base64,=" />';
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-		const update = hotModuleReplacement("./src/style.css", {});
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-		update();
+    links[1].dispatchEvent(getLoadEvent());
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+    expect(links[1].isLoaded).toBe(true);
+    expect(links[2].visited).toBeUndefined();
+  });
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+  it("should reloads with # link href", async () => {
+    document.head.innerHTML =
+      '<link rel="stylesheet" href="/dist/main.css" /><link rel="shortcut icon" href="#href" />';
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
+    const update = hotModuleReplacement("./src/style.css", {});
 
-			links[1].dispatchEvent(getLoadEvent());
+    update();
 
-			expect(links[1].isLoaded).toBe(true);
-			expect(links[2].visited).toBeUndefined();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-			done();
-		}, 100);
-	});
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-	it("should reloads with # link href", done => {
-		document.head.innerHTML =
-			'<link rel="stylesheet" href="/dist/main.css" /><link rel="shortcut icon" href="#href" />';
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-		const update = hotModuleReplacement("./src/style.css", {});
+    links[1].dispatchEvent(getLoadEvent());
 
-		update();
+    expect(links[1].isLoaded).toBe(true);
+    expect(links[2].visited).toBeUndefined();
+  });
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+  it("should reloads with link without href", async () => {
+    document.head.innerHTML =
+      '<link rel="stylesheet" href="/dist/main.css" /><link rel="shortcut icon" />';
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+    const update = hotModuleReplacement("./src/style.css", {});
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
+    update();
 
-			links[1].dispatchEvent(getLoadEvent());
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-			expect(links[1].isLoaded).toBe(true);
-			expect(links[2].visited).toBeUndefined();
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-			done();
-		}, 100);
-	});
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-	it("should reloads with link without href", done => {
-		document.head.innerHTML =
-			'<link rel="stylesheet" href="/dist/main.css" /><link rel="shortcut icon" />';
+    links[1].dispatchEvent(getLoadEvent());
 
-		const update = hotModuleReplacement("./src/style.css", {});
+    expect(links[1].isLoaded).toBe(true);
+    expect(links[2].visited).toBeUndefined();
+  });
 
-		update();
+  it("should reloads with absolute remove url", async () => {
+    document.head.innerHTML =
+      '<link rel="stylesheet" href="/dist/main.css" /><link rel="stylesheet" href="http://dev.com/dist/main.css" />';
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+    const update = hotModuleReplacement("./src/style.css", {});
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+    update();
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-			links[1].dispatchEvent(getLoadEvent());
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-			expect(links[1].isLoaded).toBe(true);
-			expect(links[2].visited).toBeUndefined();
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-			done();
-		}, 100);
-	});
+    links[1].dispatchEvent(getLoadEvent());
 
-	it("should reloads with absolute remove url", done => {
-		document.head.innerHTML =
-			'<link rel="stylesheet" href="/dist/main.css" /><link rel="stylesheet" href="http://dev.com/dist/main.css" />';
+    expect(links[1].isLoaded).toBe(true);
+    expect(links[2].visited).toBeUndefined();
+  });
 
-		const update = hotModuleReplacement("./src/style.css", {});
+  it("should reloads with browser extension protocol", async () => {
+    document.head.innerHTML =
+      '<link rel="stylesheet" href="/dist/main.css" /><link rel="stylesheet" href="chrome-extension://main.css" />';
 
-		update();
+    const update = hotModuleReplacement("./src/style.css", {});
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+    update();
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-			links[1].dispatchEvent(getLoadEvent());
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-			expect(links[1].isLoaded).toBe(true);
-			expect(links[2].visited).toBeUndefined();
+    links[1].dispatchEvent(getLoadEvent());
 
-			done();
-		}, 100);
-	});
+    expect(links[1].isLoaded).toBe(true);
+    expect(links[2].visited).toBeUndefined();
+  });
 
-	it("should reloads with browser extension protocol", done => {
-		document.head.innerHTML =
-			'<link rel="stylesheet" href="/dist/main.css" /><link rel="stylesheet" href="chrome-extension://main.css" />';
+  it("should reloads with non-file script in the end of page", async () => {
+    document.body.appendChild(document.createElement("script"));
 
-		const update = hotModuleReplacement("./src/style.css", {});
+    const update = hotModuleReplacement("./src/non_file_styles.css", {});
 
-		update();
+    update();
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-			links[1].dispatchEvent(getLoadEvent());
+    links[1].dispatchEvent(getLoadEvent());
 
-			expect(links[1].isLoaded).toBe(true);
-			expect(links[2].visited).toBeUndefined();
+    expect(links[1].isLoaded).toBe(true);
+  });
 
-			done();
-		}, 100);
-	});
+  it("should handle error event", async () => {
+    const update = hotModuleReplacement("./src/style.css", {});
 
-	it("should reloads with non-file script in the end of page", done => {
-		document.body.appendChild(document.createElement("script"));
+    update();
 
-		const update = hotModuleReplacement("./src/non_file_styles.css", {});
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(console.log.mock.calls[0][0]).toMatchSnapshot();
 
-		update();
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+    expect(links[0].visited).toBe(true);
+    expect(document.head.innerHTML).toMatchSnapshot();
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+    links[1].dispatchEvent(getErrorEvent());
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
+    expect(links[1].isLoaded).toBe(true);
+  });
 
-			links[1].dispatchEvent(getLoadEvent());
+  it("should not remove old link when new link is loaded twice", async () => {
+    const link = document.createElement("link");
 
-			expect(links[1].isLoaded).toBe(true);
+    link.innerHTML = '<link rel="preload stylesheet" href="./dist/main.css" />';
+    document.head.appendChild(link);
+    document.head.removeChild = rstest.fn();
 
-			done();
-		}, 100);
-	});
+    const update = hotModuleReplacement("./dist/main.css", {});
 
-	it("should handle error event", done => {
-		const update = hotModuleReplacement("./src/style.css", {});
+    update();
 
-		update();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
-		setTimeout(() => {
-			expect(console.log.mock.calls[0][0]).toMatchSnapshot();
+    links[1].dispatchEvent(getLoadEvent());
+    links[1].dispatchEvent(getLoadEvent());
 
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
+    expect(document.head.removeChild).toHaveBeenCalledTimes(1);
+  });
 
-			expect(links[0].visited).toBe(true);
-			expect(document.head.innerHTML).toMatchSnapshot();
-
-			links[1].dispatchEvent(getErrorEvent());
-
-			expect(links[1].isLoaded).toBe(true);
-
-			done();
-		}, 100);
-	});
-
-	it("should not remove old link when new link is loaded twice", done => {
-		const link = document.createElement("link");
-
-		link.innerHTML = '<link rel="preload stylesheet" href="./dist/main.css" />';
-		document.head.appendChild(link);
-		document.head.removeChild = jest.fn();
-
-		const update = hotModuleReplacement("./dist/main.css", {});
-
-		update();
-
-		setTimeout(() => {
-			const links = Array.prototype.slice.call(
-				document.querySelectorAll("link")
-			);
-
-			links[1].dispatchEvent(getLoadEvent());
-			links[1].dispatchEvent(getLoadEvent());
-
-			expect(document.head.removeChild).toHaveBeenCalledTimes(1);
-
-			done();
-		}, 100);
-	});
-
-	// it("hotLoader works for non-locals", () => {
+  // it("hotLoader works for non-locals", () => {
   //   const o = Date.now;
   //   Date.now = () => 1;
   //   const code = hotLoader("//content;", {

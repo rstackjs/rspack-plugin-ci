@@ -1,4 +1,5 @@
 import { getCompiler, compile } from "./helpers";
+import { describe, expect, it } from "@rstest/core";
 
 describe.skip("validate options", () => {
 	const tests = {

@@ -16,10 +16,6 @@ const commonProjectConfig: ProjectConfig = {
 };
 
 export default defineConfig({
-  pool: {
-	// Limit the number of workers to 1 to avoid conflicts between css-extract tests that write to the same output directory.
-    maxWorkers: 1,
-  },
   projects: [
     {
       extends: commonProjectConfig,

@@ -9,7 +9,7 @@ import { resolve } from "path";
 import tmp from "tmp-promise";
 import { runRspack, SubresourceIntegrityPlugin } from "./test-utils";
 import merge from "lodash/merge";
-import { rstest, test, expect } from "@rstest/core";
+import { describe, expect, rstest, test } from "@rstest/core";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { rstest, test, expect } from "@rstest/core";
+import { describe, expect, rstest, test } from "@rstest/core";
 import { resolve } from "path";
 import { runRspack, SubresourceIntegrityPlugin } from "./test-utils";
 

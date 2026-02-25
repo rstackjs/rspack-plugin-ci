@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import webpack from "@rspack/core";
 import yn from "./helpers/yn";
-import { describe } from "@rstest/core";
+import { describe, expect, it, test } from "@rstest/core";
 import { stripVTControlCharacters as stripAnsi } from 'node:util';
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);

@@ -1,4 +1,5 @@
 import { getCompiler, source, compile } from "./helpers";
+import { expect, it } from "@rstest/core";
 
 it("should enforce esm for empty module without options.esModule", async () => {
 	expect.assertions(3);

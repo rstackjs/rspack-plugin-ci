@@ -10,7 +10,7 @@ import spawn from "cross-spawn";
 import { join, dirname } from "path";
 import { rimraf } from "rimraf";
 import { platform } from "os";
-import { rstest, test, describe } from "@rstest/core";
+import { describe, rstest, test } from "@rstest/core";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);

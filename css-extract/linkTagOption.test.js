@@ -1,6 +1,7 @@
 /* eslint-env browser */
 import path from "path";
 import { CssExtractRspackPlugin } from "@rspack/core";
+import { describe, expect, it } from "@rstest/core";
 import {
 	compile,
 	getCompiler,

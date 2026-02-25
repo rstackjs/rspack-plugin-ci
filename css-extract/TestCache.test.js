@@ -2,7 +2,7 @@
 import path from "path";
 import webpack from "@rspack/core";
 import del from "del";
-import { rstest, test, describe, afterEach } from "@rstest/core";
+import { afterEach, describe, expect, it, rstest, test } from "@rstest/core";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 

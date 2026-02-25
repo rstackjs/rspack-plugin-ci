@@ -8,7 +8,8 @@ import { rimrafSync } from "rimraf";
 import { createRequire } from "module";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import { rstest, test, describe } from "@rstest/core";
+import { beforeEach, describe, expect, it } from "@rstest/core";
+
 const require = createRequire(import.meta.url);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

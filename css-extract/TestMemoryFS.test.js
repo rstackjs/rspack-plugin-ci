@@ -1,6 +1,7 @@
 import path from "path";
 import { createFsFromVolume, Volume } from "memfs";
 import webpack from "@rspack/core";
+import { describe, expect, it } from "@rstest/core";
 
 const assetsNames = assets => assets.map(asset => asset.name);
 

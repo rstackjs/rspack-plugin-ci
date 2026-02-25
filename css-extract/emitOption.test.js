@@ -5,6 +5,7 @@ import path from "path";
 import webpack from "@rspack/core";
 const { CssExtractRspackPlugin: MiniCssExtractPlugin } = webpack;
 import del from "del";
+import { describe, expect, it } from "@rstest/core";
 
 import {
 	compile,

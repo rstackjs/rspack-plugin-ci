@@ -47,8 +47,7 @@
     "rimraf": "^5.0.10",
     "typescript": "^5.7.3",
     "webpack": "5.98.0",
-    "webpack-cli": "5.1.4",
-    "prettier-2": "npm:prettier@2.8.8"
+    "webpack-cli": "5.1.4"
   },
   "dependencies": {}
 }

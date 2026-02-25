@@ -5,7 +5,7 @@ import path from "node:path";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const rspackPath = require.resolve("@rspack/core");
-import { rstest, describe } from "@rstest/core";
+import { afterEach, beforeEach, describe, expect, it, rstest } from "@rstest/core";
 const hotModuleReplacement = (
   await import(path.join(rspackPath, "../cssExtractHmr.js"))
 ).cssReload;
@@ -55,7 +55,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getLoadEvent());
 
@@ -73,7 +73,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getLoadEvent());
 
@@ -92,7 +92,7 @@ describe("HMR", () => {
 
     expect(links2[0].visited).toBe(true);
     expect(links2[0].isLoaded).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links2[1].dispatchEvent(getLoadEvent());
 
@@ -112,7 +112,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getLoadEvent());
 
@@ -132,7 +132,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getLoadEvent());
 
@@ -153,7 +153,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getLoadEvent());
 
@@ -175,7 +175,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getLoadEvent());
 
@@ -197,7 +197,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getLoadEvent());
 
@@ -219,7 +219,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getLoadEvent());
 
@@ -241,7 +241,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getLoadEvent());
 
@@ -262,7 +262,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getLoadEvent());
 
@@ -280,7 +280,7 @@ describe("HMR", () => {
     const links = Array.prototype.slice.call(document.querySelectorAll("link"));
 
     expect(links[0].visited).toBe(true);
-    expect(document.head.innerHTML.replace(/"/g, '\\\"')).toMatchSnapshot();
+    expect(document.head.innerHTML).toMatchSnapshot();
 
     links[1].dispatchEvent(getErrorEvent());
 

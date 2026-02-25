@@ -1,5 +1,6 @@
 import path from "path";
 import { createRequire } from "module";
+import { describe, expect, it } from "@rstest/core";
 const require = createRequire(import.meta.url);
 const rspackPath = require.resolve("@rspack/core");
 const { normalizeUrl } = (await import(path.join(rspackPath, '../cssExtractHmr.js')));

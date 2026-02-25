@@ -1,6 +1,7 @@
 import path from "path";
 import { rspack as webpack } from "@rspack/core";
 import { createRequire } from "module";
+import { describe, expect, it } from "@rstest/core";
 const require = createRequire(import.meta.url);
 
 describe("IgnoreOrder", () => {

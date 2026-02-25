@@ -1,3 +1,4 @@
+import { describe, expect, it } from "@rstest/core";
 function stringifyLocal(value) {
   return typeof value === "function" ? value.toString() : JSON.stringify(value);
 }

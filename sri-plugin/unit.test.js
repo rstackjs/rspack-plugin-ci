@@ -9,7 +9,7 @@ import { resolve, dirname } from "path";
 import rspack from "@rspack/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { SubresourceIntegrityPlugin } from "@rspack/core";
-import { rstest, test, expect, describe } from "@rstest/core";
+import { describe, expect, rstest, test } from "@rstest/core";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);

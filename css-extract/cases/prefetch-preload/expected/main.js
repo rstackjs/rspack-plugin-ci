@@ -250,10 +250,6 @@ __webpack_require__.G = (chunkId) => {
   });
 }
 })();
-// webpack/runtime/rspack_version
-(() => {
-__webpack_require__.rv = () => ("2.0.0-beta.2")
-})();
 // webpack/runtime/auto_public_path
 (() => {
 var scriptUrl;
@@ -537,10 +533,6 @@ var chunkLoadingGlobal = self["rspackChunk"] = self["rspackChunk"] || [];
 chunkLoadingGlobal.forEach(__rspack_jsonp.bind(null, 0));
 chunkLoadingGlobal.push = __rspack_jsonp.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 
-})();
-// webpack/runtime/rspack_unique_id
-(() => {
-__webpack_require__.ruid = "bundler=rspack@2.0.0-beta.2";
 })();
 // webpack/runtime/chunk_prefetch_startup
 (() => {

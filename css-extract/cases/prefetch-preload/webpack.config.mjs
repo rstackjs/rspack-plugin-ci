@@ -3,6 +3,9 @@ import { CssExtractRspackPlugin } from '@rspack/core';
 
 export default {
   entry: "./index.js",
+  output: {
+    bundlerInfo: false
+  },
   module: {
     rules: [
       {

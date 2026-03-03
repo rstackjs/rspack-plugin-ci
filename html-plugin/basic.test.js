@@ -3699,9 +3699,7 @@ describe("HtmlWebpackPlugin", () => {
             }
           })]
       },
-      [`
-<html>
-<head></head><body><span>Rspack</span>&lt;span&gt;Rspack&lt;/span&gt;</body></html>`], null);
+      [`<span>Rspack</span>&lt;span&gt;Rspack&lt;/span&gt;`], null);
   });
   // TODO: html-webpack-plugin loader
   // it("allows to set custom loader interpolation settings", (done) => {

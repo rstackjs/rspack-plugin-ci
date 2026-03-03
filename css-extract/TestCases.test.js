@@ -390,6 +390,10 @@ describe("TestCases", () => {
 								const expectedWarnings = require(warningsFile);
 								expect(
 									stripAnsi(actualWarnings)
+										.split("\n")
+										.map(i => i.trim())
+										.filter(Boolean)
+										.join("\n")
 										.replace(/\(from .*\)?/g, "(from xxx)")
 										.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
 										.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
@@ -397,6 +401,10 @@ describe("TestCases", () => {
 										.trim()
 								).toBe(
 									stripAnsi(expectedWarnings)
+										.split("\n")
+										.map(i => i.trim())
+										.filter(Boolean)
+										.join("\n")
 										.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
 										.replace(/│     at .*\n/g, "")
 										.trim()

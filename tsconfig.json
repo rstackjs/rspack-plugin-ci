@@ -11,5 +11,5 @@
     "module": "nodenext",
     "moduleResolution": "nodenext"
   },
-  "include": ["src"]
+  "include": ["*.ts"]
 }

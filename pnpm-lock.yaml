@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@biomejs/biome':
-        specifier: 1.9.4
-        version: 1.9.4
       '@rspack/cli':
         specifier: 2.0.0
         version: 2.0.0(@rspack/core@2.0.0(@swc/helpers@0.5.21))
@@ -104,12 +101,6 @@ importers:
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
-      webpack:
-        specifier: 5.106.2
-        version: 5.106.2(webpack-cli@5.1.4)
-      webpack-cli:
-        specifier: 5.1.4
-        version: 5.1.4(webpack@5.106.2)
 
   sri-plugin/examples/basic:
     devDependencies:
@@ -915,59 +906,6 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
-  '@biomejs/biome@1.9.4':
-    resolution: {integrity: sha512-1rkd7G70+o9KkTn5KLmDYXihGoTaIGO9PIIN2ZB7UJxFrWw04CZHPYiMRjYsaDvVV7hP1dYNRLxSANLaBFGpog==}
-    engines: {node: '>=14.21.3'}
-    hasBin: true
-
-  '@biomejs/cli-darwin-arm64@1.9.4':
-    resolution: {integrity: sha512-bFBsPWrNvkdKrNCYeAp+xo2HecOGPAy9WyNyB/jKnnedgzl4W4Hb9ZMzYNbf8dMCGmUdSavlYHiR01QaYR58cw==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@biomejs/cli-darwin-x64@1.9.4':
-    resolution: {integrity: sha512-ngYBh/+bEedqkSevPVhLP4QfVPCpb+4BBe2p7Xs32dBgs7rh9nY2AIYUL6BgLw1JVXV8GlpKmb/hNiuIxfPfZg==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [darwin]
-
-  '@biomejs/cli-linux-arm64-musl@1.9.4':
-    resolution: {integrity: sha512-v665Ct9WCRjGa8+kTr0CzApU0+XXtRgwmzIf1SeKSGAv+2scAlW6JR5PMFo6FzqqZ64Po79cKODKf3/AAmECqA==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [linux]
-
-  '@biomejs/cli-linux-arm64@1.9.4':
-    resolution: {integrity: sha512-fJIW0+LYujdjUgJJuwesP4EjIBl/N/TcOX3IvIHJQNsAqvV2CHIogsmA94BPG6jZATS4Hi+xv4SkBBQSt1N4/g==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [linux]
-
-  '@biomejs/cli-linux-x64-musl@1.9.4':
-    resolution: {integrity: sha512-gEhi/jSBhZ2m6wjV530Yy8+fNqG8PAinM3oV7CyO+6c3CEh16Eizm21uHVsyVBEB6RIM8JHIl6AGYCv6Q6Q9Tg==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [linux]
-
-  '@biomejs/cli-linux-x64@1.9.4':
-    resolution: {integrity: sha512-lRCJv/Vi3Vlwmbd6K+oQ0KhLHMAysN8lXoCI7XeHlxaajk06u7G+UsFSO01NAs5iYuWKmVZjmiOzJ0OJmGsMwg==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [linux]
-
-  '@biomejs/cli-win32-arm64@1.9.4':
-    resolution: {integrity: sha512-tlbhLk+WXZmgwoIKwHIHEBZUwxml7bRJgk0X2sPyNR3S93cdRq6XulAZRQJ17FYGGzWne0fgrXBKpl7l4M87Hg==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [win32]
-
-  '@biomejs/cli-win32-x64@1.9.4':
-    resolution: {integrity: sha512-8Y5wMhVIPaWe6jw2H+KlEm4wP/f7EW3810ZLmDlrEEy5KvBsb9ECEfu/kMWD484ijfQ8+nIi0giMgu9g1UAuuA==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [win32]
-
   '@bufbuild/protobuf@2.11.0':
     resolution: {integrity: sha512-sBXGT13cpmPR5BMgHE6UEEfEaShh5Ror6rfN3yEK5si7QVrtZg8LEPQb0VVhiLRUslD2yLnXtnRzG035J/mZXQ==}
 
@@ -1006,14 +944,8 @@ packages:
   '@emnapi/core@1.10.0':
     resolution: {integrity: sha512-yq6OkJ4p82CAfPl0u9mQebQHKPJkY7WrIuk205cTYnYe+k2Z8YBh11FrbRG/H6ihirqcacOgl2BIO8oyMQLeXw==}
 
-  '@emnapi/core@1.9.2':
-    resolution: {integrity: sha512-UC+ZhH3XtczQYfOlu3lNEkdW/p4dsJ1r/bP7H8+rhao3TTTMO1ATq/4DdIi23XuGoFY+Cz0JmCbdVl0hz9jZcA==}
-
   '@emnapi/runtime@1.10.0':
     resolution: {integrity: sha512-ewvYlk86xUoGI0zQRNq/mC+16R1QeDlKQy21Ki3oSYXNgLb45GV1P6A0M+/s6nyCuNDqe5VpaY84BzXGwVbwFA==}
-
-  '@emnapi/runtime@1.9.2':
-    resolution: {integrity: sha512-3U4+MIWHImeyu1wnmVygh5WlgfYDtyf0k8AbLhMFxOipihf6nrWC4syIm/SwEeec0mNSafiiNnMJwbza/Is6Lw==}
 
   '@emnapi/wasi-threads@1.2.1':
     resolution: {integrity: sha512-uTII7OYF+/Mes/MrcIOYp5yOtSMLBWSIoLPpcgwipoiKbli6k322tcoFsxoIIxPDqW01SQGAgko4EzZi2BNv2w==}
@@ -4526,41 +4458,6 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@biomejs/biome@1.9.4':
-    optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 1.9.4
-      '@biomejs/cli-darwin-x64': 1.9.4
-      '@biomejs/cli-linux-arm64': 1.9.4
-      '@biomejs/cli-linux-arm64-musl': 1.9.4
-      '@biomejs/cli-linux-x64': 1.9.4
-      '@biomejs/cli-linux-x64-musl': 1.9.4
-      '@biomejs/cli-win32-arm64': 1.9.4
-      '@biomejs/cli-win32-x64': 1.9.4
-
-  '@biomejs/cli-darwin-arm64@1.9.4':
-    optional: true
-
-  '@biomejs/cli-darwin-x64@1.9.4':
-    optional: true
-
-  '@biomejs/cli-linux-arm64-musl@1.9.4':
-    optional: true
-
-  '@biomejs/cli-linux-arm64@1.9.4':
-    optional: true
-
-  '@biomejs/cli-linux-x64-musl@1.9.4':
-    optional: true
-
-  '@biomejs/cli-linux-x64@1.9.4':
-    optional: true
-
-  '@biomejs/cli-win32-arm64@1.9.4':
-    optional: true
-
-  '@biomejs/cli-win32-x64@1.9.4':
-    optional: true
-
   '@bufbuild/protobuf@2.11.0': {}
 
   '@csstools/color-helpers@5.0.2': {}
@@ -4591,18 +4488,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@emnapi/core@1.9.2':
-    dependencies:
-      '@emnapi/wasi-threads': 1.2.1
-      tslib: 2.8.1
-    optional: true
-
   '@emnapi/runtime@1.10.0':
-    dependencies:
-      tslib: 2.8.1
-    optional: true
-
-  '@emnapi/runtime@1.9.2':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -4854,8 +4740,8 @@ snapshots:
 
   '@napi-rs/wasm-runtime@1.0.7':
     dependencies:
-      '@emnapi/core': 1.9.2
-      '@emnapi/runtime': 1.9.2
+      '@emnapi/core': 1.10.0
+      '@emnapi/runtime': 1.10.0
       '@tybys/wasm-util': 0.10.1
     optional: true
 
@@ -5262,33 +5148,18 @@ snapshots:
       enhanced-resolve: 5.20.1
       parse5: 7.2.1
       pug: 3.0.3
-      webpack: 5.106.2(webpack-cli@5.1.4)
+      webpack: 5.106.2
       webpack-merge: 6.0.1
-
-  '@webpack-cli/configtest@2.1.1(webpack-cli@5.1.4)(webpack@5.106.2)':
-    dependencies:
-      webpack: 5.106.2(webpack-cli@5.1.4)
-      webpack-cli: 5.1.4(webpack@5.106.2)
 
   '@webpack-cli/configtest@2.1.1(webpack-cli@5.1.4)(webpack@5.98.0)':
     dependencies:
       webpack: 5.98.0(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.98.0)
 
-  '@webpack-cli/info@2.0.2(webpack-cli@5.1.4)(webpack@5.106.2)':
-    dependencies:
-      webpack: 5.106.2(webpack-cli@5.1.4)
-      webpack-cli: 5.1.4(webpack@5.106.2)
-
   '@webpack-cli/info@2.0.2(webpack-cli@5.1.4)(webpack@5.98.0)':
     dependencies:
       webpack: 5.98.0(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.98.0)
-
-  '@webpack-cli/serve@2.0.5(webpack-cli@5.1.4)(webpack@5.106.2)':
-    dependencies:
-      webpack: 5.106.2(webpack-cli@5.1.4)
-      webpack-cli: 5.1.4(webpack@5.106.2)
 
   '@webpack-cli/serve@2.0.5(webpack-cli@5.1.4)(webpack@5.98.0)':
     dependencies:
@@ -5730,7 +5601,7 @@ snapshots:
       semver: 7.7.1
     optionalDependencies:
       '@rspack/core': 2.0.0(@swc/helpers@0.5.21)
-      webpack: 5.106.2(webpack-cli@5.1.4)
+      webpack: 5.106.2
 
   css-select@4.3.0:
     dependencies:
@@ -6141,7 +6012,7 @@ snapshots:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.106.2(webpack-cli@5.1.4)
+      webpack: 5.106.2
 
   fill-range@7.1.1:
     dependencies:
@@ -6354,7 +6225,7 @@ snapshots:
     dependencies:
       html-minifier-terser: 5.1.1
       parse5: 6.0.1
-      webpack: 5.106.2(webpack-cli@5.1.4)
+      webpack: 5.106.2
 
   html-minifier-terser@5.1.1:
     dependencies:
@@ -6409,7 +6280,7 @@ snapshots:
       tapable: 2.2.1
     optionalDependencies:
       '@rspack/core': 2.0.0(@swc/helpers@0.5.21)
-      webpack: 5.106.2(webpack-cli@5.1.4)
+      webpack: 5.106.2
 
   htmlparser2@6.1.0:
     dependencies:
@@ -7573,7 +7444,7 @@ snapshots:
       '@rspack/core': 2.0.0(@swc/helpers@0.5.21)
       sass: 1.99.0
       sass-embedded: 1.99.0
-      webpack: 5.106.2(webpack-cli@5.1.4)
+      webpack: 5.106.2
 
   sass@1.99.0:
     dependencies:
@@ -7845,7 +7716,7 @@ snapshots:
       jest-worker: 27.5.1
       schema-utils: 4.3.3
       terser: 5.39.0
-      webpack: 5.106.2(webpack-cli@5.1.4)
+      webpack: 5.106.2
 
   terser@4.8.1:
     dependencies:
@@ -7995,23 +7866,6 @@ snapshots:
       webpack: 5.98.0(webpack-cli@5.1.4)
       webpack-sources: 1.4.3
 
-  webpack-cli@5.1.4(webpack@5.106.2):
-    dependencies:
-      '@discoveryjs/json-ext': 0.5.7
-      '@webpack-cli/configtest': 2.1.1(webpack-cli@5.1.4)(webpack@5.106.2)
-      '@webpack-cli/info': 2.0.2(webpack-cli@5.1.4)(webpack@5.106.2)
-      '@webpack-cli/serve': 2.0.5(webpack-cli@5.1.4)(webpack@5.106.2)
-      colorette: 2.0.20
-      commander: 10.0.1
-      cross-spawn: 7.0.6
-      envinfo: 7.14.0
-      fastest-levenshtein: 1.0.16
-      import-local: 3.2.0
-      interpret: 3.1.1
-      rechoir: 0.8.0
-      webpack: 5.106.2(webpack-cli@5.1.4)
-      webpack-merge: 5.10.0
-
   webpack-cli@5.1.4(webpack@5.98.0):
     dependencies:
       '@discoveryjs/json-ext': 0.5.7
@@ -8052,7 +7906,7 @@ snapshots:
 
   webpack-sources@3.3.4: {}
 
-  webpack@5.106.2(webpack-cli@5.1.4):
+  webpack@5.106.2:
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.8
@@ -8078,8 +7932,6 @@ snapshots:
       terser-webpack-plugin: 5.4.0(webpack@5.106.2)
       watchpack: 2.5.1
       webpack-sources: 3.3.4
-    optionalDependencies:
-      webpack-cli: 5.1.4(webpack@5.106.2)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild

@@ -43,11 +43,8 @@
     "fastify-static": "^4.7.0",
     "get-port": "^5.1.1",
     "puppeteer": "^24.42.0",
-    "@biomejs/biome": "1.9.4",
     "rimraf": "^5.0.10",
-    "typescript": "^5.9.3",
-    "webpack": "5.106.2",
-    "webpack-cli": "5.1.4"
+    "typescript": "^5.9.3"
   },
   "dependencies": {}
 }

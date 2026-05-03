@@ -14,10 +14,10 @@
   "packageManager": "pnpm@9.15.9",
   "repository": "web-infra-dev/rspack-plugin-ci",
   "devDependencies": {
-    "@rspack/core": "2.0.0",
-    "@rspack/cli": "2.0.0",
+    "@rspack/core": "2.0.1",
+    "@rspack/cli": "2.0.1",
     "@webdiscus/pug-loader": "^2.11.1",
-    "@rstest/core": "^0.9.9",
+    "@rstest/core": "^0.9.10",
     "@types/cross-spawn": "^6.0.6",
     "@types/tmp": "^0.2.6",
     "before-build-webpack": "0.2.15",

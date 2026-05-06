@@ -144,7 +144,7 @@ describe("sri-plugin/unit", () => {
     expect(compilation.errors.length).toBe(1);
     expect(compilation.warnings.length).toBe(0);
     expect(compilation.errors[0]?.message).toMatch(
-      /InvalidArg, Given napi value is not an array on RawSubresourceIntegrityPluginOptions.hashFuncNames/
+      /ArrayExpected, Failed to get Array length on RawSubresourceIntegrityPluginOptions.hashFuncNames/
     );
   });
 

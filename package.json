@@ -16,8 +16,8 @@
   "packageManager": "pnpm@9.15.9",
   "repository": "web-infra-dev/rspack-plugin-ci",
   "devDependencies": {
-    "@rspack/core": "2.0.1",
-    "@rspack/cli": "2.0.1",
+    "@rspack/core": "2.0.2",
+    "@rspack/cli": "2.0.2",
     "@webdiscus/pug-loader": "^2.11.1",
     "@rstest/core": "^0.9.10",
     "@rslint/core": "^0.5.1",

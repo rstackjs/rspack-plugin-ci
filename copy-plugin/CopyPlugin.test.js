@@ -802,16 +802,12 @@ describe("CopyPlugin", () => {
       expect(stats.toJson().errors).toMatchSnapshot("errors");
       expect(stats.toJson().warnings).toMatchSnapshot("warnings");
 
-      await new Promise(async (resolve) => {
-        const { stats: newStats } = await compile(compiler);
+      const { stats: newStats } = await compile(compiler);
 
-        expect(newStats.compilation.emittedAssets.size).toBe(0);
-        expect(readAssets(compiler, newStats)).toMatchSnapshot("assets");
-        expect(newstats.toJson().errors).toMatchSnapshot("errors");
-        expect(newstats.toJson().warnings).toMatchSnapshot("warnings");
-
-        resolve();
-      });
+      expect(newStats.compilation.emittedAssets.size).toBe(0);
+      expect(readAssets(compiler, newStats)).toMatchSnapshot("assets");
+      expect(newStats.toJson().errors).toMatchSnapshot("errors");
+      expect(newStats.toJson().warnings).toMatchSnapshot("warnings");
     });
 
     it('should work with the "filesystem" cache', async () => {

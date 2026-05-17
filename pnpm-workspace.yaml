@@ -1,2 +1,3 @@
-packages:
-  - "sri-plugin/examples/*"
+allowBuilds:
+  core-js: false
+  puppeteer: false

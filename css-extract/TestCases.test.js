@@ -63,7 +63,7 @@ function getHashes(webpackStats) {
 			acc[name] = i.info.fullhash.join("");
 		}
 		if (i.info?.contenthash?.length) {
-			for (const hash of i.info?.contenthash) {
+			for (const hash of i.info.contenthash) {
 				name = `__CONTENT_${normalizePath(name.replace(`$${hash}$`, "DH").replace(hash, "H"))}_HASH__`;
 			}
 			acc[name] = i.info.contenthash.join("");
@@ -397,7 +397,7 @@ describe("TestCases", () => {
 										.replace(/\(from .*\)?/g, "(from xxx)")
 										.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
 										.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
-										.replace(/│     at .*\n/g, "")
+										.replace(/│ {5}at .*\n/g, "")
 										.trim()
 								).toBe(
 									stripAnsi(expectedWarnings)
@@ -406,7 +406,7 @@ describe("TestCases", () => {
 										.filter(Boolean)
 										.join("\n")
 										.replace(/\*\scss\s(.*)?!/g, "* css /path/to/loader.js!")
-										.replace(/│     at .*\n/g, "")
+										.replace(/│ {5}at .*\n/g, "")
 										.trim()
 								);
 							}

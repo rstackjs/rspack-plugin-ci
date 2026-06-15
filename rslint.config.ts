@@ -7,6 +7,7 @@ export default defineConfig([
     files: ['css-extract/cases/**/expected/**/*.js'],
     rules: {
       'no-constant-condition': 'off',
+      'no-useless-escape': 'off',
     },
   },
 ]);

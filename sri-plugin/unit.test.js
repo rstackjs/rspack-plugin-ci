@@ -344,4 +344,3 @@ describe("sri-plugin/unit", () => {
     );
   });
 });
-

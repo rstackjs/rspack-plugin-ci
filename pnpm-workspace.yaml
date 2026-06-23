@@ -4,3 +4,26 @@ packages:
 allowBuilds:
   core-js: false
   puppeteer: false
+
+minimumReleaseAgeExclude:
+  - '@rspack-canary/binding-darwin-arm64@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/binding-darwin-x64@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/binding-linux-arm64-gnu@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/binding-linux-arm64-musl@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/binding-linux-x64-gnu@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/binding-linux-x64-musl@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/binding-wasm32-wasi@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/binding-win32-arm64-msvc@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/binding-win32-ia32-msvc@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/binding-win32-x64-msvc@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/binding@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/cli@2.1.0-canary-d00c9279-20260622184513'
+  - '@rspack-canary/core@2.1.0-canary-d00c9279-20260622184513'
+
+overrides:
+  "@rspack/cli": "npm:@rspack-canary/cli@2.1.0-canary-d00c9279-20260622184513"
+  "@rspack/core": "npm:@rspack-canary/core@2.1.0-canary-d00c9279-20260622184513"
+
+peerDependencyRules:
+  allowAny:
+    - "@rspack/*"

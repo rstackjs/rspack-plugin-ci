@@ -3603,7 +3603,7 @@ describe("HtmlWebpackPlugin", () => {
         experiments: { outputModule: true },
         plugins: [new HtmlWebpackPlugin({})],
       },
-      ['<script defer src="index_bundle.js"></script>'],
+      ['<script src="index_bundle.js" type="module"></script>'],
       null,
     );
   });

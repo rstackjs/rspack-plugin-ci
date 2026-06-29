@@ -13,6 +13,8 @@ import {
 } from "./helpers/index";
 
 describe("insert option", () => {
+	const outputRoot = path.resolve(import.meta.dirname, "js", "insert-option");
+
 	it(`should work without insert option`, async () => {
 		const compiler = getCompiler(
 			"insert.js",
@@ -21,7 +23,7 @@ describe("insert option", () => {
 				mode: "none",
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -49,7 +51,7 @@ describe("insert option", () => {
 				mode: "none",
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -78,7 +80,7 @@ describe("insert option", () => {
 				mode: "none",
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [

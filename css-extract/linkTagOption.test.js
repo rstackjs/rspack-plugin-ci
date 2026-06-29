@@ -11,6 +11,8 @@ import {
 } from "./helpers/index.js";
 
 describe("linkType option", () => {
+	const outputRoot = path.resolve(import.meta.dirname, "js", "link-tag-option");
+
 	it(`should work without linkType option`, async () => {
 		const compiler = getCompiler(
 			"attributes.js",
@@ -18,7 +20,7 @@ describe("linkType option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -45,7 +47,7 @@ describe("linkType option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -73,7 +75,7 @@ describe("linkType option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [

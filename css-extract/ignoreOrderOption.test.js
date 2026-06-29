@@ -5,6 +5,8 @@ import { describe, expect, it } from "@rstest/core";
 const require = createRequire(import.meta.url);
 
 describe("IgnoreOrder", () => {
+	const outputRoot = path.resolve(import.meta.dirname, "js", "ignore-order");
+
 	it("should emit warnings", async () => {
 		const casesDirectory = path.resolve(import.meta.dirname, "cases");
 		const directoryForCase = path.resolve(casesDirectory, "ignoreOrderFalse");
@@ -16,7 +18,7 @@ describe("IgnoreOrder", () => {
 		const compiler = webpack({
 			...webpackConfig,
 			output: {
-				path: path.join(import.meta.dirname, "js", "ignoreOrderTest", "ignoreOrderFalse")
+				path: path.join(outputRoot, "ignoreOrderFalse")
 			},
 			mode: "development",
 			context: directoryForCase,
@@ -44,7 +46,7 @@ describe("IgnoreOrder", () => {
 		const compiler = webpack({
 			...webpackConfig,
 			output: {
-				path: path.join(import.meta.dirname, "js", "ignoreOrderTest", "ignoreOrder")
+				path: path.join(outputRoot, "ignoreOrder")
 			},
 			mode: "development",
 			context: directoryForCase,

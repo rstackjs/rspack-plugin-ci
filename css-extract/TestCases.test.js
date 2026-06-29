@@ -161,7 +161,7 @@ function compareDirectory(actual, expected, webpackStats) {
 
 describe("TestCases", () => {
 	const casesDirectory = path.resolve(import.meta.dirname, "cases");
-	const outputDirectory = path.resolve(import.meta.dirname, "js");
+	const outputDirectory = path.resolve(import.meta.dirname, "js", "test-cases");
 	const tests = fs.readdirSync(casesDirectory).filter(test => test !== "package.json").filter(test => {
 		const testDirectory = path.join(casesDirectory, test);
 		const filterPath = path.join(testDirectory, "test.filter.js");

@@ -16,6 +16,8 @@ import {
 } from "./helpers/index";
 
 describe("emit option", () => {
+	const outputRoot = path.resolve(import.meta.dirname, "js", "emit-option");
+
 	it('should work without emit option', async () => {
 		const compiler = getCompiler(
 			"style-url.js",
@@ -23,7 +25,7 @@ describe("emit option", () => {
 			{
 				mode: "none",
 				output: {
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 
@@ -52,7 +54,7 @@ describe("emit option", () => {
 			{
 				mode: "none",
 				output: {
-					path: path.resolve(import.meta.dirname, "../outputs")
+					path: outputRoot
 				},
 
 				plugins: [
@@ -80,7 +82,7 @@ describe("emit option", () => {
 			{
 				mode: "none",
 				output: {
-					path: path.resolve(import.meta.dirname, "../outputs")
+					path: outputRoot
 				},
 				plugins: [
 					new MiniCssExtractPlugin({
@@ -104,7 +106,7 @@ describe("emit option", () => {
 			{},
 			{
 				output: {
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				module: {
@@ -171,7 +173,7 @@ describe("emit option", () => {
 			}
 		}
 
-		const outputPath = path.resolve(import.meta.dirname, "./js/cache-memory");
+		const outputPath = path.resolve(outputRoot, "cache-memory");
 		const webpackConfig = {
 			mode: "development",
 			context: path.resolve(import.meta.dirname, "./fixtures"),
@@ -280,7 +282,7 @@ describe("emit option", () => {
 	});
 
 	it('should work with the "memory" cache and disabled "emit" option', async () => {
-		const outputPath = path.resolve(import.meta.dirname, "./js/cache-memory");
+		const outputPath = path.resolve(outputRoot, "cache-memory");
 		const webpackConfig = {
 			mode: "development",
 			context: path.resolve(import.meta.dirname, "fixtures"),
@@ -394,7 +396,7 @@ describe("emit option", () => {
 			}
 		}
 
-		const outputPath = path.resolve(import.meta.dirname, "./js/cache-memory");
+		const outputPath = path.resolve(outputRoot, "cache-memory");
 		const modifyAsset = path.resolve(import.meta.dirname, "fixtures", "style-url.css");
 		const modifyAssetContent = fs.readFileSync(modifyAsset);
 		const webpackConfig = {

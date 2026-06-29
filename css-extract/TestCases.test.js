@@ -11,26 +11,12 @@ const { CssExtractRspackPlugin } = webpack;
 const UPDATE_TEST = process.env.UPDATE_SNAPSHOT === "true";
 
 function clearDirectory(dirPath) {
-	let files;
-
-	try {
-		files = fs.readdirSync(dirPath);
-	} catch (e) {
-		return;
-	}
-	if (files.length > 0) {
-		for (let i = 0; i < files.length; i++) {
-			const filePath = `${dirPath}/${files[i]}`;
-
-			if (fs.statSync(filePath).isFile()) {
-				fs.unlinkSync(filePath);
-			} else {
-				clearDirectory(filePath);
-			}
-		}
-	}
-
-	fs.rmdirSync(dirPath);
+	fs.rmSync(dirPath, {
+		recursive: true,
+		force: true,
+		maxRetries: 5,
+		retryDelay: 100,
+	});
 }
 
 const hashRE = /(.*)\.\$.*\$\.(.*)/;

@@ -7,6 +7,8 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 describe("TestCache", () => {
+	const outputRoot = path.resolve(import.meta.dirname, "js", "test-cache");
+
 	afterEach(() => {
 		rstest.clearAllMocks();
 	});
@@ -19,7 +21,7 @@ describe("TestCache", () => {
 			directoryForCase,
 			"webpack.config.mjs"
 		))).default;
-		const outputPath = path.resolve(import.meta.dirname, "js/cache-false");
+		const outputPath = path.resolve(outputRoot, "cache-false");
 
 		await del([outputPath]);
 
@@ -119,7 +121,7 @@ describe("TestCache", () => {
 			directoryForCase,
 			"webpack.config.mjs"
 		))).default;
-		const outputPath = path.resolve(import.meta.dirname, "js/cache-memory");
+		const outputPath = path.resolve(outputRoot, "cache-memory");
 
 		await del([outputPath]);
 
@@ -219,10 +221,11 @@ describe("TestCache", () => {
 			directoryForCase,
 			"webpack.config.mjs"
 		))).default;
-		const outputPath = path.resolve(import.meta.dirname, "js/cache-filesystem");
+		const outputPath = path.resolve(outputRoot, "cache-filesystem");
 		const fileSystemCacheDirectory = path.resolve(
-			import.meta.dirname,
-			"./js/.cache/type-filesystem"
+			outputRoot,
+			".cache",
+			"type-filesystem"
 		);
 
 		await del([outputPath, fileSystemCacheDirectory]);
@@ -327,10 +330,11 @@ describe("TestCache", () => {
 			directoryForCase,
 			"webpack.config.mjs"
 		))).default;
-		const outputPath = path.resolve(import.meta.dirname, "js/cache-filesystem-1");
+		const outputPath = path.resolve(outputRoot, "cache-filesystem-1");
 		const fileSystemCacheDirectory = path.resolve(
-			import.meta.dirname,
-			"./js/.cache/type-filesystem-1"
+			outputRoot,
+			".cache",
+			"type-filesystem-1"
 		);
 
 		await del([outputPath, fileSystemCacheDirectory]);
@@ -433,12 +437,13 @@ describe("TestCache", () => {
 			"webpack.config.mjs"
 		))).default;
 		const outputPath = path.resolve(
-			import.meta.dirname,
-			"js/cache-filesystem-asset-modules"
+			outputRoot,
+			"cache-filesystem-asset-modules"
 		);
 		const fileSystemCacheDirectory = path.resolve(
-			import.meta.dirname,
-			"./js/.cache/type-filesystem"
+			outputRoot,
+			".cache",
+			"type-filesystem"
 		);
 
 		await del([outputPath, fileSystemCacheDirectory]);
@@ -544,12 +549,13 @@ describe("TestCache", () => {
 			"webpack.config.mjs"
 		))).default;
 		const outputPath = path.resolve(
-			import.meta.dirname,
-			"js/cache-filesystem-file-loader"
+			outputRoot,
+			"cache-filesystem-file-loader"
 		);
 		const fileSystemCacheDirectory = path.resolve(
-			import.meta.dirname,
-			"./js/.cache/type-filesystem"
+			outputRoot,
+			".cache",
+			"type-filesystem"
 		);
 
 		await del([outputPath, fileSystemCacheDirectory]);

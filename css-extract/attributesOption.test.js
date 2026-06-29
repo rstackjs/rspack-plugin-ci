@@ -13,6 +13,8 @@ import {
 } from "./helpers/index.js";
 
 describe("attributes option", () => {
+	const outputRoot = path.resolve(import.meta.dirname, "js", "attributes-option");
+
 	it(`should work without attributes option`, async () => {
 		const compiler = getCompiler(
 			"attributes.js",
@@ -20,7 +22,7 @@ describe("attributes option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -48,7 +50,7 @@ describe("attributes option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [

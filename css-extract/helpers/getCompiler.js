@@ -11,7 +11,7 @@ export default (fixture, loaderOptions = {}, config = {}) => {
 		context: path.resolve(import.meta.dirname, "../fixtures"),
 		entry: path.resolve(import.meta.dirname, "../fixtures", fixture),
 		output: {
-			path: path.resolve(import.meta.dirname, "../outputs"),
+			path: path.resolve(import.meta.dirname, "..", "js", "helpers"),
 			filename: "[name].bundle.js",
 			chunkFilename: "[name].chunk.js"
 		},

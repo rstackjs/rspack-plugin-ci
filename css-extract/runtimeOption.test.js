@@ -11,6 +11,8 @@ import {
 } from "./helpers/index.js";
 
 describe("noRuntime option", () => {
+	const outputRoot = path.resolve(import.meta.dirname, "js", "runtime-option");
+
 	it.only("should work without the 'runtime' option", async () => {
 		const compiler = getCompiler(
 			"attributes.js",
@@ -18,7 +20,7 @@ describe("noRuntime option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -47,7 +49,7 @@ describe("noRuntime option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [
@@ -79,7 +81,7 @@ describe("noRuntime option", () => {
 			{
 				output: {
 					publicPath: "",
-					path: path.resolve(import.meta.dirname, "../outputs"),
+					path: outputRoot,
 					filename: "[name].bundle.js"
 				},
 				plugins: [

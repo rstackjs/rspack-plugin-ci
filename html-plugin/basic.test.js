@@ -3590,7 +3590,7 @@ describe("HtmlWebpackPlugin", () => {
     );
   });
 
-  it("should allow to use experiments:{outputModule:true}", async () => {
+  it("should allow to use output:{module:true}", async () => {
     await testHtmlPlugin(
       {
         mode: "production",
@@ -3600,7 +3600,6 @@ describe("HtmlWebpackPlugin", () => {
           filename: "index_bundle.js",
           module: true,
         },
-        experiments: { outputModule: true },
         plugins: [new HtmlWebpackPlugin({})],
       },
       ['<script src="index_bundle.js" type="module"></script>'],

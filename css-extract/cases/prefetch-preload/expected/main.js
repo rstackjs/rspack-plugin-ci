@@ -286,7 +286,7 @@ __webpack_require__.p = scriptUrl;
 // webpack/runtime/css loading
 (() => {
 if (typeof document === "undefined") return;
-var createStylesheet = function (
+var extractCssCreateStylesheet = function (
 	chunkId, fullhref, oldTag, resolve, reject, fetchPriority
 ) {
 	var linkTag = document.createElement("link");
@@ -326,7 +326,7 @@ linkTag.href = fullhref;
           }
 	return linkTag;
 }
-var findStylesheet = function (href, fullhref) {
+var extractCssFindStylesheet = function (href, fullhref) {
 	var existingLinkTags = document.getElementsByTagName("link");
 	for (var i = 0; i < existingLinkTags.length; i++) {
 		var tag = existingLinkTags[i];
@@ -345,12 +345,12 @@ var findStylesheet = function (href, fullhref) {
 	}
 }
 
-var loadStylesheet = function (chunkId, fetchPriority) {
+var extractCssLoadStylesheet = function (chunkId, fetchPriority) {
 	return new Promise(function (resolve, reject) {
 		var href = __webpack_require__.miniCssF(chunkId);
 		var fullhref = __webpack_require__.p + href;
-		if (findStylesheet(href, fullhref)) return resolve();
-		createStylesheet(chunkId, fullhref, null, resolve, reject, fetchPriority);
+		if (extractCssFindStylesheet(href, fullhref)) return resolve();
+		extractCssCreateStylesheet(chunkId, fullhref, null, resolve, reject, fetchPriority);
 	})
 }
 
@@ -372,7 +372,7 @@ __webpack_require__.f.miniCss = function (chunkId, promises, fetchPriority) {
 	if (installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId])
 	else if (installedCssChunks[chunkId] !== 0 && cssChunks[chunkId])
 		promises.push(
-			installedCssChunks[chunkId] = loadStylesheet(chunkId, fetchPriority).then(
+			installedCssChunks[chunkId] = extractCssLoadStylesheet(chunkId, fetchPriority).then(
 				function () {
 					installedCssChunks[chunkId] = 0;
 				},
@@ -424,12 +424,12 @@ link.href = __webpack_require__.p + __webpack_require__.miniCssF(chunkId);
       // object to store loaded and loading chunks
       // undefined = chunk not loaded, null = chunk preloaded/prefetched
       // [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-      var installedChunks = {"main": 0,};
+      var jsonpInstalledChunks = {"main": 0,};
       
         __webpack_require__.f.j = function (chunkId, promises) {
           // JSONP chunk loading for javascript
-var installedChunkData = __webpack_require__.o(installedChunks, chunkId)
-	? installedChunks[chunkId]
+var installedChunkData = __webpack_require__.o(jsonpInstalledChunks, chunkId)
+	? jsonpInstalledChunks[chunkId]
 	: undefined;
 if (installedChunkData !== 0) {
 	// 0 means "already installed".
@@ -440,7 +440,7 @@ if (installedChunkData !== 0) {
 	} else {
 		if (true) {
 			// setup Promise in chunk cache
-			var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
+			var promise = new Promise((resolve, reject) => (installedChunkData = jsonpInstalledChunks[chunkId] = [resolve, reject]));
 			promises.push((installedChunkData[2] = promise));
 
 			// start chunk loading
@@ -448,9 +448,9 @@ if (installedChunkData !== 0) {
 			// create error before stack unwound to get useful stacktrace later
 			var error = new Error();
 			var loadingEnded = function (event) {
-				if (__webpack_require__.o(installedChunks, chunkId)) {
-					installedChunkData = installedChunks[chunkId];
-					if (installedChunkData !== 0) installedChunks[chunkId] = undefined;
+				if (__webpack_require__.o(jsonpInstalledChunks, chunkId)) {
+					installedChunkData = jsonpInstalledChunks[chunkId];
+					if (installedChunkData !== 0) jsonpInstalledChunks[chunkId] = undefined;
 					if (installedChunkData) {
 						var errorType =
 							event && (event.type === 'load' ? 'missing' : event.type);
@@ -477,8 +477,8 @@ if (installedChunkData !== 0) {
 
         }
         __webpack_require__.F.j = (chunkId) => {
-  if ((!__webpack_require__.o(installedChunks, chunkId) || installedChunks[chunkId] === undefined) && true) {
-    installedChunks[chunkId] = null;
+  if ((!__webpack_require__.o(jsonpInstalledChunks, chunkId) || jsonpInstalledChunks[chunkId] === undefined) && true) {
+    jsonpInstalledChunks[chunkId] = null;
     var link = document.createElement('link');
 
 if (__webpack_require__.nc) {
@@ -492,8 +492,8 @@ link.href = __webpack_require__.p + __webpack_require__.u(chunkId);
   }
 };
 __webpack_require__.H.j = (chunkId) => {
-  if ((!__webpack_require__.o(installedChunks, chunkId) || installedChunks[chunkId] === undefined) && true) {
-    installedChunks[chunkId] = null;
+  if ((!__webpack_require__.o(jsonpInstalledChunks, chunkId) || jsonpInstalledChunks[chunkId] === undefined) && true) {
+    jsonpInstalledChunks[chunkId] = null;
     var link = document.createElement('link');
 
 if (__webpack_require__.nc) {
@@ -509,14 +509,14 @@ link.href = __webpack_require__.p + __webpack_require__.u(chunkId);
     document.head.appendChild(link);
   }
 };
-__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+__webpack_require__.O.j = (chunkId) => (jsonpInstalledChunks[chunkId] === 0);
 // install a JSONP callback for chunk loading
 var __rspack_jsonp = (parentChunkLoadingFunction, data) => {
 	var [chunkIds, moreModules, runtime] = data;
 	// add "moreModules" to the modules object,
 	// then flag all "chunkIds" as loaded and fire callback
 	var moduleId, chunkId, i = 0;
-	if (chunkIds.some((id) => (installedChunks[id] !== 0))) {
+	if (chunkIds.some((id) => (jsonpInstalledChunks[id] !== 0))) {
 		for (moduleId in moreModules) {
 			if (__webpack_require__.o(moreModules, moduleId)) {
 				__webpack_require__.m[moduleId] = moreModules[moduleId];
@@ -528,21 +528,21 @@ var __rspack_jsonp = (parentChunkLoadingFunction, data) => {
 	for (; i < chunkIds.length; i++) {
 		chunkId = chunkIds[i];
 		if (
-			__webpack_require__.o(installedChunks, chunkId) &&
-			installedChunks[chunkId]
+			__webpack_require__.o(jsonpInstalledChunks, chunkId) &&
+			jsonpInstalledChunks[chunkId]
 		) {
-			installedChunks[chunkId][0]();
+			jsonpInstalledChunks[chunkId][0]();
 		}
-		installedChunks[chunkId] = 0;
+		jsonpInstalledChunks[chunkId] = 0;
 	}
 	
 	return __webpack_require__.O(result);
 	
 };
 
-var chunkLoadingGlobal = self["rspackChunk"] = self["rspackChunk"] || [];
-chunkLoadingGlobal.forEach(__rspack_jsonp.bind(null, 0));
-chunkLoadingGlobal.push = __rspack_jsonp.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+var jsonpChunkLoadingGlobal = self["rspackChunk"] = self["rspackChunk"] || [];
+jsonpChunkLoadingGlobal.forEach(__rspack_jsonp.bind(null, 0));
+jsonpChunkLoadingGlobal.push = __rspack_jsonp.bind(null, jsonpChunkLoadingGlobal.push.bind(jsonpChunkLoadingGlobal));
 
 })();
 // webpack/runtime/chunk_prefetch_startup
@@ -553,21 +553,23 @@ __webpack_require__.O(0, ["main"], () => {
 })();
 // webpack/runtime/chunk_prefetch_trigger
 (() => {
-var chunkToChildrenMap = {"b":["b1","b3"]};
+var chunkPrefetchChunkToChildrenMap = {"b":["b1","b3"]};
 __webpack_require__.f.prefetch = (chunkId, promises) => {
   Promise.all(promises).then(() => {
-    var chunks = chunkToChildrenMap[chunkId];
+    var chunks = chunkPrefetchChunkToChildrenMap[chunkId];
     Array.isArray(chunks) && chunks.map(__webpack_require__.E);
   });
 };
+
 })();
 // webpack/runtime/chunk_preload_trigger
 (() => {
-var chunkToChildrenMap = {"b":["b2"],"c":["c1","c2"]};
+var chunkPreloadChunkToChildrenMap = {"b":["b2"],"c":["c1","c2"]};
 __webpack_require__.f.preload =  (chunkId) => {
-  var chunks = chunkToChildrenMap[chunkId];
+  var chunks = chunkPreloadChunkToChildrenMap[chunkId];
   Array.isArray(chunks) && chunks.map(__webpack_require__.G);
 };
+
 })();
 // module factories are used so entry inlining is disabled
 // startup

@@ -22,6 +22,8 @@ minimumReleaseAgeExclude:
   - '@rspack-canary/cli@2.1.4-canary-77f56582-20260708031112'
   - '@rspack-canary/core@2.1.4-canary-77f56582-20260708031112'
 
+  - typescript
+  - '@typescript/*'
 overrides:
   "@rspack/cli": "npm:@rspack-canary/cli@2.1.4-canary-77f56582-20260708031112"
   "@rspack/core": "npm:@rspack-canary/core@2.1.4-canary-77f56582-20260708031112"

@@ -12,7 +12,7 @@
     "htmlparser2": "^8.0.2",
     "mini-css-extract-plugin": "^1.6.2",
     "nyc": "*",
-    "webpack": "5.98.0",
+    "webpack": "5.104.1",
     "webpack-cli": "5.1.4"
   }
 }

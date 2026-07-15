@@ -10,7 +10,7 @@
     "html-webpack-plugin": "^5.6.7",
     "mini-css-extract-plugin": "^1.6.2",
     "nyc": "*",
-    "webpack": "5.104.1",
+    "webpack": "5.108.4",
     "webpack-assets-manifest": "3.1.1",
     "webpack-cli": "5.1.4",
     "webpack-fix-style-only-entries": "0.6.1"

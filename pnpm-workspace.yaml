@@ -6,6 +6,9 @@ allowBuilds:
   puppeteer: false
 
 minimumReleaseAgeExclude:
+  - '@rsbuild/*'
+  - '@rslib/*'
+  - '@rslint/*'
   - '@rspack-canary/binding-darwin-arm64@2.1.4-canary-77f56582-20260708031112'
   - '@rspack-canary/binding-darwin-x64@2.1.4-canary-77f56582-20260708031112'
   - '@rspack-canary/binding-linux-arm64-gnu@2.1.4-canary-77f56582-20260708031112'
@@ -21,9 +24,14 @@ minimumReleaseAgeExclude:
   - '@rspack-canary/binding@2.1.4-canary-77f56582-20260708031112'
   - '@rspack-canary/cli@2.1.4-canary-77f56582-20260708031112'
   - '@rspack-canary/core@2.1.4-canary-77f56582-20260708031112'
-
-  - typescript
+  - '@rspack/*'
+  - '@rspress/*'
+  - '@rstackjs/*'
+  - '@rstest/*'
   - '@typescript/*'
+  - 'rsbuild-plugin-*'
+  - rstack
+  - typescript
 overrides:
   "@rspack/cli": "npm:@rspack-canary/cli@2.1.4-canary-fd2e0dd0-20260708175515"
   "@rspack/core": "npm:@rspack-canary/core@2.1.4-canary-fd2e0dd0-20260708175515"

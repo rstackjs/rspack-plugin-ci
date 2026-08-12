@@ -10,4 +10,16 @@ export default defineConfig([
       'no-useless-escape': 'off',
     },
   },
+  {
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+      '@typescript-eslint/no-this-alias': 'off',
+      '@typescript-eslint/no-unnecessary-type-constraint': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
+      'no-redeclare': 'off',
+      'no-undef': 'off',
+      'no-useless-assignment': 'off',
+      'preserve-caught-error': 'off',
+    },
+  },
 ]);

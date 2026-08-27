@@ -17,7 +17,6 @@ export default defineConfig([
       '@typescript-eslint/no-unnecessary-type-constraint': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
       'no-redeclare': 'off',
-      'no-undef': 'off',
       'no-useless-assignment': 'off',
       'preserve-caught-error': 'off',
     },

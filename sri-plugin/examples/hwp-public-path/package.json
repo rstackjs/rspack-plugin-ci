@@ -6,7 +6,7 @@
   "private": true,
   "devDependencies": {
     "css-select": "^5.2.2",
-    "expect": "^26.6.2",
+    "expect": "^30.5.1",
     "html-webpack-plugin": "^5.6.7",
     "htmlparser2": "^8.0.2",
     "nyc": "*",

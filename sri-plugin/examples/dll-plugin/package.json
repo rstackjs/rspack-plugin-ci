@@ -6,7 +6,7 @@
   "private": true,
   "devDependencies": {
     "before-build-webpack": "^0.2.15",
-    "expect": "^26.6.2",
+    "expect": "^30.5.1",
     "html-webpack-plugin": "^5.6.7",
     "nyc": "*",
     "webpack": "5.108.4",

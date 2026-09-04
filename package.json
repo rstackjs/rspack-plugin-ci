@@ -25,7 +25,7 @@
     "before-build-webpack": "0.2.15",
     "cross-spawn": "^7.0.6",
     "css-loader": "^7.1.4",
-    "del": "^6.1.1",
+    "del": "^8.0.1",
     "expect": "^30.4.1",
     "fastify": "^3.29.5",
     "fastify-graceful-shutdown": "^4.0.1",

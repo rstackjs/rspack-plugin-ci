@@ -1,5 +1,3 @@
 {
-  "recommendations": [
-    "rstack.rslint"
-  ]
+  "recommendations": ["rstack.rstack"]
 }

@@ -1,2 +1,2 @@
-import process from "process";
+import process from 'process';
 export default process;

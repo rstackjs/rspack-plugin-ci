@@ -1,654 +1,644 @@
-
-import path from "path";
-import webpack from "@rspack/core";
-import del from "del";
-import { afterEach, describe, expect, it, rstest, test } from "@rstest/core";
-import { createRequire } from "module";
+import path from 'path';
+import webpack from '@rspack/core';
+import del from 'del';
+import { afterEach, describe, expect, it, rstest, test } from 'rstack/test';
+import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
-describe("TestCache", () => {
-	const outputRoot = path.resolve(import.meta.dirname, "js", "test-cache");
+describe('TestCache', () => {
+  const outputRoot = path.resolve(import.meta.dirname, 'js', 'test-cache');
 
-	afterEach(() => {
-		rstest.clearAllMocks();
-	});
+  afterEach(() => {
+    rstest.clearAllMocks();
+  });
 
-	it("should work without cache", async () => {
-		const casesDirectory = path.resolve(import.meta.dirname, "cases");
-		const directoryForCase = path.resolve(casesDirectory, "asset-modules");
-		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = (await import(path.resolve(
-			directoryForCase,
-			"webpack.config.mjs"
-		))).default;
-		const outputPath = path.resolve(outputRoot, "cache-false");
+  it('should work without cache', async () => {
+    const casesDirectory = path.resolve(import.meta.dirname, 'cases');
+    const directoryForCase = path.resolve(casesDirectory, 'asset-modules');
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    const webpackConfig = (
+      await import(path.resolve(directoryForCase, 'webpack.config.mjs'))
+    ).default;
+    const outputPath = path.resolve(outputRoot, 'cache-false');
 
-		await del([outputPath]);
+    await del([outputPath]);
 
-		const compiler1 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: false,
-			devtool: false,
-			output: {
-				path: outputPath
-			},
-			experiments: {
-				css: false,
-			}
-		});
+    const compiler1 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: false,
+      devtool: false,
+      output: {
+        path: outputPath,
+      },
+      experiments: {
+        css: false,
+      },
+    });
 
-		await new Promise((resolve, reject) => {
-			compiler1.run((error, stats) => {
-				if (error) {
-					reject(error);
+    await new Promise((resolve, reject) => {
+      compiler1.run((error, stats) => {
+        if (error) {
+          reject(error);
 
-					return;
-				}
+          return;
+        }
 
-				compiler1.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+        compiler1.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 							Array [
 							  "main.css",
 							  "main.js",
 							  "static/react.svg",
 							]
 						`);
-					// expect(Array.from(stats.compilation.emittedAssets).sort())
-					// 	.toMatchInlineSnapshot(`
-					//   Array [
-					//     "main.css",
-					//     "main.js",
-					//     "static/react.svg",
-					//   ]
-					// `);
-					expect([...stats.compilation.warnings]).toHaveLength(0);
-					expect([...stats.compilation.errors]).toHaveLength(0);
+          // expect(Array.from(stats.compilation.emittedAssets).sort())
+          // 	.toMatchInlineSnapshot(`
+          //   Array [
+          //     "main.css",
+          //     "main.js",
+          //     "static/react.svg",
+          //   ]
+          // `);
+          expect([...stats.compilation.warnings]).toHaveLength(0);
+          expect([...stats.compilation.errors]).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
+          resolve();
+        });
+      });
+    });
 
-		const compiler2 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: false,
-			devtool: false,
-			output: {
-				path: outputPath
-			},
-			experiments: { css: false }
-		});
+    const compiler2 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: false,
+      devtool: false,
+      output: {
+        path: outputPath,
+      },
+      experiments: { css: false },
+    });
 
-		await new Promise((resolve, reject) => {
-			compiler2.run((error, stats) => {
-				if (error) {
-					reject(error);
+    await new Promise((resolve, reject) => {
+      compiler2.run((error, stats) => {
+        if (error) {
+          reject(error);
 
-					return;
-				}
+          return;
+        }
 
-				compiler2.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+        compiler2.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 							Array [
 							  "main.css",
 							  "main.js",
 							  "static/react.svg",
 							]
 						`);
-					// expect(
-					// 	Array.from(stats.compilation.emittedAssets).sort()
-					// ).toMatchInlineSnapshot(`Array []`);
-					expect([...stats.compilation.warnings]).toHaveLength(0);
-					expect([...stats.compilation.errors]).toHaveLength(0);
+          // expect(
+          // 	Array.from(stats.compilation.emittedAssets).sort()
+          // ).toMatchInlineSnapshot(`Array []`);
+          expect([...stats.compilation.warnings]).toHaveLength(0);
+          expect([...stats.compilation.errors]).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
-	});
+          resolve();
+        });
+      });
+    });
+  });
 
-	it('should work with the "memory" cache', async () => {
-		const casesDirectory = path.resolve(import.meta.dirname, "cases");
-		const directoryForCase = path.resolve(casesDirectory, "asset-modules");
-		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = (await import(path.resolve(
-			directoryForCase,
-			"webpack.config.mjs"
-		))).default;
-		const outputPath = path.resolve(outputRoot, "cache-memory");
+  it('should work with the "memory" cache', async () => {
+    const casesDirectory = path.resolve(import.meta.dirname, 'cases');
+    const directoryForCase = path.resolve(casesDirectory, 'asset-modules');
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    const webpackConfig = (
+      await import(path.resolve(directoryForCase, 'webpack.config.mjs'))
+    ).default;
+    const outputPath = path.resolve(outputRoot, 'cache-memory');
 
-		await del([outputPath]);
+    await del([outputPath]);
 
-		const compiler1 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: true,
-			devtool: false,
-			output: {
-				path: outputPath
-			},
-			experiments: { css: false }
-		});
+    const compiler1 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: true,
+      devtool: false,
+      output: {
+        path: outputPath,
+      },
+      experiments: { css: false },
+    });
 
-		await new Promise((resolve, reject) => {
-			compiler1.run((error, stats) => {
-				if (error) {
-					reject(error);
+    await new Promise((resolve, reject) => {
+      compiler1.run((error, stats) => {
+        if (error) {
+          reject(error);
 
-					return;
-				}
+          return;
+        }
 
-				compiler1.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+        compiler1.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 							Array [
 							  "main.css",
 							  "main.js",
 							  "static/react.svg",
 							]
 						`);
-					// expect(Array.from(stats.compilation.emittedAssets).sort())
-					// 	.toMatchInlineSnapshot(`
-					//   Array [
-					//     "main.css",
-					//     "main.js",
-					//     "static/react.svg",
-					//   ]
-					// `);
-					expect([...stats.compilation.warnings]).toHaveLength(0);
-					expect([...stats.compilation.errors]).toHaveLength(0);
+          // expect(Array.from(stats.compilation.emittedAssets).sort())
+          // 	.toMatchInlineSnapshot(`
+          //   Array [
+          //     "main.css",
+          //     "main.js",
+          //     "static/react.svg",
+          //   ]
+          // `);
+          expect([...stats.compilation.warnings]).toHaveLength(0);
+          expect([...stats.compilation.errors]).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
+          resolve();
+        });
+      });
+    });
 
-		const compiler2 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: true,
-			devtool: false,
-			output: {
-				path: outputPath
-			},
-			experiments: {
-				css: false,
-			}
-		});
+    const compiler2 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: true,
+      devtool: false,
+      output: {
+        path: outputPath,
+      },
+      experiments: {
+        css: false,
+      },
+    });
 
-		await new Promise((resolve, reject) => {
-			compiler2.run((error, stats) => {
-				if (error) {
-					reject(error);
+    await new Promise((resolve, reject) => {
+      compiler2.run((error, stats) => {
+        if (error) {
+          reject(error);
 
-					return;
-				}
+          return;
+        }
 
-				compiler2.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+        compiler2.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 							Array [
 							  "main.css",
 							  "main.js",
 							  "static/react.svg",
 							]
 						`);
-					// expect(
-					// 	Array.from(stats.compilation.emittedAssets).sort()
-					// ).toMatchInlineSnapshot(`Array []`);
-					expect([...stats.compilation.warnings]).toHaveLength(0);
-					expect([...stats.compilation.errors]).toHaveLength(0);
+          // expect(
+          // 	Array.from(stats.compilation.emittedAssets).sort()
+          // ).toMatchInlineSnapshot(`Array []`);
+          expect([...stats.compilation.warnings]).toHaveLength(0);
+          expect([...stats.compilation.errors]).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
-	});
+          resolve();
+        });
+      });
+    });
+  });
 
-	it.skip('should work with the "filesystem" cache', async () => {
-		const casesDirectory = path.resolve(import.meta.dirname, "cases");
-		const directoryForCase = path.resolve(casesDirectory, "simple");
-		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = (await import(path.resolve(
-			directoryForCase,
-			"webpack.config.mjs"
-		))).default;
-		const outputPath = path.resolve(outputRoot, "cache-filesystem");
-		const fileSystemCacheDirectory = path.resolve(
-			outputRoot,
-			".cache",
-			"type-filesystem"
-		);
+  it.skip('should work with the "filesystem" cache', async () => {
+    const casesDirectory = path.resolve(import.meta.dirname, 'cases');
+    const directoryForCase = path.resolve(casesDirectory, 'simple');
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    const webpackConfig = (
+      await import(path.resolve(directoryForCase, 'webpack.config.mjs'))
+    ).default;
+    const outputPath = path.resolve(outputRoot, 'cache-filesystem');
+    const fileSystemCacheDirectory = path.resolve(
+      outputRoot,
+      '.cache',
+      'type-filesystem',
+    );
 
-		await del([outputPath, fileSystemCacheDirectory]);
+    await del([outputPath, fileSystemCacheDirectory]);
 
-		const compiler1 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: {
-				type: "filesystem",
-				cacheDirectory: fileSystemCacheDirectory,
-				idleTimeout: 0,
-				idleTimeoutForInitialStore: 0
-			},
-			output: {
-				path: outputPath
-			},
-			experiments: {
-				css: false,
-			}
-		});
+    const compiler1 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: {
+        type: 'filesystem',
+        cacheDirectory: fileSystemCacheDirectory,
+        idleTimeout: 0,
+        idleTimeoutForInitialStore: 0,
+      },
+      output: {
+        path: outputPath,
+      },
+      experiments: {
+        css: false,
+      },
+    });
 
-		await new Promise((resolve, reject) => {
-			compiler1.run((error, stats) => {
-				if (error) {
-					reject(error);
+    await new Promise((resolve, reject) => {
+      compiler1.run((error, stats) => {
+        if (error) {
+          reject(error);
 
-					return;
-				}
+          return;
+        }
 
-				compiler1.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+        compiler1.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 				            Array [
 				              "main.css",
 				              "main.js",
 				            ]
 			          `);
-					// expect(Array.from(stats.compilation.emittedAssets).sort())
-					// 	.toMatchInlineSnapshot(`
-					//   Array [
-					//     "main.css",
-					//     "main.js",
-					//   ]
-					// `);
-					expect(stats.compilation.warnings).toHaveLength(0);
-					expect(stats.compilation.errors).toHaveLength(0);
+          // expect(Array.from(stats.compilation.emittedAssets).sort())
+          // 	.toMatchInlineSnapshot(`
+          //   Array [
+          //     "main.css",
+          //     "main.js",
+          //   ]
+          // `);
+          expect(stats.compilation.warnings).toHaveLength(0);
+          expect(stats.compilation.errors).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
+          resolve();
+        });
+      });
+    });
 
-		const compiler2 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: {
-				type: "filesystem",
-				cacheDirectory: fileSystemCacheDirectory,
-				idleTimeout: 0,
-				idleTimeoutForInitialStore: 0
-			},
-			output: {
-				path: outputPath
-			}
-		});
+    const compiler2 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: {
+        type: 'filesystem',
+        cacheDirectory: fileSystemCacheDirectory,
+        idleTimeout: 0,
+        idleTimeoutForInitialStore: 0,
+      },
+      output: {
+        path: outputPath,
+      },
+    });
 
-		await new Promise((resolve, reject) => {
-			compiler2.run((error, stats) => {
-				if (error) {
-					reject(error);
+    await new Promise((resolve, reject) => {
+      compiler2.run((error, stats) => {
+        if (error) {
+          reject(error);
 
-					return;
-				}
+          return;
+        }
 
-				compiler2.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+        compiler2.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 				            Array [
 				              "main.css",
 				              "main.js",
 				            ]
 			          `);
-					// expect(
-					// 	Array.from(stats.compilation.emittedAssets).sort()
-					// ).toMatchInlineSnapshot(`Array []`);
-					expect(stats.compilation.warnings).toHaveLength(0);
-					expect(stats.compilation.errors).toHaveLength(0);
+          // expect(
+          // 	Array.from(stats.compilation.emittedAssets).sort()
+          // ).toMatchInlineSnapshot(`Array []`);
+          expect(stats.compilation.warnings).toHaveLength(0);
+          expect(stats.compilation.errors).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
-	});
+          resolve();
+        });
+      });
+    });
+  });
 
-	it.skip('should work with the "filesystem" cache #2', async () => {
-		const casesDirectory = path.resolve(import.meta.dirname, "cases");
-		const directoryForCase = path.resolve(casesDirectory, "at-import-layer");
-		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = (await import(path.resolve(
-			directoryForCase,
-			"webpack.config.mjs"
-		))).default;
-		const outputPath = path.resolve(outputRoot, "cache-filesystem-1");
-		const fileSystemCacheDirectory = path.resolve(
-			outputRoot,
-			".cache",
-			"type-filesystem-1"
-		);
+  it.skip('should work with the "filesystem" cache #2', async () => {
+    const casesDirectory = path.resolve(import.meta.dirname, 'cases');
+    const directoryForCase = path.resolve(casesDirectory, 'at-import-layer');
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    const webpackConfig = (
+      await import(path.resolve(directoryForCase, 'webpack.config.mjs'))
+    ).default;
+    const outputPath = path.resolve(outputRoot, 'cache-filesystem-1');
+    const fileSystemCacheDirectory = path.resolve(
+      outputRoot,
+      '.cache',
+      'type-filesystem-1',
+    );
 
-		await del([outputPath, fileSystemCacheDirectory]);
+    await del([outputPath, fileSystemCacheDirectory]);
 
-		const compiler1 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: {
-				type: "filesystem",
-				cacheDirectory: fileSystemCacheDirectory,
-				idleTimeout: 0,
-				idleTimeoutForInitialStore: 0
-			},
-			output: {
-				path: outputPath
-			}
-		});
+    const compiler1 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: {
+        type: 'filesystem',
+        cacheDirectory: fileSystemCacheDirectory,
+        idleTimeout: 0,
+        idleTimeoutForInitialStore: 0,
+      },
+      output: {
+        path: outputPath,
+      },
+    });
 
-		await new Promise((resolve, reject) => {
-			compiler1.run((error, stats) => {
-				if (error) {
-					reject(error);
+    await new Promise((resolve, reject) => {
+      compiler1.run((error, stats) => {
+        if (error) {
+          reject(error);
 
-					return;
-				}
+          return;
+        }
 
-				compiler1.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+        compiler1.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 				            Array [
 				              "main.css",
 				              "main.js",
 				            ]
 			          `);
-					// expect(Array.from(stats.compilation.emittedAssets).sort())
-					// 	.toMatchInlineSnapshot(`
-					//   Array [
-					//     "main.css",
-					//     "main.js",
-					//   ]
-					// `);
-					expect(stats.compilation.warnings).toHaveLength(0);
-					expect(stats.compilation.errors).toHaveLength(0);
+          // expect(Array.from(stats.compilation.emittedAssets).sort())
+          // 	.toMatchInlineSnapshot(`
+          //   Array [
+          //     "main.css",
+          //     "main.js",
+          //   ]
+          // `);
+          expect(stats.compilation.warnings).toHaveLength(0);
+          expect(stats.compilation.errors).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
+          resolve();
+        });
+      });
+    });
 
-		const compiler2 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: {
-				type: "filesystem",
-				cacheDirectory: fileSystemCacheDirectory,
-				idleTimeout: 0,
-				idleTimeoutForInitialStore: 0
-			},
-			output: {
-				path: outputPath
-			}
-		});
+    const compiler2 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: {
+        type: 'filesystem',
+        cacheDirectory: fileSystemCacheDirectory,
+        idleTimeout: 0,
+        idleTimeoutForInitialStore: 0,
+      },
+      output: {
+        path: outputPath,
+      },
+    });
 
-		await new Promise((resolve, reject) => {
-			compiler2.run((error, stats) => {
-				if (error) {
-					reject(error);
+    await new Promise((resolve, reject) => {
+      compiler2.run((error, stats) => {
+        if (error) {
+          reject(error);
 
-					return;
-				}
+          return;
+        }
 
-				compiler2.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+        compiler2.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 				            Array [
 				              "main.css",
 				              "main.js",
 				            ]
 			          `);
-					// expect(
-					// 	Array.from(stats.compilation.emittedAssets).sort()
-					// ).toMatchInlineSnapshot(`Array []`);
-					expect(stats.compilation.warnings).toHaveLength(0);
-					expect(stats.compilation.errors).toHaveLength(0);
+          // expect(
+          // 	Array.from(stats.compilation.emittedAssets).sort()
+          // ).toMatchInlineSnapshot(`Array []`);
+          expect(stats.compilation.warnings).toHaveLength(0);
+          expect(stats.compilation.errors).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
-	});
+          resolve();
+        });
+      });
+    });
+  });
 
-	it.skip('should work with the "filesystem" cache and asset modules', async () => {
-		const casesDirectory = path.resolve(import.meta.dirname, "cases");
-		const directoryForCase = path.resolve(casesDirectory, "asset-modules");
-		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = (await import(path.resolve(
-			directoryForCase,
-			"webpack.config.mjs"
-		))).default;
-		const outputPath = path.resolve(
-			outputRoot,
-			"cache-filesystem-asset-modules"
-		);
-		const fileSystemCacheDirectory = path.resolve(
-			outputRoot,
-			".cache",
-			"type-filesystem"
-		);
+  it.skip('should work with the "filesystem" cache and asset modules', async () => {
+    const casesDirectory = path.resolve(import.meta.dirname, 'cases');
+    const directoryForCase = path.resolve(casesDirectory, 'asset-modules');
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    const webpackConfig = (
+      await import(path.resolve(directoryForCase, 'webpack.config.mjs'))
+    ).default;
+    const outputPath = path.resolve(
+      outputRoot,
+      'cache-filesystem-asset-modules',
+    );
+    const fileSystemCacheDirectory = path.resolve(
+      outputRoot,
+      '.cache',
+      'type-filesystem',
+    );
 
-		await del([outputPath, fileSystemCacheDirectory]);
+    await del([outputPath, fileSystemCacheDirectory]);
 
-		const compiler1 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: {
-				type: "filesystem",
-				cacheDirectory: fileSystemCacheDirectory,
-				idleTimeout: 0,
-				idleTimeoutForInitialStore: 0
-			},
-			output: {
-				path: outputPath
-			}
-		});
+    const compiler1 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: {
+        type: 'filesystem',
+        cacheDirectory: fileSystemCacheDirectory,
+        idleTimeout: 0,
+        idleTimeoutForInitialStore: 0,
+      },
+      output: {
+        path: outputPath,
+      },
+    });
 
-		await new Promise((resolve, reject) => {
-			compiler1.run((error, stats) => {
-				if (error) {
-					reject(error);
+    await new Promise((resolve, reject) => {
+      compiler1.run((error, stats) => {
+        if (error) {
+          reject(error);
 
-					return;
-				}
+          return;
+        }
 
-				compiler1.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
-				            Array [
-				              "main.css",
-				              "main.js",
-				              "static/react.svg",
-				            ]
-			          `);
-					// expect(Array.from(stats.compilation.emittedAssets).sort())
-					// 	.toMatchInlineSnapshot(`
-					//   Array [
-					//     "main.css",
-					//     "main.js",
-					//     "static/react.svg",
-					//   ]
-					// `);
-					expect(stats.compilation.warnings).toHaveLength(0);
-					expect(stats.compilation.errors).toHaveLength(0);
-
-					resolve();
-				});
-			});
-		});
-
-		const compiler2 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: {
-				type: "filesystem",
-				cacheDirectory: fileSystemCacheDirectory,
-				idleTimeout: 0,
-				idleTimeoutForInitialStore: 0
-			},
-			output: {
-				path: outputPath
-			}
-		});
-
-		await new Promise((resolve, reject) => {
-			compiler2.run((error, stats) => {
-				if (error) {
-					reject(error);
-
-					return;
-				}
-
-				compiler2.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+        compiler1.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 				            Array [
 				              "main.css",
 				              "main.js",
 				              "static/react.svg",
 				            ]
 			          `);
-					// expect(
-					// 	Array.from(stats.compilation.emittedAssets).sort()
-					// ).toMatchInlineSnapshot(`Array []`);
-					expect(stats.compilation.warnings).toHaveLength(0);
-					expect(stats.compilation.errors).toHaveLength(0);
+          // expect(Array.from(stats.compilation.emittedAssets).sort())
+          // 	.toMatchInlineSnapshot(`
+          //   Array [
+          //     "main.css",
+          //     "main.js",
+          //     "static/react.svg",
+          //   ]
+          // `);
+          expect(stats.compilation.warnings).toHaveLength(0);
+          expect(stats.compilation.errors).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
-	});
+          resolve();
+        });
+      });
+    });
 
-	it.skip('should work with the "filesystem" cache and file-loader', async () => {
-		const casesDirectory = path.resolve(import.meta.dirname, "cases");
-		const directoryForCase = path.resolve(casesDirectory, "file-loader");
-		// eslint-disable-next-line import/no-dynamic-require, global-require
-		const webpackConfig = (await import(path.resolve(
-			directoryForCase,
-			"webpack.config.mjs"
-		))).default;
-		const outputPath = path.resolve(
-			outputRoot,
-			"cache-filesystem-file-loader"
-		);
-		const fileSystemCacheDirectory = path.resolve(
-			outputRoot,
-			".cache",
-			"type-filesystem"
-		);
+    const compiler2 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: {
+        type: 'filesystem',
+        cacheDirectory: fileSystemCacheDirectory,
+        idleTimeout: 0,
+        idleTimeoutForInitialStore: 0,
+      },
+      output: {
+        path: outputPath,
+      },
+    });
 
-		await del([outputPath, fileSystemCacheDirectory]);
+    await new Promise((resolve, reject) => {
+      compiler2.run((error, stats) => {
+        if (error) {
+          reject(error);
 
-		const compiler1 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: {
-				type: "filesystem",
-				cacheDirectory: fileSystemCacheDirectory,
-				idleTimeout: 0,
-				idleTimeoutForInitialStore: 0
-			},
-			output: {
-				path: outputPath
-			}
-		});
+          return;
+        }
 
-		await new Promise((resolve, reject) => {
-			compiler1.run((error, stats) => {
-				if (error) {
-					reject(error);
-
-					return;
-				}
-
-				compiler1.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+        compiler2.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 				            Array [
 				              "main.css",
 				              "main.js",
 				              "static/react.svg",
 				            ]
 			          `);
-					// expect(Array.from(stats.compilation.emittedAssets).sort())
-					// 	.toMatchInlineSnapshot(`
-					//   Array [
-					//     "main.css",
-					//     "main.js",
-					//     "static/react.svg",
-					//   ]
-					// `);
-					expect(stats.compilation.warnings).toHaveLength(0);
-					expect(stats.compilation.errors).toHaveLength(0);
+          // expect(
+          // 	Array.from(stats.compilation.emittedAssets).sort()
+          // ).toMatchInlineSnapshot(`Array []`);
+          expect(stats.compilation.warnings).toHaveLength(0);
+          expect(stats.compilation.errors).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
+          resolve();
+        });
+      });
+    });
+  });
 
-		const compiler2 = webpack({
-			...webpackConfig,
-			mode: "development",
-			context: directoryForCase,
-			cache: {
-				type: "filesystem",
-				cacheDirectory: fileSystemCacheDirectory,
-				idleTimeout: 0,
-				idleTimeoutForInitialStore: 0
-			},
-			output: {
-				path: outputPath
-			}
-		});
+  it.skip('should work with the "filesystem" cache and file-loader', async () => {
+    const casesDirectory = path.resolve(import.meta.dirname, 'cases');
+    const directoryForCase = path.resolve(casesDirectory, 'file-loader');
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    const webpackConfig = (
+      await import(path.resolve(directoryForCase, 'webpack.config.mjs'))
+    ).default;
+    const outputPath = path.resolve(outputRoot, 'cache-filesystem-file-loader');
+    const fileSystemCacheDirectory = path.resolve(
+      outputRoot,
+      '.cache',
+      'type-filesystem',
+    );
 
-		await new Promise((resolve, reject) => {
-			compiler2.run((error, stats) => {
-				if (error) {
-					reject(error);
+    await del([outputPath, fileSystemCacheDirectory]);
 
-					return;
-				}
+    const compiler1 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: {
+        type: 'filesystem',
+        cacheDirectory: fileSystemCacheDirectory,
+        idleTimeout: 0,
+        idleTimeoutForInitialStore: 0,
+      },
+      output: {
+        path: outputPath,
+      },
+    });
 
-				compiler2.close(() => {
-					expect(Object.keys(stats.compilation.assets).sort())
-						.toMatchInlineSnapshot(`
+    await new Promise((resolve, reject) => {
+      compiler1.run((error, stats) => {
+        if (error) {
+          reject(error);
+
+          return;
+        }
+
+        compiler1.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
 				            Array [
 				              "main.css",
 				              "main.js",
 				              "static/react.svg",
 				            ]
 			          `);
-					// expect(
-					// 	Array.from(stats.compilation.emittedAssets).sort()
-					// ).toMatchInlineSnapshot(`Array []`);
-					expect(stats.compilation.warnings).toHaveLength(0);
-					expect(stats.compilation.errors).toHaveLength(0);
+          // expect(Array.from(stats.compilation.emittedAssets).sort())
+          // 	.toMatchInlineSnapshot(`
+          //   Array [
+          //     "main.css",
+          //     "main.js",
+          //     "static/react.svg",
+          //   ]
+          // `);
+          expect(stats.compilation.warnings).toHaveLength(0);
+          expect(stats.compilation.errors).toHaveLength(0);
 
-					resolve();
-				});
-			});
-		});
-	});
+          resolve();
+        });
+      });
+    });
+
+    const compiler2 = webpack({
+      ...webpackConfig,
+      mode: 'development',
+      context: directoryForCase,
+      cache: {
+        type: 'filesystem',
+        cacheDirectory: fileSystemCacheDirectory,
+        idleTimeout: 0,
+        idleTimeoutForInitialStore: 0,
+      },
+      output: {
+        path: outputPath,
+      },
+    });
+
+    await new Promise((resolve, reject) => {
+      compiler2.run((error, stats) => {
+        if (error) {
+          reject(error);
+
+          return;
+        }
+
+        compiler2.close(() => {
+          expect(Object.keys(stats.compilation.assets).sort())
+            .toMatchInlineSnapshot(`
+				            Array [
+				              "main.css",
+				              "main.js",
+				              "static/react.svg",
+				            ]
+			          `);
+          // expect(
+          // 	Array.from(stats.compilation.emittedAssets).sort()
+          // ).toMatchInlineSnapshot(`Array []`);
+          expect(stats.compilation.warnings).toHaveLength(0);
+          expect(stats.compilation.errors).toHaveLength(0);
+
+          resolve();
+        });
+      });
+    });
+  });
 });

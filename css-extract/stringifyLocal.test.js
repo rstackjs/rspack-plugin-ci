@@ -1,27 +1,27 @@
-import { describe, expect, it } from "@rstest/core";
+import { describe, expect, it } from 'rstack/test';
 function stringifyLocal(value) {
-  return typeof value === "function" ? value.toString() : JSON.stringify(value);
+  return typeof value === 'function' ? value.toString() : JSON.stringify(value);
 }
 
-describe("stringifyLocal", () => {
+describe('stringifyLocal', () => {
   it(`primitive`, async () => {
-    const testObj = "classA";
+    const testObj = 'classA';
 
     expect(stringifyLocal(testObj)).toBe('"classA"');
   });
 
   it(`arrow function`, async () => {
-    const testFn = () => "classA";
+    const testFn = () => 'classA';
 
     expect(stringifyLocal(testFn)).toBe('()=>"classA"');
   });
 
   it(`function`, async () => {
     const testFn = function testFn() {
-      return "classA";
+      return 'classA';
     };
 
-     expect(stringifyLocal(testFn)).toMatchInlineSnapshot(`
+    expect(stringifyLocal(testFn)).toMatchInlineSnapshot(`
        "function testFn() {
                    return \\"classA\\";
                }"

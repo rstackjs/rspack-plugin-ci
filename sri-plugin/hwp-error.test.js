@@ -5,29 +5,36 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { describe, expect, rstest, test } from "@rstest/core";
-import { resolve } from "path";
-import { runRspack, SubresourceIntegrityPlugin } from "./test-utils";
+import { describe, expect, rstest, test } from 'rstack/test';
+import { resolve } from 'path';
+import { runRspack, SubresourceIntegrityPlugin } from './test-utils';
 
-rstest.mock("html-webpack-plugin", () => ({
+rstest.mock('html-webpack-plugin', () => ({
   get getHooks() {
-    throw new Error("bogus hwp accessed");
+    throw new Error('bogus hwp accessed');
   },
 }));
 
-describe("sri-plugin/hwp-error", () => {
-  test("error when loading html-webpack-plugin", async () => {
+describe('sri-plugin/hwp-error', () => {
+  test('error when loading html-webpack-plugin', async () => {
     await expect(
       runRspack({
         output: {
-          crossOriginLoading: "anonymous",
+          crossOriginLoading: 'anonymous',
         },
-        entry: resolve(import.meta.dirname, "./__fixtures__/simple-project/src/"),
-        plugins: [new SubresourceIntegrityPlugin({
-          htmlPlugin: resolve(import.meta.dirname, "./__mocks__/html-webpack-plugin.cjs")
-        })],
-      })
-    ).rejects.toThrow("bogus hwp accessed");
+        entry: resolve(
+          import.meta.dirname,
+          './__fixtures__/simple-project/src/',
+        ),
+        plugins: [
+          new SubresourceIntegrityPlugin({
+            htmlPlugin: resolve(
+              import.meta.dirname,
+              './__mocks__/html-webpack-plugin.cjs',
+            ),
+          }),
+        ],
+      }),
+    ).rejects.toThrow('bogus hwp accessed');
   });
 });
-

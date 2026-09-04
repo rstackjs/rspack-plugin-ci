@@ -1,4 +1,4 @@
->**Note**
+> **Note**
 > This package is heavily based on
 >
 > - [mini-css-extract-plugin/test](https://github.com/webpack-contrib/mini-css-extract-plugin/tree/master/test)

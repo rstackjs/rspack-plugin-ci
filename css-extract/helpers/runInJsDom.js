@@ -1,14 +1,14 @@
-import { JSDOM, VirtualConsole } from "jsdom";
-import { readAsset } from "./index.js";
+import { JSDOM, VirtualConsole } from 'jsdom';
+import { readAsset } from './index.js';
 
 function runInJsDom(assetName, compiler, stats, testFn) {
-	const bundle = readAsset(assetName, compiler, stats);
-	const virtualConsole = new VirtualConsole();
+  const bundle = readAsset(assetName, compiler, stats);
+  const virtualConsole = new VirtualConsole();
 
-	virtualConsole.sendTo(console);
+  virtualConsole.sendTo(console);
 
-	const dom = new JSDOM(
-		`<!doctype html>
+  const dom = new JSDOM(
+    `<!doctype html>
 <html>
 <head>
   <title>style-loader test</title>
@@ -21,19 +21,19 @@ function runInJsDom(assetName, compiler, stats, testFn) {
 </body>
 </html>
 `,
-		{
-			resources: "usable",
-			runScripts: "dangerously",
-			virtualConsole
-		}
-	);
+    {
+      resources: 'usable',
+      runScripts: 'dangerously',
+      virtualConsole,
+    },
+  );
 
-	dom.window.eval(bundle);
+  dom.window.eval(bundle);
 
-	testFn(dom, bundle);
+  testFn(dom, bundle);
 
-	// free memory associated with the window
-	dom.window.close();
+  // free memory associated with the window
+  dom.window.close();
 }
 
 export default runInJsDom;

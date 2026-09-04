@@ -1,2 +1,2 @@
-export default string =>
-	process.platform !== "win32" ? string : string.replace(/[*?"<>|]/g, "");
+export default (string) =>
+  process.platform !== 'win32' ? string : string.replace(/[*?"<>|]/g, '');

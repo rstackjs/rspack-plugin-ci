@@ -1,5 +1,5 @@
 packages:
-  - "sri-plugin/examples/*"
+  - 'sri-plugin/examples/*'
 
 allowBuilds:
   core-js: false
@@ -33,9 +33,9 @@ minimumReleaseAgeExclude:
   - rstack
   - typescript
 overrides:
-  "@rspack/cli": "npm:@rspack-canary/cli@2.1.4-canary-fd2e0dd0-20260708175515"
-  "@rspack/core": "npm:@rspack-canary/core@2.1.4-canary-fd2e0dd0-20260708175515"
+  '@rspack/cli': 'npm:@rspack-canary/cli@2.1.4-canary-fd2e0dd0-20260708175515'
+  '@rspack/core': 'npm:@rspack-canary/core@2.1.4-canary-fd2e0dd0-20260708175515'
 
 peerDependencyRules:
   allowAny:
-    - "@rspack/*"
+    - '@rspack/*'

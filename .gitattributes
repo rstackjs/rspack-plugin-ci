@@ -1,4 +1,5 @@
 **/tests/** eol=lf
+.rstack/hooks/* eol=lf
 *.css eol=lf
 *.js eol=lf
 *.ts eol=lf

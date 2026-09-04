@@ -1,109 +1,109 @@
 /* eslint-env browser */
-import path from "path";
+import path from 'path';
 
-import { CssExtractRspackPlugin } from "@rspack/core";
-import { describe, expect, it } from "@rstest/core";
+import { CssExtractRspackPlugin } from '@rspack/core';
+import { describe, expect, it } from 'rstack/test';
 
 import {
-	compile,
-	getCompiler,
-	getErrors,
-	getWarnings,
-	runInJsDom
-} from "./helpers/index";
+  compile,
+  getCompiler,
+  getErrors,
+  getWarnings,
+  runInJsDom,
+} from './helpers/index';
 
-describe("insert option", () => {
-	const outputRoot = path.resolve(import.meta.dirname, "js", "insert-option");
+describe('insert option', () => {
+  const outputRoot = path.resolve(import.meta.dirname, 'js', 'insert-option');
 
-	it(`should work without insert option`, async () => {
-		const compiler = getCompiler(
-			"insert.js",
-			{},
-			{
-				mode: "none",
-				output: {
-					publicPath: "",
-					path: outputRoot,
-					filename: "[name].bundle.js"
-				},
-				plugins: [
-					new CssExtractRspackPlugin({
-						filename: "[name].css"
-					})
-				]
-			}
-		);
-		const stats = await compile(compiler);
+  it(`should work without insert option`, async () => {
+    const compiler = getCompiler(
+      'insert.js',
+      {},
+      {
+        mode: 'none',
+        output: {
+          publicPath: '',
+          path: outputRoot,
+          filename: '[name].bundle.js',
+        },
+        plugins: [
+          new CssExtractRspackPlugin({
+            filename: '[name].css',
+          }),
+        ],
+      },
+    );
+    const stats = await compile(compiler);
 
-		runInJsDom("main.bundle.js", compiler, stats, dom => {
-			expect(dom.serialize()).toMatchSnapshot("DOM");
-		});
+    runInJsDom('main.bundle.js', compiler, stats, (dom) => {
+      expect(dom.serialize()).toMatchSnapshot('DOM');
+    });
 
-		expect(getWarnings(stats)).toMatchSnapshot("warnings");
-		expect(getErrors(stats)).toMatchSnapshot("errors");
-	});
+    expect(getWarnings(stats)).toMatchSnapshot('warnings');
+    expect(getErrors(stats)).toMatchSnapshot('errors');
+  });
 
-	it(`should work when insert option is string`, async () => {
-		const compiler = getCompiler(
-			"insert.js",
-			{},
-			{
-				mode: "none",
-				output: {
-					publicPath: "",
-					path: outputRoot,
-					filename: "[name].bundle.js"
-				},
-				plugins: [
-					new CssExtractRspackPlugin({
-						filename: "[name].css",
-						insert: "#existing-style"
-					})
-				]
-			}
-		);
-		const stats = await compile(compiler);
+  it(`should work when insert option is string`, async () => {
+    const compiler = getCompiler(
+      'insert.js',
+      {},
+      {
+        mode: 'none',
+        output: {
+          publicPath: '',
+          path: outputRoot,
+          filename: '[name].bundle.js',
+        },
+        plugins: [
+          new CssExtractRspackPlugin({
+            filename: '[name].css',
+            insert: '#existing-style',
+          }),
+        ],
+      },
+    );
+    const stats = await compile(compiler);
 
-		runInJsDom("main.bundle.js", compiler, stats, dom => {
-			expect(dom.serialize()).toMatchSnapshot("DOM");
-		});
+    runInJsDom('main.bundle.js', compiler, stats, (dom) => {
+      expect(dom.serialize()).toMatchSnapshot('DOM');
+    });
 
-		expect(getWarnings(stats)).toMatchSnapshot("warnings");
-		expect(getErrors(stats)).toMatchSnapshot("errors");
-	});
+    expect(getWarnings(stats)).toMatchSnapshot('warnings');
+    expect(getErrors(stats)).toMatchSnapshot('errors');
+  });
 
-	it(`should work when insert option is function`, async () => {
-		const compiler = getCompiler(
-			"insert.js",
-			{},
-			{
-				mode: "none",
-				output: {
-					publicPath: "",
-					path: outputRoot,
-					filename: "[name].bundle.js"
-				},
-				plugins: [
-					new CssExtractRspackPlugin({
-						filename: "[name].css",
-						// eslint-disable-next-line
-						insert: function (linkTag) {
-							const reference = document.querySelector("#existing-style");
-							if (reference) {
-								reference.parentNode.insertBefore(linkTag, reference);
-							}
-						}
-					})
-				]
-			}
-		);
-		const stats = await compile(compiler);
+  it(`should work when insert option is function`, async () => {
+    const compiler = getCompiler(
+      'insert.js',
+      {},
+      {
+        mode: 'none',
+        output: {
+          publicPath: '',
+          path: outputRoot,
+          filename: '[name].bundle.js',
+        },
+        plugins: [
+          new CssExtractRspackPlugin({
+            filename: '[name].css',
+            // eslint-disable-next-line
+            insert: function (linkTag) {
+              const reference = document.querySelector('#existing-style');
+              if (reference) {
+                reference.parentNode.insertBefore(linkTag, reference);
+              }
+            },
+          }),
+        ],
+      },
+    );
+    const stats = await compile(compiler);
 
-		runInJsDom("main.bundle.js", compiler, stats, dom => {
-			expect(dom.serialize()).toMatchSnapshot("DOM");
-		});
+    runInJsDom('main.bundle.js', compiler, stats, (dom) => {
+      expect(dom.serialize()).toMatchSnapshot('DOM');
+    });
 
-		expect(getWarnings(stats)).toMatchSnapshot("warnings");
-		expect(getErrors(stats)).toMatchSnapshot("errors");
-	});
+    expect(getWarnings(stats)).toMatchSnapshot('warnings');
+    expect(getErrors(stats)).toMatchSnapshot('errors');
+  });
 });

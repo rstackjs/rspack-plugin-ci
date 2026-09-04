@@ -1,106 +1,106 @@
 /* eslint-env browser */
-import path from "path";
-import { CssExtractRspackPlugin } from "@rspack/core";
-import { describe, expect, it } from "@rstest/core";
+import path from 'path';
+import { CssExtractRspackPlugin } from '@rspack/core';
+import { describe, expect, it } from 'rstack/test';
 import {
-	compile,
-	getCompiler,
-	getErrors,
-	getWarnings,
-	runInJsDom
-} from "./helpers/index.js";
+  compile,
+  getCompiler,
+  getErrors,
+  getWarnings,
+  runInJsDom,
+} from './helpers/index.js';
 
-describe("noRuntime option", () => {
-	const outputRoot = path.resolve(import.meta.dirname, "js", "runtime-option");
+describe('noRuntime option', () => {
+  const outputRoot = path.resolve(import.meta.dirname, 'js', 'runtime-option');
 
-	it.only("should work without the 'runtime' option", async () => {
-		const compiler = getCompiler(
-			"attributes.js",
-			{},
-			{
-				output: {
-					publicPath: "",
-					path: outputRoot,
-					filename: "[name].bundle.js"
-				},
-				plugins: [
-					new CssExtractRspackPlugin({
-						filename: "[name].css"
-					})
-				]
-			}
-		);
-		const stats = await compile(compiler);
+  it.only("should work without the 'runtime' option", async () => {
+    const compiler = getCompiler(
+      'attributes.js',
+      {},
+      {
+        output: {
+          publicPath: '',
+          path: outputRoot,
+          filename: '[name].bundle.js',
+        },
+        plugins: [
+          new CssExtractRspackPlugin({
+            filename: '[name].css',
+          }),
+        ],
+      },
+    );
+    const stats = await compile(compiler);
 
-		runInJsDom("main.bundle.js", compiler, stats, (dom, bundle) => {
-			expect(dom.serialize()).toMatchSnapshot("DOM");
-			expect(bundle).toContain("webpack/runtime/css loading");
-			expect(bundle).toContain("webpack/runtime/get mini-css chunk filename");
-		});
+    runInJsDom('main.bundle.js', compiler, stats, (dom, bundle) => {
+      expect(dom.serialize()).toMatchSnapshot('DOM');
+      expect(bundle).toContain('webpack/runtime/css loading');
+      expect(bundle).toContain('webpack/runtime/get mini-css chunk filename');
+    });
 
-		expect(getWarnings(stats)).toMatchSnapshot("warnings");
-		expect(getErrors(stats)).toMatchSnapshot("errors");
-	});
+    expect(getWarnings(stats)).toMatchSnapshot('warnings');
+    expect(getErrors(stats)).toMatchSnapshot('errors');
+  });
 
-	it("should work when the 'runtime' option is 'false'", async () => {
-		const compiler = getCompiler(
-			"attributes.js",
-			{},
-			{
-				output: {
-					publicPath: "",
-					path: outputRoot,
-					filename: "[name].bundle.js"
-				},
-				plugins: [
-					new CssExtractRspackPlugin({
-						runtime: false,
-						filename: "[name].css"
-					})
-				]
-			}
-		);
-		const stats = await compile(compiler);
+  it("should work when the 'runtime' option is 'false'", async () => {
+    const compiler = getCompiler(
+      'attributes.js',
+      {},
+      {
+        output: {
+          publicPath: '',
+          path: outputRoot,
+          filename: '[name].bundle.js',
+        },
+        plugins: [
+          new CssExtractRspackPlugin({
+            runtime: false,
+            filename: '[name].css',
+          }),
+        ],
+      },
+    );
+    const stats = await compile(compiler);
 
-		runInJsDom("main.bundle.js", compiler, stats, (dom, bundle) => {
-			expect(dom.serialize()).toMatchSnapshot("DOM");
-			expect(bundle).not.toContain("webpack/runtime/css loading");
-			expect(bundle).not.toContain(
-				"webpack/runtime/get mini-css chunk filename"
-			);
-		});
+    runInJsDom('main.bundle.js', compiler, stats, (dom, bundle) => {
+      expect(dom.serialize()).toMatchSnapshot('DOM');
+      expect(bundle).not.toContain('webpack/runtime/css loading');
+      expect(bundle).not.toContain(
+        'webpack/runtime/get mini-css chunk filename',
+      );
+    });
 
-		expect(getWarnings(stats)).toMatchSnapshot("warnings");
-		expect(getErrors(stats)).toMatchSnapshot("errors");
-	});
+    expect(getWarnings(stats)).toMatchSnapshot('warnings');
+    expect(getErrors(stats)).toMatchSnapshot('errors');
+  });
 
-	it("should work when the 'runtime' option is 'true'", async () => {
-		const compiler = getCompiler(
-			"attributes.js",
-			{},
-			{
-				output: {
-					publicPath: "",
-					path: outputRoot,
-					filename: "[name].bundle.js"
-				},
-				plugins: [
-					new CssExtractRspackPlugin({
-						runtime: true,
-						filename: "[name].css"
-					})
-				]
-			}
-		);
-		const stats = await compile(compiler);
+  it("should work when the 'runtime' option is 'true'", async () => {
+    const compiler = getCompiler(
+      'attributes.js',
+      {},
+      {
+        output: {
+          publicPath: '',
+          path: outputRoot,
+          filename: '[name].bundle.js',
+        },
+        plugins: [
+          new CssExtractRspackPlugin({
+            runtime: true,
+            filename: '[name].css',
+          }),
+        ],
+      },
+    );
+    const stats = await compile(compiler);
 
-		runInJsDom("main.bundle.js", compiler, stats, (dom, bundle) => {
-			expect(dom.serialize()).toMatchSnapshot("DOM");
-			expect(bundle).toContain("webpack/runtime/css loading");
-			expect(bundle).toContain("webpack/runtime/get mini-css chunk filename");
-		});
+    runInJsDom('main.bundle.js', compiler, stats, (dom, bundle) => {
+      expect(dom.serialize()).toMatchSnapshot('DOM');
+      expect(bundle).toContain('webpack/runtime/css loading');
+      expect(bundle).toContain('webpack/runtime/get mini-css chunk filename');
+    });
 
-		expect(getWarnings(stats)).toMatchSnapshot("warnings");
-		expect(getErrors(stats)).toMatchSnapshot("errors");
-	});
+    expect(getWarnings(stats)).toMatchSnapshot('warnings');
+    expect(getErrors(stats)).toMatchSnapshot('errors');
+  });
 });

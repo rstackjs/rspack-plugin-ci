@@ -1,19 +1,21 @@
-import path from "path";
-import { createRequire } from "module";
-import { describe, expect, it } from "@rstest/core";
+import path from 'path';
+import { createRequire } from 'module';
+import { describe, expect, it } from 'rstack/test';
 const require = createRequire(import.meta.url);
-const rspackPath = require.resolve("@rspack/core");
-const { normalizeUrl } = (await import(path.join(rspackPath, '../cssExtractHmr.js')));
-const dataUrls = require("./fixtures/json/data-urls.json");
+const rspackPath = require.resolve('@rspack/core');
+const { normalizeUrl } = await import(
+  path.join(rspackPath, '../cssExtractHmr.js')
+);
+const dataUrls = require('./fixtures/json/data-urls.json');
 
-describe("normalize-url", () => {
-	dataUrls.main.forEach(entry => {
-		const [url, expected] = entry;
+describe('normalize-url', () => {
+  dataUrls.main.forEach((entry) => {
+    const [url, expected] = entry;
 
-		it(`should work with "${url}" url`, async () => {
-			const result = normalizeUrl(url);
+    it(`should work with "${url}" url`, async () => {
+      const result = normalizeUrl(url);
 
-			expect(result).toBe(expected);
-		});
-	});
+      expect(result).toBe(expected);
+    });
+  });
 });

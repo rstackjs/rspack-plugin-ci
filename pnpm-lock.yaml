@@ -12,6 +12,9 @@ importers:
 
   .:
     devDependencies:
+      '@fastify/static':
+        specifier: ^5.0.0
+        version: 5.0.2
       '@rspack/cli':
         specifier: npm:@rspack-canary/cli@2.1.4-canary-fd2e0dd0-20260708175515
         version: '@rspack-canary/cli@2.1.4-canary-fd2e0dd0-20260708175515(@rspack-canary/core@2.1.4-canary-fd2e0dd0-20260708175515(@swc/helpers@0.5.23))'
@@ -57,9 +60,6 @@ importers:
       fastify-graceful-shutdown:
         specifier: ^4.0.1
         version: 4.0.1
-      fastify-static:
-        specifier: ^4.7.0
-        version: 4.7.0
       file-loader:
         specifier: ^6.2.0
         version: 6.2.0(webpack@5.108.4(postcss@8.5.3))
@@ -1017,6 +1017,9 @@ packages:
 
   '@fastify/error@2.0.0':
     resolution: {integrity: sha512-wI3fpfDT0t7p8E6dA2eTECzzOd+bZsZCJ2Hcv+Onn2b7ZwK3RwD27uW2QDaMtQhAfWQQP+WNK7nKf0twLsBf9w==}
+
+  '@fastify/static@5.0.2':
+    resolution: {integrity: sha512-HvyXZ5a7hUHoSBRq9jKUuKIUCkHMkCDcmiAeEmixXlGOx8pEWx3NYOIaiivcjWa6/NLvfdUT+t/jzfVQ2PA7Gw==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -4846,6 +4849,18 @@ snapshots:
       ajv: 6.12.6
 
   '@fastify/error@2.0.0': {}
+
+  '@fastify/static@5.0.2':
+    dependencies:
+      content-disposition: 0.5.4
+      encoding-negotiator: 2.0.1
+      fastify-plugin: 3.0.1
+      glob: 7.2.3
+      p-limit: 3.1.0
+      readable-stream: 3.6.2
+      send: 0.17.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@isaacs/cliui@8.0.2':
     dependencies:

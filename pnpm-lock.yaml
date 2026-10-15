@@ -229,8 +229,8 @@ importers:
         specifier: ^7.1.4
         version: 7.1.4(@rspack-canary/core@2.1.4-canary-fd2e0dd0-20260708175515(@swc/helpers@0.5.23))(webpack@5.108.4)
       css-select:
-        specifier: ^5.2.2
-        version: 5.2.2
+        specifier: ^7.0.0
+        version: 7.0.0
       expect:
         specifier: ^30.5.2
         version: 30.5.2
@@ -256,8 +256,8 @@ importers:
   sri-plugin/examples/hwp-externals:
     devDependencies:
       css-select:
-        specifier: ^5.2.2
-        version: 5.2.2
+        specifier: ^7.0.0
+        version: 7.0.0
       expect:
         specifier: ^30.5.2
         version: 30.5.2
@@ -283,8 +283,8 @@ importers:
   sri-plugin/examples/hwp-output-parent-dir:
     devDependencies:
       css-select:
-        specifier: ^5.2.2
-        version: 5.2.2
+        specifier: ^7.0.0
+        version: 7.0.0
       expect:
         specifier: ^30.5.2
         version: 30.5.2
@@ -307,8 +307,8 @@ importers:
   sri-plugin/examples/hwp-public-path:
     devDependencies:
       css-select:
-        specifier: ^5.2.2
-        version: 5.2.2
+        specifier: ^7.0.0
+        version: 7.0.0
       expect:
         specifier: ^30.5.2
         version: 30.5.2
@@ -331,8 +331,8 @@ importers:
   sri-plugin/examples/hwp-subdirectories:
     devDependencies:
       css-select:
-        specifier: ^5.2.2
-        version: 5.2.2
+        specifier: ^7.0.0
+        version: 7.0.0
       expect:
         specifier: ^30.5.2
         version: 30.5.2
@@ -2163,6 +2163,10 @@ packages:
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
 
+  boolbase@2.0.0:
+    resolution: {integrity: sha512-DkVaaQHymRhpYEYo9x1oo7Q7B0Y6KJUsjm3c9eTyFDby4MHLBTwZ6ZDWBel5zrYxj1WsZgC5oLpiz+93MluXeA==}
+    engines: {node: '>=20.19.0'}
+
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
 
@@ -2375,12 +2379,17 @@ packages:
   css-select@4.3.0:
     resolution: {integrity: sha512-wPpOYtnsVontu2mODhA19JrqWxNsfdatRKd64kmpRbQgh1KtItko5sTnEpPdpSaJszTOhEMlF/RPz28qj4HqhQ==}
 
-  css-select@5.2.2:
-    resolution: {integrity: sha512-TizTzUddG/xYLA3NXodFM0fSbNizXjOKhqiQQwvhlspadZokn1KDy0NZFS0wuEubIYAV5/c1/lAr0TaaFXEXzw==}
+  css-select@7.0.0:
+    resolution: {integrity: sha512-snmjEVXy+1LnwXdxhYvTMj1d9tOh4HxkA1YmoayVBeeyR2C14Pum7fcxJIm4SswYspVy866eYNwlH6xC3/VH5g==}
+    engines: {node: '>=20.19.0'}
 
   css-what@6.1.0:
     resolution: {integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==}
     engines: {node: '>= 6'}
+
+  css-what@8.0.0:
+    resolution: {integrity: sha512-DH0Bqq3DNp5tdOReuNyAA+Ev4Y2GS5FMbZpeTLP6C4CDi0h5nL0BmUPChXw3o/qbHLDWHl49sbNqQVY7bMSDdw==}
+    engines: {node: '>=20.19.0'}
 
   cssesc@3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
@@ -3484,6 +3493,10 @@ packages:
 
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
+
+  nth-check@3.0.1:
+    resolution: {integrity: sha512-GX0gsdbGVCgnRgbeGaubfjpBXyYRWOOCVeYh08bSQvDZqxz5ndXs1OTfAt/h36G1xvI94YIspsI0sVFqAV9+RQ==}
+    engines: {node: '>=20.19.0'}
 
   nwsapi@2.2.16:
     resolution: {integrity: sha512-F1I/bimDpj3ncaNDhfyMWuFqmQDBwDB0Fogc2qpL3BWvkQteFD/8BzWuIRl83rq0DXfm8SGt/HFhLXZyljTXcQ==}
@@ -5822,6 +5835,8 @@ snapshots:
 
   boolbase@1.0.0: {}
 
+  boolbase@2.0.0: {}
+
   brace-expansion@1.1.11:
     dependencies:
       balanced-match: 1.0.2
@@ -6082,15 +6097,17 @@ snapshots:
       domutils: 2.8.0
       nth-check: 2.1.1
 
-  css-select@5.2.2:
+  css-select@7.0.0:
     dependencies:
-      boolbase: 1.0.0
-      css-what: 6.1.0
-      domhandler: 5.0.3
-      domutils: 3.2.2
-      nth-check: 2.1.1
+      boolbase: 2.0.0
+      css-what: 8.0.0
+      domhandler: 6.0.1
+      domutils: 4.0.2
+      nth-check: 3.0.1
 
   css-what@6.1.0: {}
+
+  css-what@8.0.0: {}
 
   cssesc@3.0.0: {}
 
@@ -7282,6 +7299,10 @@ snapshots:
   nth-check@2.1.1:
     dependencies:
       boolbase: 1.0.0
+
+  nth-check@3.0.1:
+    dependencies:
+      boolbase: 2.0.0
 
   nwsapi@2.2.16: {}
 

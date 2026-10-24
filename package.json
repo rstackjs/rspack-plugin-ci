@@ -14,8 +14,8 @@
     "testu": "rs test -u"
   },
   "devDependencies": {
-    "@rspack/cli": "2.1.4",
-    "@rspack/core": "2.1.4",
+    "@rspack/cli": "2.2.9",
+    "@rspack/core": "2.2.9",
     "@types/connect": "^3.4.38",
     "@types/cross-spawn": "^6.0.6",
     "@types/fastify-static": "^2.2.3",
@@ -24,30 +24,30 @@
     "@webdiscus/pug-loader": "^2.11.1",
     "before-build-webpack": "0.2.15",
     "cross-spawn": "^7.0.6",
-    "css-loader": "^7.1.4",
+    "css-loader": "^7.1.5",
     "del": "^6.1.1",
-    "expect": "^30.4.1",
+    "expect": "^30.5.2",
     "fastify": "^3.29.5",
     "fastify-graceful-shutdown": "^4.0.1",
     "fastify-static": "^4.7.0",
     "file-loader": "^6.2.0",
     "get-port": "^7.2.0",
     "html-loader": "2.1.2",
-    "html-webpack-plugin": "5.6.7",
+    "html-webpack-plugin": "5.6.8",
     "jsdom": "^25.0.1",
     "lodash": "^4.18.1",
-    "memfs": "4.64.0",
+    "memfs": "4.80.0",
     "puppeteer": "^24.43.1",
     "rimraf": "^5.0.10",
-    "rstack": "^0.7.2",
-    "sass-embedded": "^1.100.0",
+    "rstack": "^0.8.5",
+    "sass-embedded": "^1.106.1",
     "sass-loader": "^16.0.8",
     "tmp": "^0.2.7",
     "tmp-promise": "^3.0.3",
     "typescript": "^7.0.2"
   },
-  "packageManager": "pnpm@11.13.0",
+  "packageManager": "pnpm@11.28.8",
   "engines": {
-    "pnpm": "11.13.0"
+    "pnpm": "11.28.8"
   }
 }

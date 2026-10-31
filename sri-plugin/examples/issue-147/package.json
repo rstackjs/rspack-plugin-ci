@@ -5,10 +5,10 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "html-webpack-plugin": "^5.6.7",
+    "html-webpack-plugin": "^5.6.8",
     "nyc": "*",
     "script-ext-html-webpack-plugin": "^2.1.5",
-    "webpack": "5.108.4",
+    "webpack": "5.112.2",
     "webpack-cli": "5.1.4"
   }
 }

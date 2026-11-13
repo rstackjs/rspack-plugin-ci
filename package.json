@@ -14,8 +14,8 @@
     "testu": "rs test -u"
   },
   "devDependencies": {
-    "@rspack/cli": "2.1.4",
-    "@rspack/core": "2.1.4",
+    "@rspack/cli": "2.3.2",
+    "@rspack/core": "2.3.2",
     "@types/connect": "^3.4.38",
     "@types/cross-spawn": "^6.0.6",
     "@types/fastify-static": "^2.2.3",

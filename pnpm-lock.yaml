@@ -5,19 +5,19 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@rspack/cli': npm:@rspack-canary/cli@2.2.10-canary-96dcd72d-20261016173339
-  '@rspack/core': npm:@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339
+  '@rspack/cli': npm:@rspack-canary/cli@2.3.3-canary-4e512625-20261112173136
+  '@rspack/core': npm:@rspack-canary/core@2.3.3-canary-4e512625-20261112173136
 
 importers:
 
   .:
     devDependencies:
       '@rspack/cli':
-        specifier: npm:@rspack-canary/cli@2.2.10-canary-96dcd72d-20261016173339
-        version: '@rspack-canary/cli@2.2.10-canary-96dcd72d-20261016173339(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))'
+        specifier: npm:@rspack-canary/cli@2.3.3-canary-4e512625-20261112173136
+        version: '@rspack-canary/cli@2.3.3-canary-4e512625-20261112173136(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))'
       '@rspack/core':
-        specifier: npm:@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339
-        version: '@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23)'
+        specifier: npm:@rspack-canary/core@2.3.3-canary-4e512625-20261112173136
+        version: '@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23)'
       '@types/connect':
         specifier: ^3.4.38
         version: 3.4.38
@@ -44,7 +44,7 @@ importers:
         version: 7.0.6
       css-loader:
         specifier: ^7.1.4
-        version: 7.1.4(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4(postcss@8.5.3))
+        version: 7.1.4(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4(postcss@8.5.3))
       del:
         specifier: ^6.1.1
         version: 6.1.1
@@ -71,7 +71,7 @@ importers:
         version: 2.1.2(webpack@5.108.4(postcss@8.5.3))
       html-webpack-plugin:
         specifier: 5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4(postcss@8.5.3))
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4(postcss@8.5.3))
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1
@@ -95,7 +95,7 @@ importers:
         version: 1.100.0
       sass-loader:
         specifier: ^16.0.8
-        version: 16.0.8(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(sass-embedded@1.100.0)(sass@1.100.0)(webpack@5.108.4(postcss@8.5.3))
+        version: 16.0.8(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(sass-embedded@1.100.0)(sass@1.100.0)(webpack@5.108.4(postcss@8.5.3))
       tmp:
         specifier: ^0.2.7
         version: 0.2.7
@@ -128,7 +128,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -149,7 +149,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -164,7 +164,7 @@ importers:
     devDependencies:
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -179,7 +179,7 @@ importers:
     devDependencies:
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -197,7 +197,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -212,7 +212,7 @@ importers:
     devDependencies:
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -227,7 +227,7 @@ importers:
     devDependencies:
       css-loader:
         specifier: ^7.1.4
-        version: 7.1.4(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 7.1.4(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       css-select:
         specifier: ^7.0.0
         version: 7.0.0
@@ -236,7 +236,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       htmlparser2:
         specifier: ^12.0.0
         version: 12.0.0
@@ -263,10 +263,10 @@ importers:
         version: 30.5.2
       html-webpack-externals-plugin:
         specifier: ^3.8.0
-        version: 3.8.0(html-webpack-plugin@5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4))
+        version: 3.8.0(html-webpack-plugin@5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4))
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       htmlparser2:
         specifier: ^12.0.0
         version: 12.0.0
@@ -290,7 +290,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       htmlparser2:
         specifier: ^12.0.0
         version: 12.0.0
@@ -314,7 +314,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       htmlparser2:
         specifier: ^12.0.0
         version: 12.0.0
@@ -338,7 +338,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       htmlparser2:
         specifier: ^12.0.0
         version: 12.0.0
@@ -356,13 +356,13 @@ importers:
     devDependencies:
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
       script-ext-html-webpack-plugin:
         specifier: ^2.1.5
-        version: 2.1.5(html-webpack-plugin@5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4))(webpack@5.108.4)
+        version: 2.1.5(html-webpack-plugin@5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4))(webpack@5.108.4)
       webpack:
         specifier: 5.108.4
         version: 5.108.4(postcss@8.5.3)(webpack-cli@5.1.4)
@@ -389,13 +389,13 @@ importers:
     devDependencies:
       css-loader:
         specifier: ^7.1.4
-        version: 7.1.4(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 7.1.4(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       expect:
         specifier: ^30.5.2
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       mini-css-extract-plugin:
         specifier: ^1.6.2
         version: 1.6.2(webpack@5.108.4)
@@ -416,7 +416,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -431,7 +431,7 @@ importers:
     devDependencies:
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -449,7 +449,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -467,7 +467,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -485,7 +485,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -503,7 +503,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -518,7 +518,7 @@ importers:
     devDependencies:
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -533,10 +533,10 @@ importers:
     devDependencies:
       css-loader:
         specifier: ^7.1.4
-        version: 7.1.4(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 7.1.4(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       mini-css-extract-plugin:
         specifier: ^1.6.2
         version: 1.6.2(webpack@5.108.4)
@@ -557,7 +557,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -575,7 +575,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -593,7 +593,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -611,7 +611,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -629,7 +629,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -647,7 +647,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -665,7 +665,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -680,7 +680,7 @@ importers:
     devDependencies:
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -701,7 +701,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -719,7 +719,7 @@ importers:
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -737,13 +737,13 @@ importers:
     devDependencies:
       css-loader:
         specifier: ^7.1.4
-        version: 7.1.4(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 7.1.4(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       expect:
         specifier: ^30.5.2
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       mini-css-extract-plugin:
         specifier: ^1.6.2
         version: 1.6.2(webpack@5.108.4)
@@ -767,7 +767,7 @@ importers:
     devDependencies:
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -782,7 +782,7 @@ importers:
     devDependencies:
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -797,13 +797,13 @@ importers:
     devDependencies:
       css-loader:
         specifier: ^7.1.4
-        version: 7.1.4(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 7.1.4(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       expect:
         specifier: ^30.5.2
         version: 30.5.2
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+        version: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       mini-css-extract-plugin:
         specifier: ^1.6.2
         version: 1.6.2(webpack@5.108.4)
@@ -1003,14 +1003,14 @@ packages:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
 
-  '@emnapi/core@1.11.3':
-    resolution: {integrity: sha512-zLpS5asjEb7lq8jYLq37N6XKaE41DIexlY1rF/z4/tIl3wo13Sqm28fRyfIsKZD+NZ8mM5RoKkpW/rBcuoSZSg==}
+  '@emnapi/core@2.0.0-beta.3':
+    resolution: {integrity: sha512-KA+gOBtbifRATmUa/Gpf5C2B2EJ0r4brHUT3XSgACeHREcuiObXH56xd+B3fFsEFbUT04VBEe6MuZiCtMp0tQg==}
 
-  '@emnapi/runtime@1.11.3':
-    resolution: {integrity: sha512-Xz4Tpyki7XyrpbUK1jR1AhdAdaXyhhY4lZ3neLodmhpuWfy2PAQN5B46sAiU4liOXGLkHypn/qU+jvfWSCYYLA==}
+  '@emnapi/runtime@2.0.0-beta.3':
+    resolution: {integrity: sha512-ayb/PyyLzpwRyFVxeC0uoEHu59QlB1iWGcGsOpXQcaB/Dc+uGfBmNmpCHp3HmTT0t8lSsMmg3j7+tdJW/TlHjQ==}
 
-  '@emnapi/wasi-threads@1.2.3':
-    resolution: {integrity: sha512-ELEBe8PsLvvJ6QMr0zLt8ffvOHW/dc1m3CEzNMg7aJUv3bMaoDtw2TXyDAwkYBuroxxuHEwhRTLJSe5sya547g==}
+  '@emnapi/wasi-threads@2.2.0':
+    resolution: {integrity: sha512-JP7OYH38Q7+pyTAe14raZHLQIK7BDKbdwji+Xi3pcd/6QkJYQH3SX4wu6EplGrGJWRepoNzedfm0G3B9Z4e9Rw==}
 
   '@fastify/ajv-compiler@1.1.0':
     resolution: {integrity: sha512-gvCOUNpXsWrIQ3A4aXCLIdblL0tDq42BG/2Xw7oxbil9h11uow10ztS2GuFazNBfjbrsZ5nl+nPl5jDSjj5TSg==}
@@ -1225,11 +1225,12 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@napi-rs/wasm-runtime@1.1.6':
-    resolution: {integrity: sha512-ZLv/JdUfkvOy9eCnnBaGfiO+XimbjebAeO+MRQqD/B+FR1tnRN0tpKSJHRbE8sFfS6aqsXZ67TQjfwfsxULVbg==}
+  '@napi-rs/wasm-runtime@1.2.7':
+    resolution: {integrity: sha512-zJccwplOAbgfZju95IUHazLnx9RAPtPN2YGJXI6UbrgeaR9QfPjGrQL6ERkSAtnVCA4Q+83ApGyaX5zdpCaKkQ==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=23.5.0}
     peerDependencies:
-      '@emnapi/core': ^1.7.1
-      '@emnapi/runtime': ^1.7.1
+      '@emnapi/core': ^1.7.1 || 2.0.0-beta.2 || 2.0.0-beta.3
+      '@emnapi/runtime': ^1.7.1 || 2.0.0-beta.2 || 2.0.0-beta.3
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1416,98 +1417,98 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rspack-canary/binding-darwin-arm64@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-fMgZJNUsOOYkqQFZbb2BEP7WGBYlJ0LiyxEQGwxYlMJ7LOA6xl4hYzNr1CCQcigKBqRQJ8pONp7ExuveypTxqw==}
+  '@rspack-canary/binding-darwin-arm64@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-YpILpre1fyGyvNu/u0t+HkoZwGrB0fGuE8KOzVuwR5K2/6cMMLfOb2/WBm0kGUWF5USNm19Dz7dno6hoLiwJVA==}
     cpu: [arm64]
     os: [darwin]
 
-  '@rspack-canary/binding-darwin-x64@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-oMQLggf5g9iO2aELMKsTVgbMqxfT25LEV9gub3f8sRq+ZMc4ANOxJrtAU3YQmKOCf938UY4PfIZ8J57ewJyUcg==}
+  '@rspack-canary/binding-darwin-x64@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-Hhtemuw7SY1DO1DUwK0tRwOH3YnRHUnhshHHYbhfhrYCY9akCsdAiXuP3uS016AX45bSPl+H71lyLz8JTJFQog==}
     cpu: [x64]
     os: [darwin]
 
-  '@rspack-canary/binding-linux-arm64-gnu@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-nLVSUhUMfb6zVqN31cOJbXu27HHebsZoqR1/EwlbxedYoVYnd/X6wma/HmvSw/FOZnkRUjc8Mtg8yWmpCcpwbQ==}
+  '@rspack-canary/binding-linux-arm64-gnu@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-qT94uBWrRQ4XDqIl5u5Tr386bnzxzOneJYMQ37jSATLRrOSiBI1blQb0RI4huZC0qrbsfHZ1Kdei/lSdDmMfSQ==}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@rspack-canary/binding-linux-arm64-musl@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-giFGiZHj0CjyN0oF5V/PCVNhhuSmAVQjH8pOIt8CBnZU/iBs1VGNkshfSFgINdXbvaUpD/rmSGSw/ukzlFisXQ==}
+  '@rspack-canary/binding-linux-arm64-musl@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-ehWQhVTWSOSymzL4Y4OissnD0AG1vHoLgAySDjP0l8GGBrR4nz4Q3wlLHMbpygR1zFag/p8TQT2JzazMZuQd3w==}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  '@rspack-canary/binding-linux-ppc64-gnu@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-1PcZhCsuRkwovBGMn3ShlnQTktCgxlZ7pzDIYzD5v2V9bsE8iQLzQtXSJmDYzBzm+n5N6JZGyFScu60CaftBrg==}
+  '@rspack-canary/binding-linux-ppc64-gnu@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-gUM5SVCJFWH5wVrPR2Ey9A12YeRa1sfax9L8NJbF/XxUAH8XEibs1+hXynjnMT234bW7WqNAjdu27Upao0zwLA==}
     cpu: [ppc64]
     os: [linux]
     libc: [glibc]
 
-  '@rspack-canary/binding-linux-riscv64-gnu@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-Ch5q46MbUWtTJDXOucvnLLTwT40yevjlkMgDFls7dt31HxGkHqcFP4XbD6+147YDF+wRG5wLzfNI915NDKUKmA==}
+  '@rspack-canary/binding-linux-riscv64-gnu@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-n7pUsmBfGoyn1ujhDfFh1X2OCk9L55doXJ+qz53ZJLJoqAYlvi/8yjVTobQI95u8C1YRGfNMVNF1X62o7f72ag==}
     cpu: [riscv64]
     os: [linux]
     libc: [glibc]
 
-  '@rspack-canary/binding-linux-riscv64-musl@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-O+K6AHUYbqI2bxo10iBSulI6GM8o7kb4owJJvpJYV5FTnjhkxfvta4ZhF2GjrvRWSXjHEJWNCd/DqLK6rSMefw==}
+  '@rspack-canary/binding-linux-riscv64-musl@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-9y+RFezLdqk80zfiqU77PkdX/c3mVagq9KQ982ndhHx+BinWV+ePkKxQ/sY+mazdtrNic5ieEMP852k/Zft0NQ==}
     cpu: [riscv64]
     os: [linux]
     libc: [musl]
 
-  '@rspack-canary/binding-linux-s390x-gnu@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-/dU1+BNYbHYpvmr4ZMO9f8MzJXEJ8H16KXnW8zhAlkkr9XJLVtCULrDMqvXqGd1tVIMiWLOxr3bPdaLRb3D43A==}
+  '@rspack-canary/binding-linux-s390x-gnu@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-0tnr43neZ2uPVKF8IWb1tMZO7VWRFa3paYW06sP4W14jSmdJ284HYqh0ljLcQyj6uzET/j/4SRm/W4piHdLapw==}
     cpu: [s390x]
     os: [linux]
     libc: [glibc]
 
-  '@rspack-canary/binding-linux-x64-gnu@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-xzX9MN5N2HWiwK4RqPTlkeNvUObTF/9+ankvKs2QVTD90uDFKhURozNoE0WRwPchR0ZWUGZWxNqzF3/n/4Vr9g==}
+  '@rspack-canary/binding-linux-x64-gnu@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-8XiJuVQ+U46UXLyvvC3t9Lj9SnC9glHtET4REm/IpO8svNTs9ph7WqfCVjDiTeJQfHG1H8PvnYk863kiRkM4Xg==}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@rspack-canary/binding-linux-x64-musl@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-kQRzqd04YMGB6zewwZ79B5oELxXwtHBBCbPDeeKpak8Yt1WY5AU+zB1jB0W8eBeZxWqdcL/fwsiUFoZggD+19Q==}
+  '@rspack-canary/binding-linux-x64-musl@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-leRT34KFtsmlOZ28Cx8f0D4mRpDRbp0bZx1OGc8g+Wxu7dwCyI1qJtef1PBxkh1RNrGtCXzkf41ZXsNvvCdP3Q==}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@rspack-canary/binding-wasm32-wasi@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-DAgO9Uxd15Jhz4VT0I67f2nrc9H0TG4W1mWAwiyBsD4ProOu0pyVzJkH9NDblh+g0KvWLZ5HH+npVBqrArUwog==}
+  '@rspack-canary/binding-wasm32-wasi@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-gDPwyAduQ3IzWsBnr9SPFqXMS/SecHD9Vhl5CuZ9C5HNKqVY2d6vEL7ekxoo2kQ1fgzcIaqZzUxpFPibEX5xZg==}
     cpu: [wasm32]
 
-  '@rspack-canary/binding-win32-arm64-msvc@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-Hefi+a8zbDft7jCO/d0O/3ehGxHRV4Ht3GkaHWjUBMwZtd1qd0MoBQUgBHY/XavlzfiGx43nARMuyWHT6XGK1Q==}
+  '@rspack-canary/binding-win32-arm64-msvc@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-GGMve5DGmeK52zifW5KXYslAtbyx9NT9mcId7rqgyOmd9mxbzgu3N5eBUtE5gcM097j7efdAAN2ZqGCAB5JOaA==}
     cpu: [arm64]
     os: [win32]
 
-  '@rspack-canary/binding-win32-ia32-msvc@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-hsme8cSAQnji42J2NVyG22WIM0xZki1/6i30dyCAZtmTYJPuQKtyaw6z+iKhIOu3Rz7id+zKQ+xZXaxNhUGIWQ==}
+  '@rspack-canary/binding-win32-ia32-msvc@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-FmnjF+0qpPJGs3sBgMXxG+NlR2xKgrxkJvUm9j2kj9qll7cUvgEZ/axR+c927+YTINR7gwgMh/ssi7UOvqPP0w==}
     cpu: [ia32]
     os: [win32]
 
-  '@rspack-canary/binding-win32-x64-msvc@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-KTb82NIqFOp5ReXqEHXLVgKvpFpCJbiw5g+NPllg4J8I2k8PE5dA5vrL38r/Xozep+wflMszNTFiusp9fC1bAQ==}
+  '@rspack-canary/binding-win32-x64-msvc@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-osNbdtcFNgIEsAcYsHSq/r1wYnezq2rUHH/blcps/79JoSPwMcqGPntIBlNGxYM3UH+4lbh4HupoeUE/nIxiAg==}
     cpu: [x64]
     os: [win32]
 
-  '@rspack-canary/binding@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-hwp5tXPGwjl07joj6FImRxM11BoMQnfyD0n0qC6bVTzhnOLzUFH4P33QT8SW1Z2LCgokqLJm0spDI5SlSRTp4A==}
+  '@rspack-canary/binding@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-sYP/3ojR2ZT0cYZkIA7cdXO1YFuMmbWn4eiQ/CRzFuHS9uYfZwJe1jrxiUvzAVjhBXHi2fXN6gci3exScuK6ng==}
 
-  '@rspack-canary/cli@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-cQYHYbN3wBCU6/k+mpSvRRk6rh/xrAIJDl9g0kyFLEdmCGtMPaRnKEt7uJPWIfez2M+Xjyp3Um3sfdP4WbLexA==}
+  '@rspack-canary/cli@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-hozA9xKvrUtCBuyLsqg+BlP5jl1dACCYBV3S0bO8Ehj9jgVFlnatXjPGg/Js3I5YfwVfv8U1N10jniz6vGRRcw==}
     hasBin: true
     peerDependencies:
-      '@rspack/core': ^2.0.0-0
+      '@rspack/core': ^2.3.0-0
       '@rspack/dev-server': ^2.0.0-0
     peerDependenciesMeta:
       '@rspack/dev-server':
         optional: true
 
-  '@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339':
-    resolution: {integrity: sha512-HNNxZo6wVuQ1B4GYaq6koao9R9wljVcGQM+zvGyyLBXs575PswDlG/M74nYAYldgNlV6lydLa1CS0z486Bf/fw==}
+  '@rspack-canary/core@2.3.3-canary-4e512625-20261112173136':
+    resolution: {integrity: sha512-Oh+negsAnxW9Ez3I0iHpbvg3vK8MwxZzEKCmPZ227xASZuryMy34yMmo4uR+OLSw1apl+R+P1h5DiBnNmdsu/w==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       '@module-federation/runtime-tools': ^0.24.1 || ^2.0.0
@@ -4887,18 +4888,18 @@ snapshots:
 
   '@discoveryjs/json-ext@0.5.7': {}
 
-  '@emnapi/core@1.11.3':
+  '@emnapi/core@2.0.0-beta.3':
     dependencies:
-      '@emnapi/wasi-threads': 1.2.3
+      '@emnapi/wasi-threads': 2.2.0
       tslib: 2.8.1
     optional: true
 
-  '@emnapi/runtime@1.11.3':
+  '@emnapi/runtime@2.0.0-beta.3':
     dependencies:
       tslib: 2.8.1
     optional: true
 
-  '@emnapi/wasi-threads@1.2.3':
+  '@emnapi/wasi-threads@2.2.0':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -5142,10 +5143,10 @@ snapshots:
       '@jsonjoy.com/codegen': 17.67.0(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@napi-rs/wasm-runtime@1.1.6(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)':
+  '@napi-rs/wasm-runtime@1.2.7(@emnapi/core@2.0.0-beta.3)(@emnapi/runtime@2.0.0-beta.3)':
     dependencies:
-      '@emnapi/core': 1.11.3
-      '@emnapi/runtime': 1.11.3
+      '@emnapi/core': 2.0.0-beta.3
+      '@emnapi/runtime': 2.0.0-beta.3
       '@tybys/wasm-util': 0.10.3
     optional: true
 
@@ -5240,7 +5241,7 @@ snapshots:
 
   '@rsbuild/core@2.2.3':
     dependencies:
-      '@rspack/core': '@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23)'
+      '@rspack/core': '@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23)'
       '@swc/helpers': 0.5.23
     transitivePeerDependencies:
       - '@module-federation/runtime-tools'
@@ -5292,76 +5293,76 @@ snapshots:
   '@rslint/native-win32-x64-msvc@0.9.0':
     optional: true
 
-  '@rspack-canary/binding-darwin-arm64@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-darwin-arm64@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-darwin-x64@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-darwin-x64@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-linux-arm64-gnu@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-linux-arm64-gnu@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-linux-arm64-musl@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-linux-arm64-musl@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-linux-ppc64-gnu@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-linux-ppc64-gnu@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-linux-riscv64-gnu@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-linux-riscv64-gnu@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-linux-riscv64-musl@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-linux-riscv64-musl@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-linux-s390x-gnu@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-linux-s390x-gnu@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-linux-x64-gnu@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-linux-x64-gnu@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-linux-x64-musl@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-linux-x64-musl@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-wasm32-wasi@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-wasm32-wasi@2.3.3-canary-4e512625-20261112173136':
     dependencies:
-      '@emnapi/core': 1.11.3
-      '@emnapi/runtime': 1.11.3
-      '@napi-rs/wasm-runtime': 1.1.6(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
+      '@emnapi/core': 2.0.0-beta.3
+      '@emnapi/runtime': 2.0.0-beta.3
+      '@napi-rs/wasm-runtime': 1.2.7(@emnapi/core@2.0.0-beta.3)(@emnapi/runtime@2.0.0-beta.3)
     optional: true
 
-  '@rspack-canary/binding-win32-arm64-msvc@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-win32-arm64-msvc@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-win32-ia32-msvc@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-win32-ia32-msvc@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding-win32-x64-msvc@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding-win32-x64-msvc@2.3.3-canary-4e512625-20261112173136':
     optional: true
 
-  '@rspack-canary/binding@2.2.10-canary-96dcd72d-20261016173339':
+  '@rspack-canary/binding@2.3.3-canary-4e512625-20261112173136':
     optionalDependencies:
-      '@rspack/binding-darwin-arm64': '@rspack-canary/binding-darwin-arm64@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-darwin-x64': '@rspack-canary/binding-darwin-x64@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-linux-arm64-gnu': '@rspack-canary/binding-linux-arm64-gnu@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-linux-arm64-musl': '@rspack-canary/binding-linux-arm64-musl@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-linux-ppc64-gnu': '@rspack-canary/binding-linux-ppc64-gnu@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-linux-riscv64-gnu': '@rspack-canary/binding-linux-riscv64-gnu@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-linux-riscv64-musl': '@rspack-canary/binding-linux-riscv64-musl@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-linux-s390x-gnu': '@rspack-canary/binding-linux-s390x-gnu@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-linux-x64-gnu': '@rspack-canary/binding-linux-x64-gnu@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-linux-x64-musl': '@rspack-canary/binding-linux-x64-musl@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-wasm32-wasi': '@rspack-canary/binding-wasm32-wasi@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-win32-arm64-msvc': '@rspack-canary/binding-win32-arm64-msvc@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-win32-ia32-msvc': '@rspack-canary/binding-win32-ia32-msvc@2.2.10-canary-96dcd72d-20261016173339'
-      '@rspack/binding-win32-x64-msvc': '@rspack-canary/binding-win32-x64-msvc@2.2.10-canary-96dcd72d-20261016173339'
+      '@rspack/binding-darwin-arm64': '@rspack-canary/binding-darwin-arm64@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-darwin-x64': '@rspack-canary/binding-darwin-x64@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-linux-arm64-gnu': '@rspack-canary/binding-linux-arm64-gnu@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-linux-arm64-musl': '@rspack-canary/binding-linux-arm64-musl@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-linux-ppc64-gnu': '@rspack-canary/binding-linux-ppc64-gnu@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-linux-riscv64-gnu': '@rspack-canary/binding-linux-riscv64-gnu@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-linux-riscv64-musl': '@rspack-canary/binding-linux-riscv64-musl@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-linux-s390x-gnu': '@rspack-canary/binding-linux-s390x-gnu@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-linux-x64-gnu': '@rspack-canary/binding-linux-x64-gnu@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-linux-x64-musl': '@rspack-canary/binding-linux-x64-musl@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-wasm32-wasi': '@rspack-canary/binding-wasm32-wasi@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-win32-arm64-msvc': '@rspack-canary/binding-win32-arm64-msvc@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-win32-ia32-msvc': '@rspack-canary/binding-win32-ia32-msvc@2.3.3-canary-4e512625-20261112173136'
+      '@rspack/binding-win32-x64-msvc': '@rspack-canary/binding-win32-x64-msvc@2.3.3-canary-4e512625-20261112173136'
 
-  '@rspack-canary/cli@2.2.10-canary-96dcd72d-20261016173339(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))':
+  '@rspack-canary/cli@2.3.3-canary-4e512625-20261112173136(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))':
     dependencies:
-      '@rspack/core': '@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23)'
+      '@rspack/core': '@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23)'
 
-  '@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23)':
+  '@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23)':
     dependencies:
-      '@rspack/binding': '@rspack-canary/binding@2.2.10-canary-96dcd72d-20261016173339'
+      '@rspack/binding': '@rspack-canary/binding@2.3.3-canary-4e512625-20261112173136'
     optionalDependencies:
       '@swc/helpers': 0.5.23
 
@@ -6071,7 +6072,7 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  css-loader@7.1.4(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4(postcss@8.5.3)):
+  css-loader@7.1.4(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4(postcss@8.5.3)):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.3)
       postcss: 8.5.3
@@ -6082,10 +6083,10 @@ snapshots:
       postcss-value-parser: 4.2.0
       semver: 7.7.1
     optionalDependencies:
-      '@rspack/core': '@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23)'
+      '@rspack/core': '@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23)'
       webpack: 5.108.4(postcss@8.5.3)
 
-  css-loader@7.1.4(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4):
+  css-loader@7.1.4(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.3)
       postcss: 8.5.3
@@ -6096,7 +6097,7 @@ snapshots:
       postcss-value-parser: 4.2.0
       semver: 7.7.1
     optionalDependencies:
-      '@rspack/core': '@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23)'
+      '@rspack/core': '@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23)'
       webpack: 5.108.4(postcss@8.5.3)(webpack-cli@5.1.4)
 
   css-select@4.3.0:
@@ -6700,12 +6701,12 @@ snapshots:
       relateurl: 0.2.7
       terser: 5.39.0
 
-  html-webpack-externals-plugin@3.8.0(html-webpack-plugin@5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)):
+  html-webpack-externals-plugin@3.8.0(html-webpack-plugin@5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)):
     dependencies:
       ajv: 6.12.6
       copy-webpack-plugin: 4.6.0
       html-webpack-include-assets-plugin: 1.0.10
-      html-webpack-plugin: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+      html-webpack-plugin: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
 
   html-webpack-include-assets-plugin@1.0.10:
     dependencies:
@@ -6713,7 +6714,7 @@ snapshots:
       minimatch: 3.1.2
       slash: 2.0.0
 
-  html-webpack-plugin@5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4(postcss@8.5.3)):
+  html-webpack-plugin@5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4(postcss@8.5.3)):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
@@ -6721,10 +6722,10 @@ snapshots:
       pretty-error: 4.0.0
       tapable: 2.2.1
     optionalDependencies:
-      '@rspack/core': '@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23)'
+      '@rspack/core': '@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23)'
       webpack: 5.108.4(postcss@8.5.3)
 
-  html-webpack-plugin@5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4):
+  html-webpack-plugin@5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
@@ -6732,7 +6733,7 @@ snapshots:
       pretty-error: 4.0.0
       tapable: 2.2.1
     optionalDependencies:
-      '@rspack/core': '@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23)'
+      '@rspack/core': '@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23)'
       webpack: 5.108.4(postcss@8.5.3)(webpack-cli@5.1.4)
 
   htmlparser2@12.0.0:
@@ -7951,11 +7952,11 @@ snapshots:
       sass-embedded-win32-arm64: 1.100.0
       sass-embedded-win32-x64: 1.100.0
 
-  sass-loader@16.0.8(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(sass-embedded@1.100.0)(sass@1.100.0)(webpack@5.108.4(postcss@8.5.3)):
+  sass-loader@16.0.8(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(sass-embedded@1.100.0)(sass@1.100.0)(webpack@5.108.4(postcss@8.5.3)):
     dependencies:
       neo-async: 2.6.2
     optionalDependencies:
-      '@rspack/core': '@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23)'
+      '@rspack/core': '@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23)'
       sass: 1.100.0
       sass-embedded: 1.100.0
       webpack: 5.108.4(postcss@8.5.3)
@@ -7999,10 +8000,10 @@ snapshots:
       ajv-formats: 2.1.1(ajv@8.17.1)
       ajv-keywords: 5.1.0(ajv@8.17.1)
 
-  script-ext-html-webpack-plugin@2.1.5(html-webpack-plugin@5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4))(webpack@5.108.4):
+  script-ext-html-webpack-plugin@2.1.5(html-webpack-plugin@5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4))(webpack@5.108.4):
     dependencies:
       debug: 4.4.3
-      html-webpack-plugin: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
+      html-webpack-plugin: 5.6.7(@rspack-canary/core@2.3.3-canary-4e512625-20261112173136(@swc/helpers@0.5.23))(webpack@5.108.4)
       webpack: 5.108.4(postcss@8.5.3)(webpack-cli@5.1.4)
     transitivePeerDependencies:
       - supports-color

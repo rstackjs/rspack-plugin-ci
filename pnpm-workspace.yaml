@@ -35,8 +35,8 @@ minimumReleaseAgeExclude:
   - '@rspack-canary/binding-linux-ppc64-gnu@2.2.10-canary-96dcd72d-20261016173339'
   - '@rspack-canary/binding-linux-s390x-gnu@2.2.10-canary-96dcd72d-20261016173339'
 overrides:
-  '@rspack/cli': 'npm:@rspack-canary/cli@2.2.10-canary-96dcd72d-20261016173339'
-  '@rspack/core': 'npm:@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339'
+  '@rspack/cli': 'npm:@rspack-canary/cli@2.2.10-canary-f307a141-20261020173829'
+  '@rspack/core': 'npm:@rspack-canary/core@2.2.10-canary-f307a141-20261020173829'
 
 peerDependencyRules:
   allowAny:

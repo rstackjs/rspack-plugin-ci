@@ -241,8 +241,8 @@ importers:
         specifier: ^12.0.0
         version: 12.0.0
       mini-css-extract-plugin:
-        specifier: ^1.6.2
-        version: 1.6.2(webpack@5.108.4)
+        specifier: ^2.10.2
+        version: 2.10.2(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -397,8 +397,8 @@ importers:
         specifier: ^5.6.7
         version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
       mini-css-extract-plugin:
-        specifier: ^1.6.2
-        version: 1.6.2(webpack@5.108.4)
+        specifier: ^2.10.2
+        version: 2.10.2(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -538,8 +538,8 @@ importers:
         specifier: ^5.6.7
         version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
       mini-css-extract-plugin:
-        specifier: ^1.6.2
-        version: 1.6.2(webpack@5.108.4)
+        specifier: ^2.10.2
+        version: 2.10.2(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -745,8 +745,8 @@ importers:
         specifier: ^5.6.7
         version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
       mini-css-extract-plugin:
-        specifier: ^1.6.2
-        version: 1.6.2(webpack@5.108.4)
+        specifier: ^2.10.2
+        version: 2.10.2(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -805,8 +805,8 @@ importers:
         specifier: ^5.6.7
         version: 5.6.7(@rspack-canary/core@2.2.10-canary-96dcd72d-20261016173339(@swc/helpers@0.5.23))(webpack@5.108.4)
       mini-css-extract-plugin:
-        specifier: ^1.6.2
-        version: 1.6.2(webpack@5.108.4)
+        specifier: ^2.10.2
+        version: 2.10.2(webpack@5.108.4)
       nyc:
         specifier: '*'
         version: 18.0.0
@@ -3375,11 +3375,11 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  mini-css-extract-plugin@1.6.2:
-    resolution: {integrity: sha512-WhDvO3SjGm40oV5y26GjMJYjd2UMqrLAGKy5YS2/3QKJy2F7jgynuHTir/tgUUOiNQu5saXHdc8reo7YuhhT4Q==}
-    engines: {node: '>= 10.13.0'}
+  mini-css-extract-plugin@2.10.2:
+    resolution: {integrity: sha512-AOSS0IdEB95ayVkxn5oGzNQwqAi2J0Jb/kKm43t7H73s8+f5873g0yuj0PNvK4dO75mu5DHg4nlgp4k6Kga8eg==}
+    engines: {node: '>= 12.13.0'}
     peerDependencies:
-      webpack: ^4.4.0 || ^5.0.0
+      webpack: ^5.0.0
 
   minimatch@10.2.5:
     resolution: {integrity: sha512-MULkVLfKGYDFYejP07QOurDLLQpcjk7Fw+7jXS2R2czRQzR56yHRveU5NDJEOviH+hETZKSkIk5c+T23GjFUMg==}
@@ -7193,12 +7193,11 @@ snapshots:
 
   mime@1.6.0: {}
 
-  mini-css-extract-plugin@1.6.2(webpack@5.108.4):
+  mini-css-extract-plugin@2.10.2(webpack@5.108.4):
     dependencies:
-      loader-utils: 2.0.4
-      schema-utils: 3.3.0
+      schema-utils: 4.3.3
+      tapable: 2.3.3
       webpack: 5.108.4(postcss@8.5.3)(webpack-cli@5.1.4)
-      webpack-sources: 1.4.3
 
   minimatch@10.2.5:
     dependencies:

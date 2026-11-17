@@ -99,7 +99,7 @@ __webpack_require__.u = (chunkId) => {
   // return url for filenames not based on template
   
   // return url for filenames based on template
-  return "" + chunkId + ".js"
+  return chunkId + ".js"
 }
 })();
 // webpack/runtime/get mini-css chunk filename
@@ -109,7 +109,7 @@ __webpack_require__.miniCssF = (chunkId) => {
   // return url for filenames not based on template
   
   // return url for filenames based on template
-  return "" + chunkId + ".css"
+  return chunkId + ".css"
 }
 })();
 // webpack/runtime/global
@@ -327,14 +327,20 @@ linkTag.href = fullhref;
 	return linkTag;
 }
 var extractCssFindStylesheet = function (href, fullhref) {
+	// HMR re-adds tags as `fullhref?<timestamp>`. Strip only that last query: one in the
+	// filename or the public path identifies the stylesheet.
+	var matches = function (dataHref) {
+		if (dataHref === href || dataHref === fullhref) return true;
+		var query = dataHref.lastIndexOf('?');
+		if (query < 0) return false;
+		dataHref = dataHref.slice(0, query);
+		return dataHref === href || dataHref === fullhref;
+	};
 	var existingLinkTags = document.getElementsByTagName("link");
 	for (var i = 0; i < existingLinkTags.length; i++) {
 		var tag = existingLinkTags[i];
 		var dataHref = tag.getAttribute("data-href") || tag.getAttribute("href");
-		if (dataHref) {
-			dataHref = dataHref.split('?')[0]
-		}
-		if (tag.rel === "stylesheet" && (dataHref === href || dataHref === fullhref)) return tag;
+		if (tag.rel === "stylesheet" && dataHref && matches(dataHref)) return tag;
 	}
 
 	var existingStyleTags = document.getElementsByTagName("style");

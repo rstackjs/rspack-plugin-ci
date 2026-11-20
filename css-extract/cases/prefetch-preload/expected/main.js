@@ -1,7 +1,7 @@
 (() => {
 var __webpack_modules__ = ({
 "./index.js"(__unused_rspack_module, __unused_rspack_exports, __webpack_require__) {
-__webpack_require__.e(/* import() | a */ "a").then(__webpack_require__.bind(__webpack_require__, "./a.css"));
+__webpack_require__.e(/* import() | a */ "a").then(() => __webpack_require__("./a.css"));
 __webpack_require__.e(/* import() | b */ "b").then(__webpack_require__.t.bind(__webpack_require__, "./b.js", 23));
 __webpack_require__.e(/* import() | c */ "c").then(__webpack_require__.t.bind(__webpack_require__, "./c.js", 23));
 
@@ -195,10 +195,7 @@ script.src = url;
 (() => {
 // define __esModule on exports
 __webpack_require__.r = (exports) => {
-	if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-		Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-	}
-	Object.defineProperty(exports, '__esModule', { value: true });
+	Object.defineProperties(exports, { [Symbol.toStringTag]: { value: 'Module' }, __esModule: { value: true } });
 };
 })();
 // webpack/runtime/on_chunk_loaded

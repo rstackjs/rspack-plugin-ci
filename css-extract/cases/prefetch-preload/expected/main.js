@@ -37,7 +37,7 @@ __webpack_require__.m = __webpack_modules__;
 
 // webpack/runtime/create_fake_namespace_object
 (() => {
-var getProto = Object.getPrototypeOf ? (obj) => (Object.getPrototypeOf(obj)) : (obj) => (obj.__proto__);
+var getProto = Object.getPrototypeOf;
 var leafPrototypes;
 // create a fake namespace object
 // mode & 1: value is a module id, require it
@@ -215,7 +215,7 @@ __webpack_require__.O = (result, chunkIds, fn, priority) => {
 		var fulfilled = true;
 		for (var j = 0; j < chunkIds.length; j++) {
 			if (
-				(priority & (1 === 0) || notFulfilled >= priority) &&
+				((priority & 1) === 0 || notFulfilled >= priority) &&
 				Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))
 			) {
 				chunkIds.splice(j--, 1);
@@ -267,7 +267,7 @@ if (!scriptUrl && document) {
     var scripts = document.getElementsByTagName("script");
     if (scripts.length) {
       var i = scripts.length - 1;
-      while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+      while (i > -1 && (!scriptUrl || !/^https?:/.test(scriptUrl))) scriptUrl = scripts[i--].src;
     }
   }
 }
@@ -275,7 +275,7 @@ if (!scriptUrl && document) {
 // When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration",
 // or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.',
 if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+scriptUrl = scriptUrl.replace(/^blob:|[?#].*$/g, "").replace(/\/[^/]+$/, "/");
 
 __webpack_require__.p = scriptUrl;
 
@@ -446,8 +446,6 @@ if (installedChunkData !== 0) {
 			var promise = new Promise((resolve, reject) => (installedChunkData = jsonpInstalledChunks[chunkId] = [resolve, reject]));
 			promises.push((installedChunkData[2] = promise));
 
-			// start chunk loading
-			var url = __webpack_require__.p + __webpack_require__.u(chunkId);
 			// create error before stack unwound to get useful stacktrace later
 			var error = new Error();
 			var loadingEnded = function (event) {
@@ -473,7 +471,7 @@ if (installedChunkData !== 0) {
 					}
 				}
 			};
-			__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
+			__webpack_require__.l(__webpack_require__.p + __webpack_require__.u(chunkId), loadingEnded, "chunk-" + chunkId, chunkId);
 		} 
 	}
 }

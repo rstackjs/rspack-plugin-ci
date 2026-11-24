@@ -2,8 +2,8 @@
 var __webpack_modules__ = ({
 "./index.js"(__unused_rspack_module, __unused_rspack_exports, __webpack_require__) {
 __webpack_require__.e(/* import() | a */ "a").then(() => __webpack_require__("./a.css"));
-__webpack_require__.e(/* import() | b */ "b").then(__webpack_require__.t.bind(__webpack_require__, "./b.js", 23));
-__webpack_require__.e(/* import() | c */ "c").then(__webpack_require__.t.bind(__webpack_require__, "./c.js", 23));
+__webpack_require__.e(/* import() | b */ "b").then(() => __webpack_require__.t("./b.js", 23));
+__webpack_require__.e(/* import() | c */ "c").then(() => __webpack_require__.t("./c.js", 23));
 
 
 },
@@ -95,22 +95,12 @@ __webpack_require__.e = (chunkId) => {
 // webpack/runtime/get javascript chunk filename
 (() => {
 // This function allow to reference chunks
-__webpack_require__.u = (chunkId) => {
-  // return url for filenames not based on template
-  
-  // return url for filenames based on template
-  return chunkId + ".js"
-}
+__webpack_require__.u = (chunkId) => (chunkId + ".js")
 })();
 // webpack/runtime/get mini-css chunk filename
 (() => {
 // This function allow to reference chunks
-__webpack_require__.miniCssF = (chunkId) => {
-  // return url for filenames not based on template
-  
-  // return url for filenames based on template
-  return chunkId + ".css"
-}
+__webpack_require__.miniCssF = (chunkId) => (chunkId + ".css")
 })();
 // webpack/runtime/global
 (() => {
@@ -265,20 +255,15 @@ if (!scriptUrl && document) {
   if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT') scriptUrl = document.currentScript.src;
   if (!scriptUrl) {
     var scripts = document.getElementsByTagName("script");
-    if (scripts.length) {
-      var i = scripts.length - 1;
-      while (i > -1 && (!scriptUrl || !/^https?:/.test(scriptUrl))) scriptUrl = scripts[i--].src;
-    }
+    var i = scripts.length;
+    while (i && (!scriptUrl || !/^https?:/.test(scriptUrl))) scriptUrl = scripts[--i].src;
   }
 }
 
 // When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration",
 // or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.',
 if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-scriptUrl = scriptUrl.replace(/^blob:|[?#].*$/g, "").replace(/\/[^/]+$/, "/");
-
-__webpack_require__.p = scriptUrl;
-
+__webpack_require__.p = scriptUrl.replace(/^blob:|[?#].*$/g, "").replace(/\/[^/]+$/, "/");
 })();
 // webpack/runtime/css loading
 (() => {

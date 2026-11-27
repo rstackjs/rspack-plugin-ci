@@ -46,8 +46,5 @@
     "tmp-promise": "^3.0.3",
     "typescript": "^7.0.2"
   },
-  "packageManager": "pnpm@12.18.0",
-  "engines": {
-    "pnpm": "11.13.0"
-  }
+  "packageManager": "pnpm@12.18.0"
 }

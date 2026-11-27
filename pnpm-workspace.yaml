@@ -2,6 +2,7 @@ packages:
   - 'sri-plugin/examples/*'
 
 allowBuilds:
+  '@parcel/watcher': false
   core-js: false
   puppeteer: false
 
@@ -25,3 +26,8 @@ overrides:
 peerDependencyRules:
   allowAny:
     - '@rspack/*'
+
+permissions:
+  rstack:
+    skills:
+      - rstack-cli-docs
